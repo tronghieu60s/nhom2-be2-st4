@@ -41,8 +41,8 @@
             </ul>
         </div>
     </nav>
-    <div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
-        <h1>Trang Chủ</h1>
+    <div class="d-flex justify-content-center align-items-center">
+        <h1>{{ $id }}</h1>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
