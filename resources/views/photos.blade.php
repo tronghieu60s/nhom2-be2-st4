@@ -17,16 +17,27 @@
 <body>
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div style="width: 400px;">
-            <h3 class="text-center">Login</h3>
-            <form action="{{ url('admin') }}">
+            <h3>POST</h3>
+            <form action="{{ url('photos') }}" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="">Name</label>
                     <input type="text" name="name" id="" class="form-control" placeholder="" aria-describedby="helpId">
                 </div>
-                <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="password" name="pass" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+
+            <h3 class="mt-4">PUT/PATCH</h3>
+            <form action="{{ url('photos/123') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+
+            <h3 class="mt-4">DELETE</h3>
+            <form action="{{ url('photos/123') }}" method="POST">
+                @csrf
+                @method('DELETE')
                 <button type="submit" class="btn btn-primary">Send</button>
             </form>
         </div>
