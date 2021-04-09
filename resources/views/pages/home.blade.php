@@ -6,8 +6,6 @@
 <body>
     <div class="wrapper">
         @include('client.common.header')
-        @include('client.common.offset.index')
-
         @include('client.home.slider')
 
         <section class="htc__category__area ptb--100">

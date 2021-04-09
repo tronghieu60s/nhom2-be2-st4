@@ -159,3 +159,5 @@
     <!-- End Mainmenu Area -->
 </header>
 <!-- End Header Area -->
+
+@include('client.common.offset.index')

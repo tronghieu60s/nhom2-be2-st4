@@ -6,12 +6,10 @@
 <body>
     <div class="wrapper">
         @include('client.common.header')
-        @include('client.common.offset.index')
-
         @include('client.products.bradcaump')
+
         @include('client.products.details.index')
         @include('client.products.details.description')
-
         <section class="htc__category__area ptb--100">
             <div class="container">
 
