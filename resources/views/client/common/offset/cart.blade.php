@@ -8,7 +8,7 @@
             <div class="shp__single__product">
                 <div class="shp__pro__thumb">
                     <a href="#">
-                        <img src="{{ url('client/images/product-2/sm-smg/1.jpg') }}" alt="product images">
+                        <img src="/client/images/product-2/sm-smg/1.jpg" alt="product images">
                     </a>
                 </div>
                 <div class="shp__pro__details">
@@ -23,7 +23,7 @@
             <div class="shp__single__product">
                 <div class="shp__pro__thumb">
                     <a href="#">
-                        <img src="{{ url('client/images/product-2/sm-smg/2.jpg') }}" alt="product images">
+                        <img src="/client/images/product-2/sm-smg/2.jpg" alt="product images">
                     </a>
                 </div>
                 <div class="shp__pro__details">

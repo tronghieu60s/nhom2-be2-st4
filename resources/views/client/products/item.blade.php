@@ -3,7 +3,7 @@
     <div class="category">
         <div class="ht__cat__thumb">
             <a href="product-details.html">
-                <img src="{{ url('client/images/product/1.jpg') }}" alt="product images">
+                <img src="/client/images/product/1.jpg" alt="product images">
             </a>
         </div>
         <div class="fr__hover__info">

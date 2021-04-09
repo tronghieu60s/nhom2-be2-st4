@@ -4,7 +4,7 @@
         <div class="order-details__item">
             <div class="single-item">
                 <div class="single-item__thumb">
-                    <img src="{{ url('client/images/cart/1.png') }}" alt="ordered item">
+                    <img src="/client/images/cart/1.png" alt="ordered item">
                 </div>
                 <div class="single-item__content">
                     <a href="#">Santa fe jacket for men</a>
@@ -16,7 +16,7 @@
             </div>
             <div class="single-item">
                 <div class="single-item__thumb">
-                    <img src="{{ url('client/images/cart/2.png') }}" alt="ordered item">
+                    <img src="/client/images/cart/2.png" alt="ordered item">
                 </div>
                 <div class="single-item__content">
                     <a href="#">Santa fe jacket for men</a>

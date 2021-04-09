@@ -5,11 +5,11 @@
             <div class="col-md-12">
                 <div class="ht__brand__inner">
                     <ul class="brand__list owl-carousel clearfix">
-                        <li><a href="#"><img src="{{ url('client/images/brand/1.png') }}" alt="brand images"></a></li>
-                        <li><a href="#"><img src="{{ url('client/images/brand/2.png') }}" alt="brand images"></a></li>
-                        <li><a href="#"><img src="{{ url('client/images/brand/3.png') }}" alt="brand images"></a></li>
-                        <li><a href="#"><img src="{{ url('client/images/brand/4.png') }}" alt="brand images"></a></li>
-                        <li><a href="#"><img src="{{ url('client/images/brand/5.png') }}" alt="brand images"></a></li>
+                        <li><a href="#"><img src="/client/images/brand/1.png" alt="brand images"></a></li>
+                        <li><a href="#"><img src="/client/images/brand/2.png" alt="brand images"></a></li>
+                        <li><a href="#"><img src="/client/images/brand/3.png" alt="brand images"></a></li>
+                        <li><a href="#"><img src="/client/images/brand/4.png" alt="brand images"></a></li>
+                        <li><a href="#"><img src="/client/images/brand/5.png" alt="brand images"></a></li>
                     </ul>
                 </div>
             </div>

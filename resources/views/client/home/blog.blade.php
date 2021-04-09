@@ -16,7 +16,7 @@
                     <div class="blog">
                         <div class="blog__thumb">
                             <a href="blog-details.html">
-                                <img src="{{ url('client/images/blog/blog-img/1.jpg') }}" alt="blog images">
+                                <img src="/client/images/blog/blog-img/1.jpg" alt="blog images">
                             </a>
                         </div>
                         <div class="blog__details">
@@ -39,7 +39,7 @@
                     <div class="blog">
                         <div class="blog__thumb">
                             <a href="blog-details.html">
-                                <img src="{{ url('client/images/blog/blog-img/2.jpg') }}" alt="blog images">
+                                <img src="/client/images/blog/blog-img/2.jpg" alt="blog images">
                             </a>
                         </div>
                         <div class="blog__details">
@@ -62,7 +62,7 @@
                     <div class="blog">
                         <div class="blog__thumb">
                             <a href="blog-details.html">
-                                <img src="{{ url('client/images/blog/blog-img/3.jpg') }}" alt="blog images">
+                                <img src="/client/images/blog/blog-img/3.jpg" alt="blog images">
                             </a>
                         </div>
                         <div class="blog__details">

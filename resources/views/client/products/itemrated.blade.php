@@ -3,7 +3,7 @@
     <div class="htc__best__product">
         <div class="htc__best__pro__thumb">
             <a href="product-details.html">
-                <img src="{{ url('client/images/product-2/sm-img-2/1.jpg') }}" alt="small product">
+                <img src="/client/images/product-2/sm-img-2/1.jpg" alt="small product">
             </a>
         </div>
         <div class="htc__best__product__details">
