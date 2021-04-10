@@ -5,7 +5,10 @@
     <meta name="description" content="Responsive Web UI Kit | Dashboard Template based on Bootstrap">
     <meta name="author" content="AdminKit">
     <meta name="keywords" content="adminkit, bootstrap, web ui kit, dashboard template, admin template">
-    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
     <title>{{ $title }} | Adminkit - A Web UI Kit</title>
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="/client/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/client/images/favicon.ico">
+	<!-- Font, StyleSheet -->
     <link href="/admin/css/app.css" rel="stylesheet">
 </head>

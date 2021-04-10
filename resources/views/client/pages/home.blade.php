@@ -1,4 +1,4 @@
-@extends('layouts.client', ['layout' => 'home', 'title' => 'Cart'])
+@extends('layouts.client', ['layout' => 'home', 'title' => 'Home'])
 
 @section('content')
     @include('client.home.slider')
