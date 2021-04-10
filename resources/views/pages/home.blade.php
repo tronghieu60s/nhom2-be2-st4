@@ -1,46 +1,21 @@
-<!DOCTYPE html>
-<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.client', ['layout' => 'home', 'title' => 'Cart'])
 
-@include('client.base.head')
+@section('content')
+    @include('client.home.slider')
 
-<body>
-    <div class="wrapper">
-        @include('client.common.header')
-        @include('client.home.slider')
+    <section class="htc__category__area ptb--100">
+        <div class="container">
 
-        <section class="htc__category__area ptb--100">
-            <div class="container">
+            @include('client.home.titlecategory',[ 'title' => 'New Arrivals', 'slogan' => 'But I must explain to
+            you how all this mistaken idea'])
 
-                @include('client.home.titlecategory',[ 'title' => 'New Arrivals', 'slogan' => 'But I must explain to
-                you how all this mistaken idea'])
-
-                <div class="htc__product__container">
-                    <div class="row">
-                        <div class="product__list clearfix mt--30">
-                            @include('client.products.item')
-                            @include('client.products.item')
-                            @include('client.products.item')
-                            @include('client.products.item')
-                            @include('client.products.item')
-                            @include('client.products.item')
-                            @include('client.products.item')
-                            @include('client.products.item')
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        @include('client.home.bestprize')
-
-        <section class="ftr__product__area ptb--100">
-            <div class="container">
-
-                @include('client.home.titlecategory', [ 'title' => 'Best Seller', 'slogan' => 'But I must explain to
-                you how all this mistaken idea' ])
-
+            <div class="htc__product__container">
                 <div class="row">
-                    <div class="product__wrap clearfix">
+                    <div class="product__list clearfix mt--30">
+                        @include('client.products.item')
+                        @include('client.products.item')
+                        @include('client.products.item')
+                        @include('client.products.item')
                         @include('client.products.item')
                         @include('client.products.item')
                         @include('client.products.item')
@@ -48,31 +23,44 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        @include('client.home.testimonial')
+    @include('client.home.bestprize')
 
-        <section class="top__rated__area bg__white pt--100 pb--110">
-            <div class="container">
+    <section class="ftr__product__area ptb--100">
+        <div class="container">
 
-                @include('client.home.titlecategory', [ 'title' => 'Top Rated',
-                'slogan' => 'But I must explain to you'])
+            @include('client.home.titlecategory', [ 'title' => 'Best Seller', 'slogan' => 'But I must explain to
+            you how all this mistaken idea' ])
 
-                <div class="row mt--20">
-                    @include('client.products.itemrated')
-                    @include('client.products.itemrated')
-                    @include('client.products.itemrated')
+            <div class="row">
+                <div class="product__wrap clearfix">
+                    @include('client.products.item')
+                    @include('client.products.item')
+                    @include('client.products.item')
+                    @include('client.products.item')
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-         @include('client.common.brand')
-         @include('client.home.blog')
-         
-         @include('client.common.footer')
-    </div>
+    @include('client.home.testimonial')
 
-    @include('client.base.script')
-</body>
+    <section class="top__rated__area bg__white pt--100 pb--110">
+        <div class="container">
 
-</html>
+            @include('client.home.titlecategory', [ 'title' => 'Top Rated',
+            'slogan' => 'But I must explain to you'])
+
+            <div class="row mt--20">
+                @include('client.products.itemrated')
+                @include('client.products.itemrated')
+                @include('client.products.itemrated')
+            </div>
+        </div>
+    </section>
+
+    @include('client.common.brand')
+    @include('client.home.blog')
+@endsection

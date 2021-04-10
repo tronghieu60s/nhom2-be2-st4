@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.client', ['title' => 'WishList'])
 
-@include('client.base.head')
-
-<body>
-    <div class="wrapper">
-        @include('client.common.header')
-        @include('client.products.bradcaump')
-
-        <div class="wishlist-area ptb--100 bg__white">
+@section('content')
+    <div class="wishlist-area ptb--100 bg__white">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -45,12 +38,4 @@
                 </div>
             </div>
         </div>
-
-        @include('client.common.brand')
-        @include('client.common.footer')
-    </div>
-
-    @include('client.base.script')
-</body>
-
-</html>
+@endsection
