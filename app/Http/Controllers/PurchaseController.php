@@ -8,16 +8,16 @@ class PurchaseController extends Controller
 {
     public function cart()
     {
-        return view('pages.cart');
+        return view('client.pages.cart');
     }
 
     public function checkout()
     {
-        return view('pages.checkout');
+        return view('client.pages.checkout');
     }
 
     public function wishlist()
     {
-        return view('pages.wishlist');
+        return view('client.pages.wishlist');
     }
 }

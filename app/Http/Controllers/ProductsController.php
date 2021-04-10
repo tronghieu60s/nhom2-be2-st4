@@ -6,14 +6,25 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('pages.products.index');
+        return view('client.pages.products.index');
     }
 
-    public function item($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
         var_dump($id);
-        return view('pages.products.item');
+        return view('client.pages.products.show');
     }
 }
