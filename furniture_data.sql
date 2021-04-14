@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 14, 2021 at 05:18 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 14, 2021 lúc 03:21 PM
+-- Phiên bản máy phục vụ: 10.4.11-MariaDB
+-- Phiên bản PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `furniture_web`
+-- Cơ sở dữ liệu: `furniture_data`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- Cấu trúc bảng cho bảng `comments`
 --
 
 CREATE TABLE `comments` (
@@ -33,19 +34,20 @@ CREATE TABLE `comments` (
   `product_id` int(11) NOT NULL,
   `comment_content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment_rating` int(11) NOT NULL DEFAULT 1,
-  `comment_created_at` int(11) NOT NULL DEFAULT current_timestamp()
+  `comment_created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `order_price` int(11) NOT NULL,
   `order_quantity` int(11) NOT NULL,
   `order_status` int(11) NOT NULL DEFAULT 0,
   `order_created_at` datetime NOT NULL DEFAULT current_timestamp()
@@ -54,7 +56,7 @@ CREATE TABLE `orders` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
@@ -62,22 +64,16 @@ CREATE TABLE `products` (
   `product_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_price` int(11) NOT NULL,
   `product_image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_weight` int(11) NOT NULL,
   `product_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_available` int(11) NOT NULL DEFAULT 1,
   `product_created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_image`, `product_description`, `product_available`, `product_created_at`) VALUES
-(1, 'werewrew', 21321321, 'fdsfdsf', 'fdsfdsf', 1, '2021-04-14 10:07:15');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `taxonomies`
+-- Cấu trúc bảng cho bảng `taxonomies`
 --
 
 CREATE TABLE `taxonomies` (
@@ -90,7 +86,7 @@ CREATE TABLE `taxonomies` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `taxonomy_relationships`
+-- Cấu trúc bảng cho bảng `taxonomy_relationships`
 --
 
 CREATE TABLE `taxonomy_relationships` (
@@ -101,7 +97,7 @@ CREATE TABLE `taxonomy_relationships` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -113,83 +109,83 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `comments`
+-- Chỉ mục cho bảng `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`),
-  ADD KEY `FK02_Comment` (`product_id`),
-  ADD KEY `FK01_Comment` (`user_id`) USING BTREE;
+  ADD KEY `FK01_COMMENTS` (`user_id`),
+  ADD KEY `FK02_COMMENTS` (`product_id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `FK01_Order` (`user_id`) USING BTREE,
-  ADD KEY `FK02_Order` (`product_id`) USING BTREE;
+  ADD KEY `FK01_ORDERS` (`user_id`),
+  ADD KEY `FK02_ORDERS` (`product_id`);
 
 --
--- Indexes for table `products`
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- Indexes for table `taxonomies`
+-- Chỉ mục cho bảng `taxonomies`
 --
 ALTER TABLE `taxonomies`
   ADD PRIMARY KEY (`taxonomy_id`);
 
 --
--- Indexes for table `taxonomy_relationships`
+-- Chỉ mục cho bảng `taxonomy_relationships`
 --
 ALTER TABLE `taxonomy_relationships`
-  ADD KEY `FK01_Re` (`product_id`),
-  ADD KEY `FK02_Re` (`taxonomy_id`);
+  ADD KEY `FK01_ORDERS` (`taxonomy_id`) USING BTREE,
+  ADD KEY `FK02_ORDERS` (`product_id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `comments`
+-- AUTO_INCREMENT cho bảng `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `taxonomies`
+-- AUTO_INCREMENT cho bảng `taxonomies`
 --
 ALTER TABLE `taxonomies`
   MODIFY `taxonomy_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

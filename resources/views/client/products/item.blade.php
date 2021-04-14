@@ -2,7 +2,7 @@
 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
     <div class="category">
         <div class="ht__cat__thumb">
-            <a href="product-details.html">
+            <a href="/products/123">
                 <img src="/client/images/product/1.jpg" alt="product images">
             </a>
         </div>

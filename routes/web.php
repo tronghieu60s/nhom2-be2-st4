@@ -22,6 +22,6 @@ Route::resource('/products', 'ProductsController')->only(['index', 'show']);
 Route::get('/sign-in', 'AuthController@signin');
 Route::get('/sign-up', 'AuthController@signup');
 
-Route::get('/ak-admin', 'AdminController@index');
-Route::resource('/ak-admin/products', 'AdminProductsController');
-Route::resource('/ak-admin/users', 'AdminUsersController');
+Route::get('/be-admin', 'AdminController@index');
+Route::resource('/be-admin/products', 'AdminProductsController');
+Route::resource('/be-admin/users', 'AdminUsersController');

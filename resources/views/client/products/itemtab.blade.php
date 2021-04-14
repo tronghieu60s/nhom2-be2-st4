@@ -1,11 +1,11 @@
 <!-- Start List Product -->
 <div class="ht__list__product">
     <div class="ht__list__thumb">
-        <a href="product-details.html"><img src="/client/images/product-2/pro-1/1.jpg"
+        <a href="/products/123"><img src="/client/images/product-2/pro-1/1.jpg"
                 alt="product images"></a>
     </div>
     <div class="htc__list__details">
-        <h2><a href="product-details.html">Product Title Here </a></h2>
+        <h2><a href="/products/123">Product Title Here </a></h2>
         <ul class="pro__prize">
             <li class="old__prize">$82.5</li>
             <li>$75.2</li>

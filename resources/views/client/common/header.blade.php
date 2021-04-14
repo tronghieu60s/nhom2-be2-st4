@@ -14,7 +14,7 @@
                     <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
                         <nav class="main__menu__nav hidden-xs hidden-sm">
                             <ul class="main__menu">
-                                <li class="drop"><a href="index.html">Home</a></li>
+                                <li class="drop"><a href="/">Home</a></li>
                                 <li class="drop"><a href="#">women</a>
                                     <ul class="dropdown mega_dropdown">
                                         <!-- Start Single Mega MEnu -->
@@ -87,10 +87,10 @@
                                         <!-- End Single Mega MEnu -->
                                     </ul>
                                 </li>
-                                <li class="drop"><a href="#">Product</a>
+                                <li class="drop"><a href="/products">Product</a>
                                     <ul class="dropdown">
-                                        <li><a href="product-grid.html">Product Grid</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li>
+                                        <li><a href="/products">Product Grid</a></li>
+                                        <li><a href="/products">Product Details</a></li>
                                     </ul>
                                 </li>
                                 <li class="drop"><a href="blog.html">blog</a>
@@ -118,7 +118,7 @@
                         <div class="mobile-menu clearfix visible-xs visible-sm">
                             <nav id="mobile_dropdown">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="/">Home</a></li>
                                     <li><a href="blog.html">blog</a></li>
                                     <li><a href="#">pages</a>
                                         <ul>
@@ -143,11 +143,11 @@
                                 <a href="#"><i class="icon-magnifier icons"></i></a>
                             </div>
                             <div class="header__account">
-                                <a href="#"><i class="icon-user icons"></i></a>
+                                <a href="/sign-in"><i class="icon-user icons"></i></a>
                             </div>
                             <div class="htc__shopping__cart">
                                 <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
-                                <a href="#"><span class="htc__qua">2</span></a>
+                                <a href="/cart"><span class="htc__qua">2</span></a>
                             </div>
                         </div>
                     </div>

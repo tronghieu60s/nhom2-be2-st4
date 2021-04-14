@@ -2,7 +2,7 @@
 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="htc__best__product">
         <div class="htc__best__pro__thumb">
-            <a href="product-details.html">
+            <a href="/products/123">
                 <img src="/client/images/product-2/sm-img-2/1.jpg" alt="small product">
             </a>
         </div>
