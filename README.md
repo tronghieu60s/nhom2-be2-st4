@@ -25,3 +25,5 @@ yarn-error.log
 Create a file with name `Procfile` with content:
 
 ``` web: vendor/bin/heroku-php-apache2 public/ ```
+
+Config and push to Heroku.
