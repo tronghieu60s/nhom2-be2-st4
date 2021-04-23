@@ -5,7 +5,14 @@ Open Terminal: `php artisan serve`
 
 Edit Port: `php artisan serve --port=8080`
 
-## Push Source To Github (Just Studying)
+## Config Child Url Public (Not Implement For Production)
+Add more a Environment Variable
+
+```
+ASSET_URL= (Your Url) # /nhom2-be2-st4/public
+```
+
+## Push Source To Github (Just Study, Not Implement For Production)
 Edit file .gitignore to push correct source, for example:
 
 ```

@@ -1,4 +1,4 @@
-<td class="product-thumbnail"><a href="#"><img src="/client/images/product-2/cart-img/1.jpg" alt="product img" /></a></td>
+<td class="product-thumbnail"><a href="#"><img src="{{ asset('client/images/product-2/cart-img/1.jpg') }}" alt="product img" /></a></td>
 <td class="product-name"><a href="#">New Dress For Sunday</a>
     <ul class="pro__prize">
         <li class="old__prize">$82.5</li>

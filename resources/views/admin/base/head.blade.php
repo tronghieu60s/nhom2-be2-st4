@@ -7,8 +7,8 @@
     <meta name="keywords" content="adminkit, bootstrap, web ui kit, dashboard template, admin template">
     <title>{{ $title }} | Adminkit - A Web UI Kit</title>
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="/client/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/client/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('client/images/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('client/images/favicon.ico') }}">
 	<!-- Font, StyleSheet -->
-    <link href="/admin/css/app.css" rel="stylesheet">
+    <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
 </head>

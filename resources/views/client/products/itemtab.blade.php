@@ -1,7 +1,7 @@
 <!-- Start List Product -->
 <div class="ht__list__product">
     <div class="ht__list__thumb">
-        <a href="/products/123"><img src="/client/images/product-2/pro-1/1.jpg"
+        <a href="/products/123"><img src="{{ asset('client/images/product-2/pro-1/1.jpg') }}"
                 alt="product images"></a>
     </div>
     <div class="htc__list__details">

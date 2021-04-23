@@ -12,7 +12,7 @@
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                 <div class="prize__inner">
                     <div class="prize__thumb">
-                        <img src="/client/images/banner/big-img/1.png" alt="banner images">
+                        <img src="{{ asset('client/images/banner/big-img/1.png') }}" alt="banner images">
                     </div>
                     <div class="banner__info">
                         <div class="pointer__tooltip pointer--3 align-left">

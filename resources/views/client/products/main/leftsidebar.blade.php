@@ -103,7 +103,7 @@
                 <div class="htc__best__product">
                     <div class="htc__best__pro__thumb">
                         <a href="product-details.html">
-                            <img src="/client/images/product-2/sm-smg/1.jpg" alt="small product">
+                            <img src="{{ asset('client/images/product-2/sm-smg/1.jpg') }}" alt="small product">
                         </a>
                     </div>
                     <div class="htc__best__product__details">
@@ -126,7 +126,7 @@
                 <div class="htc__best__product">
                     <div class="htc__best__pro__thumb">
                         <a href="product-details.html">
-                            <img src="/client/images/product-2/sm-smg/2.jpg" alt="small product">
+                            <img src="{{ asset('client/images/product-2/sm-smg/2.jpg') }}" alt="small product">
                         </a>
                     </div>
                     <div class="htc__best__product__details">
@@ -149,7 +149,7 @@
                 <div class="htc__best__product">
                     <div class="htc__best__pro__thumb">
                         <a href="product-details.html">
-                            <img src="/client/images/product-2/sm-smg/1.jpg" alt="small product">
+                            <img src="{{ asset('client/images/product-2/sm-smg/1.jpg') }}" alt="small product">
                         </a>
                     </div>
                     <div class="htc__best__product__details">

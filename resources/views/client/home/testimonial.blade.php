@@ -7,7 +7,7 @@
                 <div class="col-lg-6 col-md-6 single__tes">
                     <div class="testimonial">
                         <div class="testimonial__thumb">
-                            <img src="/client/images/test/client/2.png" alt="testimonial images">
+                            <img src="{{ asset('client/images/test/client/2.png') }}" alt="testimonial images">
                         </div>
                         <div class="testimonial__details">
                             <h4><a href="#">Mr.Mike Band</a></h4>
@@ -21,7 +21,7 @@
                 <div class="col-lg-6 col-md-6 single__tes">
                     <div class="testimonial">
                         <div class="testimonial__thumb">
-                            <img src="/client/images/test/client/2.png" alt="testimonial images">
+                            <img src="{{ asset('client/images/test/client/2.png') }}" alt="testimonial images">
                         </div>
                         <div class="testimonial__details">
                             <h4><a href="#">Ms.Lucy Barton</a></h4>
@@ -35,7 +35,7 @@
                 <div class="col-lg-6 col-md-6 single__tes">
                     <div class="testimonial">
                         <div class="testimonial__thumb">
-                            <img src="/client/images/test/client/1.png" alt="testimonial images">
+                            <img src="{{ asset('client/images/test/client/1.png') }}" alt="testimonial images">
                         </div>
                         <div class="testimonial__details">
                             <h4><a href="#">Ms.Lucy Barton</a></h4>
@@ -49,7 +49,7 @@
                 <div class="col-lg-6 col-md-6 single__tes">
                     <div class="testimonial">
                         <div class="testimonial__thumb">
-                            <img src="/client/images/test/client/2.png" alt="testimonial images">
+                            <img src="{{ asset('client/images/test/client/2.png') }}" alt="testimonial images">
                         </div>
                         <div class="testimonial__details">
                             <h4><a href="#">Ms.Lucy Barton</a></h4>
