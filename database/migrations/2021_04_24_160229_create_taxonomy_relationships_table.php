@@ -15,7 +15,7 @@ class CreateTaxonomyRelationshipsTable extends Migration
     {
         Schema::create('taxonomy_relationships', function (Blueprint $table) {
             $table->id('taxonomy_id');
-            $table->string('product_id');
+            $table->integer('product_id');
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderDetailTable extends Migration
+class CreateManufacturersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateOrderDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_detail', function (Blueprint $table) {
-            $table->id('order_id');
-            $table->string('product_id');
-            $table->string('user_id');
-            $table->string('count_products');
-            $table->timestamps();
+        Schema::create('manufacturers', function (Blueprint $table) {
+            $table->id('manufacturer_id');
+            $table->string('manufacturer_name');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateOrderDetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_detail');
+        Schema::dropIfExists('manufacturers');
     }
 }
