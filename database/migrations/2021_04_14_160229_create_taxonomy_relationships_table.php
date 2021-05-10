@@ -14,8 +14,13 @@ class CreateTaxonomyRelationshipsTable extends Migration
     public function up()
     {
         Schema::create('taxonomy_relationships', function (Blueprint $table) {
-            $table->id('taxonomy_id');
-            $table->integer('product_id');
+            $table->unsignedBigInteger('taxonomy_id');
+            $table->foreign('taxonomy_id')->references('taxonomy_id')->on('taxonomies');
+
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('product_id')->on('products');
+
+            $table->timestamps();
         });
     }
 

@@ -27,7 +27,11 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('client.pages.products.show', ['product' => $product]);
+        $product = Product::findOrFail($id);
+        $productsRelated = Product::where("manufacturer_id", $product->manufacturer_id)->get()->take(4);
+        return view('client.pages.products.show', [
+            'product' => $product,
+            'productsRelated' => $productsRelated
+        ]);
     }
 }

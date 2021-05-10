@@ -12,10 +12,9 @@
             <div class="htc__product__container">
                 <div class="row">
                     <div class="product__list clearfix mt--30">
-                        @include('client.products.item')
-                        @include('client.products.item')
-                        @include('client.products.item')
-                        @include('client.products.item')
+                        @foreach ($productsRelated as $product)
+                            @include('client.products.item', ['product' => $product])
+                        @endforeach
                     </div>
                 </div>
             </div>

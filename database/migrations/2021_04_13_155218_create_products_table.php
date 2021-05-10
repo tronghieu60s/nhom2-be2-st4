@@ -20,7 +20,10 @@ class CreateProductsTable extends Migration
             $table->string('product_image');
             $table->text('product_description');
             $table->integer('product_available');
-            $table->integer('manufacturer_id');
+
+            $table->unsignedBigInteger('manufacturer_id');
+            $table->foreign('manufacturer_id')->references('manufacturer_id')->on('manufacturers');
+
             $table->timestamps();
         });
     }
