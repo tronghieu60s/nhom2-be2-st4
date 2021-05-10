@@ -6,21 +6,13 @@
             <div class="text w-100">
                 <h2>Welcome to sign in</h2>
                 <p>Don't have an account?</p>
-                <a href="#" class="btn btn-white btn-outline-white">Sign Up</a>
+                <a href="/sign-up" class="btn btn-white btn-outline-white">Sign Up</a>
             </div>
         </div>
         <div class="login-wrap p-4 p-lg-5">
             <div class="d-flex">
                 <div class="w-100">
                     <h3 class="mb-4">Sign In</h3>
-                </div>
-                <div class="w-100">
-                    <p class="social-media d-flex justify-content-end">
-                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span
-                                class="fa fa-facebook"></span></a>
-                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span
-                                class="fa fa-twitter"></span></a>
-                    </p>
                 </div>
             </div>
             <form action="#" class="signin-form">

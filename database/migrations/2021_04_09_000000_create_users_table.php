@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id('user_id');
             $table->string('user_username');
             $table->string('user_password');
-            $table->integer('user_permission');
+            $table->integer('user_permission')->default(1);
             
             $table->timestamps();
         });

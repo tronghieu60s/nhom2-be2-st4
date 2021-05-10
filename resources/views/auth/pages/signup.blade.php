@@ -6,7 +6,7 @@
             <div class="text w-100">
                 <h2>Welcome to sign up</h2>
                 <p>You already have an account?</p>
-                <a href="#" class="btn btn-white btn-outline-white">Sign Up</a>
+                <a href="/sign-in" class="btn btn-white btn-outline-white">Sign Up</a>
             </div>
         </div>
         <div class="login-wrap p-4 p-lg-5">
@@ -14,27 +14,30 @@
                 <div class="w-100">
                     <h3 class="mb-4">Sign Up</h3>
                 </div>
-                <div class="w-100">
-                    <p class="social-media d-flex justify-content-end">
-                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span
-                                class="fa fa-facebook"></span></a>
-                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span
-                                class="fa fa-twitter"></span></a>
-                    </p>
-                </div>
             </div>
-            <form action="#" class="signin-form">
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
+            <form class="signin-form" method="POST">
+                @csrf
                 <div class="form-group mb-3">
                     <label class="label" for="name">Username</label>
-                    <input type="text" class="form-control" placeholder="Username" required>
+                    <input name="username" type="text" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="form-group mb-3">
                     <label class="label" for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" required>
+                    <input name="password" type="password" class="form-control" placeholder="Password" required>
                 </div>
                 <div class="form-group mb-3">
                     <label class="label" for="password">Re Password</label>
-                    <input type="password" class="form-control" placeholder="Password" required>
+                    <input name="repassword" type="password" class="form-control" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="form-control btn btn-primary submit px-3">Sign

@@ -21,6 +21,7 @@ Route::resource('/products', 'ProductsController')->only(['index', 'show']);
 
 Route::get('/sign-in', 'AuthController@signin');
 Route::get('/sign-up', 'AuthController@signup');
+Route::post('/sign-up', 'AuthController@signup_post');
 
 Route::get('/be-admin', 'AdminController@index');
 Route::resource('/be-admin/products', 'AdminProductsController');
