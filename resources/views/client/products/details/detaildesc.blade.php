@@ -1,32 +1,14 @@
 <div class="ht__pro__desc">
     <div class="sin__desc">
-        <p><span>Availability:</span> In Stock</p>
+        <p><span>Availability:</span> {{ $product->product_available }} In Stock</p>
     </div>
     <div class="sin__desc align--left">
-        <p><span>color:</span></p>
-        <ul class="pro__color">
-            <li class="red"><a href="#">red</a></li>
-            <li class="green"><a href="#">green</a></li>
-            <li class="balck"><a href="#">balck</a></li>
-        </ul>
-        <div class="pro__more__btn">
-            <a href="#">more</a>
-        </div>
-    </div>
-    <div class="sin__desc align--left">
-        <p><span>size</span></p>
-        <select class="select__size">
-            <option>s</option>
-            <option>l</option>
-            <option>xs</option>
-            <option>xl</option>
-            <option>m</option>
-            <option>s</option>
-        </select>
+        {{-- <p><span>Manufacturer:</span> {{ $product->manufacturer->manufacturer_name }}</p> --}}
     </div>
     <div class="sin__desc align--left">
         <p><span>Categories:</span></p>
         <ul class="pro__cat__list">
+            {{ $product->categories }}
             <li><a href="#">Fashion,</a></li>
             <li><a href="#">Accessories,</a></li>
             <li><a href="#">Women,</a></li>
@@ -39,7 +21,7 @@
         </ul>
     </div>
     <div class="sin__desc align--left">
-        <p><span>Product tags:</span></p>
+        <p><span>Tags:</span></p>
         <ul class="pro__cat__list">
             <li><a href="#">Fashion,</a></li>
             <li><a href="#">Accessories,</a></li>

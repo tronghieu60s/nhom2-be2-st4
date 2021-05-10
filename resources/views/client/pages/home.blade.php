@@ -1,7 +1,6 @@
 @extends('layouts.client', ['layout' => 'home', 'title' => 'Home'])
 
 @section('content')
-    @include('client.home.slider')
 
     <section class="htc__category__area ptb--100">
         <div class="container">
@@ -12,14 +11,9 @@
             <div class="htc__product__container">
                 <div class="row">
                     <div class="product__list clearfix mt--30">
-                        @include('client.products.item')
-                        @include('client.products.item')
-                        @include('client.products.item')
-                        @include('client.products.item')
-                        @include('client.products.item')
-                        @include('client.products.item')
-                        @include('client.products.item')
-                        @include('client.products.item')
+                        @foreach ($productsNew as $product)
+                            @include('client.products.item', ['product' => $product])
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -36,10 +30,9 @@
 
             <div class="row">
                 <div class="product__wrap clearfix">
-                    @include('client.products.item')
-                    @include('client.products.item')
-                    @include('client.products.item')
-                    @include('client.products.item')
+                    @foreach ($productBestSeller as $product)
+                        @include('client.products.item', ['product' => $product])
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -62,5 +55,4 @@
     </section>
 
     @include('client.common.brand')
-    @include('client.home.blog')
 @endsection

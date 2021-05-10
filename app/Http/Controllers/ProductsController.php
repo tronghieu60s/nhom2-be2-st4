@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Product;
+
 class ProductsController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('client.pages.products.index');
+        $products = Product::all();
+        return view('client.pages.products.index', ['products' => $products]);
     }
 
     /**
@@ -24,7 +27,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        var_dump($id);
-        return view('client.pages.products.show');
+        $product = Product::find($id);
+        return view('client.pages.products.show', ['product' => $product]);
     }
 }

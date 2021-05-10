@@ -1,4 +1,4 @@
-@extends('layouts.client', ['title' => 'This Is Title Of Product'])
+@extends('layouts.client', ['title' => $product->product_name ])
 
 @section('content')
     @include('client.products.details.index')

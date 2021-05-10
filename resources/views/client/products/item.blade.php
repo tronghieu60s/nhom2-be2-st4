@@ -1,9 +1,9 @@
 <!-- Start Single Category -->
 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
     <div class="category">
-        <div class="ht__cat__thumb">
-            <a href="/products/123">
-                <img src="{{ asset('client/images/product/1.jpg') }}" alt="product images">
+        <div class="ht__cat__thumb" style="height: 300px; display: flex; justify-content: center; align-items: center;">
+            <a href="{{ asset('products/'.$product->product_id) }}" style="height: 100%;"> 
+                <img src="{{ asset('assets/images/'.$product->product_image) }}" style="height: 100%;" alt="product images">
             </a>
         </div>
         <div class="fr__hover__info">
@@ -14,10 +14,9 @@
             </ul>
         </div>
         <div class="fr__product__inner">
-            <h4><a href="product-details.html">Largest Water Pot</a></h4>
+            <h4><a href="product-details.html">{{ $product->product_name }}</a></h4>
             <ul class="fr__pro__prize">
-                <li class="old__prize">$30.3</li>
-                <li>$25.9</li>
+                <li>${{ $product->product_price }}</li>
             </ul>
         </div>
     </div>

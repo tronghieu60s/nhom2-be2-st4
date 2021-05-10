@@ -10,7 +10,6 @@
         @if ($layout ?? 'default' == 'home')
             @yield('content')
         @else
-            @include('client.common.bradcaump')
             @yield('content')
             @include('client.common.brand')
         @endif

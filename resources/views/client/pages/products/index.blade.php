@@ -12,20 +12,20 @@
                             <div class="shop__grid__view__wrap">
                                 <div role="tabpanel" id="grid-view"
                                     class="single-grid-view tab-pane fade in active clearfix">
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
-                                    @include('client.products.item')
+                                    @foreach ($products as $product)
+                                        @include('client.products.item', ['product' => $product])
+                                    @endforeach
                                 </div>
-                                @include('client.products.main.tabpanel')
+                                <div role="tabpanel" id="list-view" class="single-grid-view tab-pane fade clearfix">
+                                    <div class="col-xs-12">
+                                        <div class="ht__list__wrap">
+                                            @foreach ($products as $product)
+                                                @include('client.products.itemtab', ['product' => $product])
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <!-- End Product View -->
