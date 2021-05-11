@@ -18,6 +18,13 @@ class AdminProductsController extends Controller
     public function index()
     {
         $products = Product::all()->reverse();
+
+        $search = request()->query("search");
+        if ($search) $products = Product::query()
+            ->where('product_name', 'LIKE', "%{$search}%")
+            ->orWhere('product_description', 'LIKE', "%{$search}%")
+            ->get();
+
         return view('admin.pages.products.index', ['products' => $products]);
     }
 
@@ -51,7 +58,8 @@ class AdminProductsController extends Controller
         $price = request("price");
         $available = request("available");
         $image = $request->file('image');
-        $path = $image && $image->move('assets/images', $image->getClientOriginalName());
+        if ($image)
+            $image->move('assets/images', $image->getClientOriginalName());
 
         $product = new Product;
         $product->product_name = $name;
@@ -59,7 +67,7 @@ class AdminProductsController extends Controller
         $product->product_description = $description;
         $product->product_price = $price;
         $product->product_available = $available;
-        $product->product_image = $image->getClientOriginalName();
+        $product->product_image = $image && $image->getClientOriginalName();
         $product->save();
         $product = $product->fresh();
 

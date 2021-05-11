@@ -8,10 +8,10 @@
                     <h1 class="h3 mb-0">Sản Phẩm</h1>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                    <form action="./admin" class="form-inline d-none d-sm-inline-block">
+                    <form class="form-inline d-none d-sm-inline-block">
                         <div class="input-group input-group-navbar">
-                            <input name="q" type="text" class="form-control" placeholder="Search…" aria-label="Search"
-                                value="">
+                            <input name="search" type="text" class="form-control" placeholder="Search…" aria-label="Search"
+                                value="{{ request()->query("search") }}">
                             <div class="input-group-append">
                                 <button class="btn" type="submit">
                                     <i class="align-middle" data-feather="search"></i>
