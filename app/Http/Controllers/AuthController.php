@@ -14,6 +14,19 @@ class AuthController extends Controller
         return view('auth.pages.signin');
     }
 
+    public function signin_post()
+    {
+        $username = request("username");
+        $password = request("password");
+        $user = User::where("user_username", $username)->get()[0];
+        if ($user->user_password != $password)
+            return redirect()->back()->with('error', 'Mật khẩu không chính xác.');
+
+        session(['.config_user' => $user]);
+
+        return redirect("/be-admin");
+    }
+
     public function signup()
     {
         return view('auth.pages.signup');
@@ -25,11 +38,11 @@ class AuthController extends Controller
         $password = request("password");
         $repassword = request("repassword");
 
-        $getUser = User::where("user_username", $username);
-        if ($getUser == null)
+        $getUsers = User::where("user_username", $username)->get();
+        if (count($getUsers) > 0)
             return redirect()->back()->with('error', 'Tên người dùng đã tồn tại.');
 
-        if ($password !== $repassword)
+        if ($password != $repassword)
             return redirect()->back()->with('error', 'Mật khẩu nhập lại không khớp.');
 
         $newUser = new User;

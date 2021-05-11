@@ -20,9 +20,10 @@ Route::get('/wishlist', 'PurchaseController@wishlist');
 Route::resource('/products', 'ProductsController')->only(['index', 'show']);
 
 Route::get('/sign-in', 'AuthController@signin');
+Route::post('/sign-in', 'AuthController@signin_post');
 Route::get('/sign-up', 'AuthController@signup');
 Route::post('/sign-up', 'AuthController@signup_post');
 
-Route::get('/be-admin', 'AdminController@index');
-Route::resource('/be-admin/products', 'AdminProductsController');
-Route::resource('/be-admin/users', 'AdminUsersController');
+Route::get('/be-admin', 'AdminController@index')->middleware('permission');
+Route::resource('/be-admin/products', 'AdminProductsController')->middleware('permission');
+Route::resource('/be-admin/users', 'AdminUsersController')->middleware('permission');

@@ -4,15 +4,15 @@
     <div class="wrap d-md-flex">
         <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
             <div class="text w-100">
-                <h2>Welcome to sign up</h2>
-                <p>You already have an account?</p>
-                <a href="/sign-in" class="btn btn-white btn-outline-white">Sign Up</a>
+                <h2>Đăng ký một tài khoản</h2>
+                <p>Bạn đã có một tài khoản?</p>
+                <a href="/sign-in" class="btn btn-white btn-outline-white">Đăng Nhập</a>
             </div>
         </div>
         <div class="login-wrap p-4 p-lg-5">
             <div class="d-flex">
                 <div class="w-100">
-                    <h3 class="mb-4">Sign Up</h3>
+                    <h3 class="mb-4">Đăng Ký</h3>
                 </div>
             </div>
             @if (session('success'))
@@ -28,26 +28,19 @@
             <form class="signin-form" method="POST">
                 @csrf
                 <div class="form-group mb-3">
-                    <label class="label" for="name">Username</label>
+                    <label class="label" for="name">Tên tài khoản</label>
                     <input name="username" type="text" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="form-group mb-3">
-                    <label class="label" for="password">Password</label>
+                    <label class="label" for="password">Mật khẩu</label>
                     <input name="password" type="password" class="form-control" placeholder="Password" required>
                 </div>
                 <div class="form-group mb-3">
-                    <label class="label" for="password">Re Password</label>
+                    <label class="label" for="password">Nhập lại mật khẩu</label>
                     <input name="repassword" type="password" class="form-control" placeholder="Password" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="form-control btn btn-primary submit px-3">Sign
-                        Up</button>
-                </div>
-                <div class="form-group d-md-flex">
-                    <div class="w-100">
-                        By clicking the register button, you agree to the <a href=""> Terms of Service </a>
-                        and our <a href=""> Privacy Policy </a>.
-                    </div>
+                    <button type="submit" class="form-control btn btn-primary submit px-3">Đăng Ký</button>
                 </div>
             </form>
         </div>
