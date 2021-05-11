@@ -45,20 +45,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $product)
-                                <tr>
-                                    <td><img style="width: 100%;" src="{{ asset('assets/images/'.$product->product_image ) }}" alt=""></td>
-                                    <td>{{ $product->product_id }}</td>
-                                    <td><a href="{{ asset('products/'.$product->product_id) }}">{{ $product->product_name }}</a></td>
-                                    <td>{{ $product->manufacturer->manufacturer_name }}</td>
-                                    <td>{{ number_format($product->product_price) }} VNĐ</td>
-                                    <td>{{ $product->product_available }}</td>
-                                    <td>{{ $product->created_at }}</td>
-                                    <td class="table-action">
-                                        <a href="{{ asset('be-admin/products/'.$product->product_id.'/edit') }}"><i class=" align-middle" data-feather="edit-2"></i></a>
-                                        <a href=""><i class="align-middle" data-feather="trash"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach ($products as $product)
+                                    <tr>
+                                        <td><img style="width: 100%;"
+                                                src="{{ asset('assets/images/' . $product->product_image) }}" alt=""></td>
+                                        <td>{{ $product->product_id }}</td>
+                                        <td><a
+                                                href="{{ asset('products/' . $product->product_id) }}">{{ $product->product_name }}</a>
+                                        </td>
+                                        <td>{{ $product->manufacturer->manufacturer_name }}</td>
+                                        <td>{{ number_format($product->product_price) }} VNĐ</td>
+                                        <td>{{ $product->product_available }}</td>
+                                        <td>{{ $product->created_at }}</td>
+                                        <td class="table-action">
+                                            <div class="d-flex">
+                                                <a
+                                                    href="{{ asset('be-admin/products/' . $product->product_id . '/edit') }}">
+                                                    <button type="button" class="btn">
+                                                        <i class=" align-middle" data-feather="edit-2"></i>
+                                                    </button>
+                                                </a>
+                                                <form action="{{ asset('/be-admin/products/' . $product->product_id) }}"
+                                                    method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn" type="submit"><i class="align-middle"
+                                                            data-feather="trash"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

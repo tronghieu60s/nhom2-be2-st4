@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Hãng Sản Xuất</label>
-                                    <select class="form-control" name="manu_id" id="">
+                                    <select class="form-control" name="manufacturer" id="">
                                         @foreach ($manufacturers as $manufacturer)
                                             <option value="{{ $manufacturer->manufacturer_id }}">
                                                 {{ $manufacturer->manufacturer_name }}
@@ -29,8 +29,8 @@
                                     @foreach ($categories as $category)
                                         <div class="form-check my-2">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" name="" id=""
-                                                    value="type-{{ $category->category_id }}">
+                                                <input type="checkbox" class="form-check-input" name="categories[]" id=""
+                                                    value="{{ $category->category_id }}">
                                                 {{ $category->category_name }}
                                             </label>
                                         </div>
@@ -43,15 +43,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Giá</label>
-                                    <input name="price" type="number" class="form-control" required>
+                                    <input name="price" type="number" class="form-control" value="0">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Số lượng</label>
-                                    <input name="available" type="number" class="form-control" required>
+                                    <input name="available" type="number" class="form-control" value="0">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label w-100">Hình ảnh</label>
-                                    <input type="file" name="fileToUpload" accept="image/*" required>
+                                    <input type="file" name="image" accept="image/*">
                                     <small class="form-text text-muted">Chọn hình ảnh cho sản phẩm của bạn.</small>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Tạo Mới</button>

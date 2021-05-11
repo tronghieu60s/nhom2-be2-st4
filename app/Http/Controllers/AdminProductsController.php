@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categorizable;
 use App\Category;
 use App\Manufacturer;
 use App\Product;
@@ -16,7 +17,7 @@ class AdminProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(20)->reverse();
+        $products = Product::all()->reverse();
         return view('admin.pages.products.index', ['products' => $products]);
     }
 
@@ -43,7 +44,34 @@ class AdminProductsController extends Controller
      */
     public function store(Request $request)
     {
-        return "create products";
+        $name = request("name");
+        $manufacturer = request("manufacturer");
+        $categories = request("categories");
+        $description = request("description");
+        $price = request("price");
+        $available = request("available");
+        $image = $request->file('image');
+        $path = $image && $image->move('assets/images', $image->getClientOriginalName());
+
+        $product = new Product;
+        $product->product_name = $name;
+        $product->manufacturer_id = $manufacturer;
+        $product->product_description = $description;
+        $product->product_price = $price;
+        $product->product_available = $available;
+        $product->product_image = $image->getClientOriginalName();
+        $product->save();
+        $product = $product->fresh();
+
+        if ($categories)
+            for ($i = 0; $i < count($categories); $i++) {
+                $categorizable = new Categorizable;
+                $categorizable->category_id = $categories[$i];
+                $categorizable->product_id = $product->product_id;
+                $categorizable->save();
+            }
+
+        return redirect("/be-admin/products");
     }
 
     /**
@@ -95,6 +123,8 @@ class AdminProductsController extends Controller
      */
     public function destroy($id)
     {
-        return "destroy products";
+        Categorizable::where("product_id", $id)->delete();
+        Product::where("product_id", $id)->delete();
+        return redirect("/be-admin/products");
     }
 }
