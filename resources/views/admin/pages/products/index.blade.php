@@ -5,7 +5,7 @@
         <div class="container-fluid p-0">
             <div class="row py-3 mb-3" style="background-color: #fff;">
                 <div class="col-6 d-flex align-items-center">
-                    <h1 class="h3 mb-0">Products</h1>
+                    <h1 class="h3 mb-0">Sản Phẩm</h1>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
                     <form action="./admin" class="form-inline d-none d-sm-inline-block">
@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-12 my-2">
-                    <a href="./admin/products/create">
+                    <a href="{{ asset('be-admin/products/create') }}">
                         <button type="button" class="btn btn-primary">
                             Thêm
                         </button>
@@ -35,31 +35,31 @@
                             <thead>
                                 <tr>
                                     <th style="width:25%;"></th>
-                                    <th style="width:15%;">Mã Hàng</th>
+                                    <th style="width:10%;">Mã Hàng</th>
                                     <th style="width:25%">Tên Hàng</th>
                                     <th style="width:10%">Hãng</th>
-                                    <th style="width:10%">Loại</th>
                                     <th style="width:25%">Giá</th>
-                                    <th style="width:25%">Feature</th>
-                                    <th style="width:25%">Thời Gian</th>
+                                    <th style="width:25%">Số Lượng</th>
+                                    <th style="width:30%">Thời Gian</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($products as $product)
                                 <tr>
-                                    <td><img style="width: 100%;" src="" alt=""></td>
-                                    <td>123</td>
-                                    <td><a href="./products/details/">Example Post Formatting</a></td>
-                                    <td>Manu Name</td>
-                                    <td>Type Name</td>
-                                    <td>12.000.000</td>
-                                    <td>1</td>
-                                    <td>Time</td>
+                                    <td><img style="width: 100%;" src="{{ asset('assets/images/'.$product->product_image ) }}" alt=""></td>
+                                    <td>{{ $product->product_id }}</td>
+                                    <td><a href="{{ asset('products/'.$product->product_id) }}">{{ $product->product_name }}</a></td>
+                                    <td>{{ $product->manufacturer->manufacturer_name }}</td>
+                                    <td>{{ number_format($product->product_price) }} VNĐ</td>
+                                    <td>{{ $product->product_available }}</td>
+                                    <td>{{ $product->created_at }}</td>
                                     <td class="table-action">
-                                        <a href=""><i class=" align-middle" data-feather="edit-2"></i></a>
+                                        <a href="{{ asset('be-admin/products/'.$product->product_id.'/edit') }}"><i class=" align-middle" data-feather="edit-2"></i></a>
                                         <a href=""><i class="align-middle" data-feather="trash"></i></a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -67,7 +67,6 @@
                 <div class="col-12 d-flex justify-content-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination pagination-sm">
-
                         </ul>
                     </nav>
                 </div>

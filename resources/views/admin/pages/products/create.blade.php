@@ -3,12 +3,13 @@
 @section('content')
     <main class="content">
         <div class="container-fluid p-0">
-            <h1 class="h3 mb-3">Add Products</h1>
+            <h1 class="h3 mb-3">Thêm Sản Phẩm</h1>
             <div class="row">
                 <div class="col-12 col-6">
                     <div class="card px-5">
                         <div class="card-body">
-                            <form method="POST" enctype="multipart/form-data">
+                            <form action="{{ asset('be-admin/products') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label class="form-label">Tên</label>
                                     <input name="name" type="text" class="form-control" placeholder="Nhập tên..." required>
@@ -16,14 +17,24 @@
                                 <div class="form-group">
                                     <label class="form-label">Hãng Sản Xuất</label>
                                     <select class="form-control" name="manu_id" id="">
-                                        <option value="">Manu Name</option>
+                                        @foreach ($manufacturers as $manufacturer)
+                                            <option value="{{ $manufacturer->manufacturer_id }}">
+                                                {{ $manufacturer->manufacturer_name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Loại Hàng</label>
-                                    <select class="form-control" name="type_id" id="">
-                                        <option value="">Type Name</option>
-                                    </select>
+                                <div class="mb-4" style="height: 150px; overflow: auto">
+                                    <label class="form-label">Loại Sản Phẩm</label>
+                                    @foreach ($categories as $category)
+                                        <div class="form-check my-2">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="" id=""
+                                                    value="type-{{ $category->category_id }}">
+                                                {{ $category->category_name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Mô Tả</label>
@@ -35,11 +46,8 @@
                                     <input name="price" type="number" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Feature</label>
-                                    <select class="form-control" name="feature" id="">
-                                        <option value="1">On</option>
-                                        <option value="0" selected>Off</option>
-                                    </select>
+                                    <label class="form-label">Số lượng</label>
+                                    <input name="available" type="number" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label w-100">Hình ảnh</label>

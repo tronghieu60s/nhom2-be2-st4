@@ -23,7 +23,13 @@ Route::get('/sign-in', 'AuthController@signin');
 Route::post('/sign-in', 'AuthController@signin_post');
 Route::get('/sign-up', 'AuthController@signup');
 Route::post('/sign-up', 'AuthController@signup_post');
+Route::get('/logout', function () {
+    session()->forget('.config_user');
+    return redirect("/sign-in");
+});
 
-Route::get('/be-admin', 'AdminController@index')->middleware('permission');
+Route::get('/be-admin', function () {
+    return redirect("/be-admin/products");
+});
 Route::resource('/be-admin/products', 'AdminProductsController')->middleware('permission');
 Route::resource('/be-admin/users', 'AdminUsersController')->middleware('permission');

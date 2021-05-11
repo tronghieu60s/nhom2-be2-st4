@@ -13,8 +13,8 @@ class Product extends Model
         return $this->belongsTo('App\Manufacturer', 'manufacturer_id');
     }
 
-    public function taxonomies()
+    public function categories()
     {
-        return $this->belongsToMany('App\Taxonomy', 'taxonomy_relationships', 'product_id', 'taxonomy_id');
+        return $this->belongsToMany('App\Category', 'categorizable', 'product_id', 'category_id');
     }
 }

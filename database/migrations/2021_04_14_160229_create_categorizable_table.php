@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTaxonomyRelationshipsTable extends Migration
+class CreateCategorizableTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTaxonomyRelationshipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('taxonomy_relationships', function (Blueprint $table) {
-            $table->unsignedBigInteger('taxonomy_id');
-            $table->foreign('taxonomy_id')->references('taxonomy_id')->on('taxonomies');
+        Schema::create('categorizable', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('category_id')->on('categories');
 
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('product_id')->on('products');
@@ -31,6 +31,6 @@ class CreateTaxonomyRelationshipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taxonomy_relationships');
+        Schema::dropIfExists('categorizable');
     }
 }

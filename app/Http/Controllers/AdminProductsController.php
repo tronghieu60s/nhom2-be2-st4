@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Manufacturer;
+use App\Product;
 use Illuminate\Http\Request;
 
 class AdminProductsController extends Controller
@@ -13,7 +16,8 @@ class AdminProductsController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.products.index');
+        $products = Product::paginate(20)->reverse();
+        return view('admin.pages.products.index', ['products' => $products]);
     }
 
     /**
@@ -23,7 +27,12 @@ class AdminProductsController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.products.create');
+        $manufacturers = Manufacturer::all();
+        $categories = Category::all();
+        return view('admin.pages.products.create', [
+            'manufacturers' => $manufacturers,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -56,7 +65,14 @@ class AdminProductsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.pages.products.edit');
+        $product = Product::where("product_id", $id)->get()[0];
+        $manufacturers = Manufacturer::all();
+        $categories = Category::all();
+        return view('admin.pages.products.edit', [
+            'product' => $product,
+            'manufacturers' => $manufacturers,
+            'categories' => $categories
+        ]);
     }
 
     /**
