@@ -19,10 +19,10 @@ Route::get('/checkout', 'PurchaseController@checkout');
 Route::get('/wishlist', 'PurchaseController@wishlist');
 Route::resource('/products', 'ProductsController')->only(['index', 'show']);
 
-Route::get('/sign-in', 'AuthController@signin');
-Route::post('/sign-in', 'AuthController@signin_post');
-Route::get('/sign-up', 'AuthController@signup');
-Route::post('/sign-up', 'AuthController@signup_post');
+Route::get('/sign-in', 'AuthController@signin')->middleware('auth-permission');
+Route::post('/sign-in', 'AuthController@signin_post')->middleware('auth-permission');
+Route::get('/sign-up', 'AuthController@signup')->middleware('auth-permission');
+Route::post('/sign-up', 'AuthController@signup_post')->middleware('auth-permission');
 Route::get('/logout', function () {
     session()->forget('.config_user');
     return redirect("/sign-in");
@@ -31,8 +31,8 @@ Route::get('/logout', function () {
 Route::get('/be-admin', function () {
     return redirect("/be-admin/products");
 });
-Route::resource('/be-admin/products', 'AdminProductsController')->middleware('permission');
-Route::resource('/be-admin/users', 'AdminUsersController')->middleware('permission');
-Route::resource('/be-admin/taxonomies', 'AdminTaxonomiesController')->middleware('permission');
-Route::resource('/be-admin/orders', 'AdminOrdersController')->middleware('permission');
-Route::resource('/be-admin/comments', 'AdminCommentsController')->middleware('permission');
+Route::resource('/be-admin/products', 'AdminProductsController')->middleware('user-permission');
+Route::resource('/be-admin/users', 'AdminUsersController')->middleware('user-permission');
+Route::resource('/be-admin/taxonomies', 'AdminTaxonomiesController')->middleware('user-permission');
+Route::resource('/be-admin/orders', 'AdminOrdersController')->middleware('user-permission');
+Route::resource('/be-admin/comments', 'AdminCommentsController')->middleware('user-permission');
