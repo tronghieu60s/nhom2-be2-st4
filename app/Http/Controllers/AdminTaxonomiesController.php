@@ -23,7 +23,15 @@ class AdminTaxonomiesController extends Controller
      */
     public function create()
     {
-        //
+        if(request()->query("type") == "manufacturer") {
+            // làm hãng sx trong này
+            return view('admin.pages.taxonomies.create-manufacturer');
+        }
+
+        if (request()->query("type") == "category") {
+            // làm loại trong này
+            return view('admin.pages.taxonomies.create-category');
+        }
     }
 
     /**
@@ -32,9 +40,17 @@ class AdminTaxonomiesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        if (request("type") == "manufacturer") {
+            // làm hãng sx trong này
+            return "tạo nhà sx";
+        }
+
+        if (request("type") == "category") {
+            // làm loại trong này
+            return "tạo loại";
+        }
     }
 
     /**
@@ -45,7 +61,7 @@ class AdminTaxonomiesController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect()->action('AdminTaxonomiesController@edit', [$id]);
     }
 
     /**
@@ -56,7 +72,15 @@ class AdminTaxonomiesController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (request()->query("type") == "manufacturer") {
+            // làm hãng sx trong này
+            return view('admin.pages.taxonomies.edit-manufacturer');
+        }
+
+        if (request()->query("type") == "category") {
+            // làm loại trong này
+            return view('admin.pages.taxonomies.edit-category');
+        }
     }
 
     /**
@@ -68,7 +92,15 @@ class AdminTaxonomiesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (request("type") == "manufacturer") {
+            // làm hãng sx trong này
+            return "cập nhật nhà sx";
+        }
+
+        if (request("type") == "category") {
+            // làm loại trong này
+            return "cập nhật loại";
+        }
     }
 
     /**
@@ -79,6 +111,14 @@ class AdminTaxonomiesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (request("type") == "manufacturer") {
+            // làm hãng sx trong này
+            return "xóa nhà sx";
+        }
+
+        if (request("type") == "category") {
+            // làm loại trong này
+            return "xóa loại";
+        }
     }
 }

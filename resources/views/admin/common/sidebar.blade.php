@@ -16,31 +16,31 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./admin/categories">
+                <a class="sidebar-link" href="{{ asset('be-admin/taxonomies') }}">
                     <i class="align-middle" data-feather="tag"></i> <span class="align-middle">Hãng và Loại</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./admin/orders">
+                <a class="sidebar-link" href=href="{{ asset('be-admin/orders') }}">
                     <i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Đơn Đặt Hàng</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./admin/comments">
+                <a class="sidebar-link" href="{{ asset('be-admin/comments') }}">
                     <i class="align-middle" data-feather="message-circle"></i> <span class="align-middle">Bình Luận</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./admin/users">
+                <a class="sidebar-link" href="{{ asset('be-admin/users') }}">
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Người Dùng</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./admin/setting">
+                <a class="sidebar-link" href="{{ asset('be-admin/setting') }}">
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Cài Đặt</span>
                 </a>
             </li>
