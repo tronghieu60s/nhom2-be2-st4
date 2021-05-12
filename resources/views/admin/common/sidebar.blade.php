@@ -22,7 +22,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href=href="{{ asset('be-admin/orders') }}">
+                <a class="sidebar-link" href="{{ asset('be-admin/orders') }}">
                     <i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Đơn Đặt Hàng</span>
                 </a>
             </li>
