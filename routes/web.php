@@ -33,3 +33,4 @@ Route::get('/be-admin', function () {
 });
 Route::resource('/be-admin/products', 'AdminProductsController')->middleware('permission');
 Route::resource('/be-admin/users', 'AdminUsersController')->middleware('permission');
+Route::resource('/be-admin/taxonomies', 'AdminTaxonomiesController')->middleware('permission');

@@ -58,8 +58,7 @@ class AdminProductsController extends Controller
         $price = request("price");
         $available = request("available");
         $image = $request->file('image');
-        if ($image)
-            $image->move('assets/images', $image->getClientOriginalName());
+        $image && $image->move('assets/images', $image->getClientOriginalName());
 
         $product = new Product;
         $product->product_name = $name;
@@ -120,7 +119,34 @@ class AdminProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "update products";
+        $name = request("name");
+        $manufacturer = request("manufacturer");
+        $categories = request("categories");
+        $description = request("description");
+        $price = request("price");
+        $available = request("available");
+        $image = $request->file('image');
+        $image && $image->move('assets/images', $image->getClientOriginalName());
+
+        $product = Product::find($id);
+        $name && $product->product_name = $name;
+        $manufacturer && $product->manufacturer_id = $manufacturer;
+        $description && $product->product_description = $description;
+        $price && $product->product_price = $price;
+        $available && $product->product_available = $available;
+        $image && $product->product_image =  $image->getClientOriginalName();
+        $product->save();
+
+        Categorizable::where("product_id", $id)->delete();
+        // error_log(json_encode($categories));
+        if ($categories)
+            for ($i = 0; $i < count($categories); $i++) {
+                $categorizable = new Categorizable;
+                $categorizable->category_id = $categories[$i];
+                $categorizable->product_id = $product->product_id;
+                $categorizable->save();
+            }
+        return redirect("/be-admin/products/".$id."/edit");
     }
 
     /**

@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Hãng Sản Xuất</label>
-                                    <select class="form-control" name="manu_id" id="">
+                                    <select class="form-control" name="manufacturer" id="">
                                         @foreach ($manufacturers as $manufacturer)
                                             <option
                                                 {{ $product->manufacturer->manufacturer_id == $manufacturer->manufacturer_id ? 'selected' : '' }}
@@ -34,8 +34,8 @@
                                     @foreach ($categories as $category)
                                         <div class="form-check my-2">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" name="" id=""
-                                                    value="type-{{ $category->category_id }}" @foreach ($product->categories as $p_categories)  @if ($p_categories->category_id===$category->category_id)
+                                                <input type="checkbox" class="form-check-input" name="categories[]" id=""
+                                                    value="{{ $category->category_id }}" @foreach ($product->categories as $p_categories)  @if ($p_categories->category_id===$category->category_id)
                                                 checked @endif
                                     @endforeach
                                     >
@@ -61,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label w-100">Hình ảnh</label>
-                            <input type="file" name="fileToUpload" accept="image/*" required>
+                            <input type="file" name="image" accept="image/*">
                             <small class="form-text text-muted">Chọn hình ảnh cho sản phẩm của bạn.</small>
                             <img style="width: 50%;" src="{{ asset('assets/images/' . $product->product_image) }}" alt="">
                         </div>
