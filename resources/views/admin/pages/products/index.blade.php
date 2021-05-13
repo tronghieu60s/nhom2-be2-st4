@@ -11,7 +11,7 @@
                     <form class="form-inline d-none d-sm-inline-block">
                         <div class="input-group input-group-navbar">
                             <input name="search" type="text" class="form-control" placeholder="Search…" aria-label="Search"
-                                value="{{ request()->query("search") }}">
+                                value="{{ request()->query('search') }}">
                             <div class="input-group-append">
                                 <button class="btn" type="submit">
                                     <i class="align-middle" data-feather="search"></i>
@@ -82,7 +82,20 @@
                 </div>
                 <div class="col-12 d-flex justify-content-center">
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination pagination-sm">
+                        <ul class="pagination justify-content-end">
+                            @php
+                                $page = request()->query('page');
+                                if (!$page) {
+                                    $page = 1;
+                                }
+                            @endphp
+                            @for ($i = 0; $i < $countAllProduct / $perPage; $i++)
+                                <li class="page-item {{ $page == $i + 1 ? 'active' : '' }}">
+                                    <a class="page-link" href="{{ request()->fullUrlWithQuery(['page' => $i + 1]) }}">
+                                        {{ $i + 1 }}
+                                    </a>
+                                </li>
+                            @endfor
                         </ul>
                     </nav>
                 </div>

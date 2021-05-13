@@ -13,16 +13,31 @@ class AdminProductsController extends Controller
 
     public function index()
     {
-        $products = Product::all()->reverse();
+        // products
+        $countAllProduct = Product::all()->count();
+
+        // products pagination
+        $perPage = request()->query("perPage");
+        if (!$perPage) $perPage = 6;
+        $products = Product::orderBy("product_id", "DESC")->paginate($perPage);
 
         // search form
         $search = request()->query("search");
-        if ($search) $products = Product::query()
-            ->where('product_name', 'LIKE', "%{$search}%")
-            ->orWhere('product_description', 'LIKE', "%{$search}%")
-            ->get();
+        if ($search) {
+            $products = Product::query()
+                ->where('product_name', 'LIKE', "%{$search}%")
+                ->orWhere('product_description', 'LIKE', "%{$search}%");
 
-        return view('admin.pages.products.index', ['products' => $products]);
+            $countAllProduct = $products->count();
+            $products = $products->paginate($perPage);
+        }
+
+
+        return view('admin.pages.products.index', [
+            'countAllProduct' => $countAllProduct,
+            'products' => $products,
+            'perPage' => $perPage,
+        ]);
     }
 
     public function create()
@@ -31,7 +46,7 @@ class AdminProductsController extends Controller
         $categories = Category::all();
         return view('admin.pages.products.create', [
             'manufacturers' => $manufacturers,
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
 
@@ -70,7 +85,7 @@ class AdminProductsController extends Controller
     public function show($id)
     {
         return redirect()->action('AdminProductsController@edit', [$id]);
-    } 
+    }
 
     public function edit($id)
     {
@@ -113,7 +128,7 @@ class AdminProductsController extends Controller
                 $categorizable->product_id = $product->product_id;
                 $categorizable->save();
             }
-        return redirect("/be-admin/products/".$id."/edit");
+        return redirect("/be-admin/products/" . $id . "/edit");
     }
 
     public function destroy($id)
