@@ -1,9 +1,9 @@
 <!-- Start Single Category -->
 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-    <div class="category">
+    <div class="category" style="height: 390px;">
         <div class="ht__cat__thumb" style="height: 300px; display: flex; justify-content: center; align-items: center;">
             <a href="{{ asset('products/'.$product->product_id) }}" style="height: 100%;"> 
-                <img src="{{ asset('assets/images/'.$product->product_image) }}" style="height: 100%;" alt="product images">
+                <img src="{{ asset('assets/images/'.$product->product_image) }}" alt="product images">
             </a>
         </div>
         <div class="fr__hover__info">

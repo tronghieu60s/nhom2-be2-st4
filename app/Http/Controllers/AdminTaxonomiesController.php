@@ -11,10 +11,10 @@ class AdminTaxonomiesController extends Controller
     public function index()
     {
         $manufacturers = Manufacturer::all();
-        var_dump($manufacturers);
+        var_dump($manufacturers[0]->manufacturer_name);
 
         $categories = Category::all();
-        var_dump($categories);
+        var_dump($categories[0]->category_name);
 
         return view('admin.pages.taxonomies.index');
     }

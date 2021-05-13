@@ -13,13 +13,9 @@ class AdminProductsController extends Controller
 
     public function index()
     {
-        // products
-        $countAllProduct = Product::all()->count();
-
-        // products pagination
-        $perPage = request()->query("perPage");
-        if (!$perPage) $perPage = 6;
-        $products = Product::orderBy("product_id", "DESC")->paginate($perPage);
+        // count all products
+        $products = Product::orderBy("product_id", "DESC");
+        $countAllProduct = Product::all()->count(); 
 
         // search form
         $search = request()->query("search");
@@ -29,9 +25,12 @@ class AdminProductsController extends Controller
                 ->orWhere('product_description', 'LIKE', "%{$search}%");
 
             $countAllProduct = $products->count();
-            $products = $products->paginate($perPage);
         }
 
+        // products pagination
+        $perPage = request()->query("perPage");
+        if (!$perPage) $perPage = 6;
+        $products = $products->paginate($perPage);
 
         return view('admin.pages.products.index', [
             'countAllProduct' => $countAllProduct,

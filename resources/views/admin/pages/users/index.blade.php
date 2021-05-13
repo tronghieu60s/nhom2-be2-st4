@@ -3,7 +3,7 @@
 @section('content')
     <main class="content">
         <div class="container-fluid p-0">
-            <h1 class="h3 mb-3">Users</h1>
+            <h1 class="h3 mb-3">Người Dùng</h1>
             <div class="row">
                 <div class="col-12 my-2">
                     <a href="{{ asset('/be-admin/users/create') }}">

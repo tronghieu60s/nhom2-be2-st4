@@ -4,7 +4,7 @@
     <main class="content">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">Quản Lí Hãng Và Loại</h1>
+            <h1 class="h3 mb-3">Hãng Và Loại</h1>
             <div class="row">
                 <div class="col-12 col-xl-6">
                     <div class="col-12 my-2">

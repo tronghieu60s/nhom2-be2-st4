@@ -10,7 +10,7 @@
                 <div class="col-6 d-flex justify-content-end">
                     <form class="form-inline d-none d-sm-inline-block">
                         <div class="input-group input-group-navbar">
-                            <input name="search" type="text" class="form-control" placeholder="Search…" aria-label="Search"
+                            <input name="search" type="text" class="form-control" placeholder="Tìm kiếm..." aria-label="Search"
                                 value="{{ request()->query('search') }}">
                             <div class="input-group-append">
                                 <button class="btn" type="submit">
@@ -45,6 +45,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if (count($products) == 0)
+                                    <tr>
+                                        <td colspan="8" class="text-center">Không có sản phẩm nào.</td>
+                                    </tr>
+                                @endif
                                 @foreach ($products as $product)
                                     <tr>
                                         <td><img style="width: 100%;"

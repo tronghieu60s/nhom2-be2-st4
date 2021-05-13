@@ -5,7 +5,7 @@
         <div class="container-fluid p-0">
             <div class="row py-3 mb-3">
                 <div class="col-6">
-                    <h1 class="h3 mb-3">Quản Lí Bình Luận</h1>
+                    <h1 class="h3 mb-3">Bình Luận</h1>
                 </div>
             </div>
 
