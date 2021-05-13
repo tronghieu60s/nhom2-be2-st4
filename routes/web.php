@@ -23,16 +23,17 @@ Route::get('/sign-in', 'AuthController@signin')->middleware('auth-permission');
 Route::post('/sign-in', 'AuthController@signin_post')->middleware('auth-permission');
 Route::get('/sign-up', 'AuthController@signup')->middleware('auth-permission');
 Route::post('/sign-up', 'AuthController@signup_post')->middleware('auth-permission');
-Route::get('/logout', function () {
-    session()->forget('.config_user');
-    return redirect("/sign-in");
-});
+Route::get('/logout', 'AuthController@logout');
 
-Route::get('/be-admin', function () {
-    return redirect("/be-admin/products");
-});
+Route::get('/be-admin', 'AdminController@index');
 Route::resource('/be-admin/products', 'AdminProductsController')->middleware('user-permission');
 Route::resource('/be-admin/users', 'AdminUsersController')->middleware('user-permission');
 Route::resource('/be-admin/taxonomies', 'AdminTaxonomiesController')->middleware('user-permission');
-Route::resource('/be-admin/orders', 'AdminOrdersController')->middleware('user-permission');
-Route::resource('/be-admin/comments', 'AdminCommentsController')->middleware('user-permission');
+
+Route::resource('/be-admin/orders', 'AdminOrdersController')
+    ->only(['index', 'destroy'])
+    ->middleware('user-permission');
+
+Route::resource('/be-admin/comments', 'AdminCommentsController')
+    ->only(['index', 'destroy'])
+    ->middleware('user-permission');

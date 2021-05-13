@@ -9,6 +9,13 @@ use App\User;
 
 class AuthController extends Controller
 {
+
+    public function logout()
+    {
+        session()->forget('.config_user');
+        return redirect("/sign-in");
+    }
+
     public function signin()
     {
         return view('auth.pages.signin');
