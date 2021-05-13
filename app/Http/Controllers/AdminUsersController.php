@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminUsersController extends Controller
@@ -9,6 +10,8 @@ class AdminUsersController extends Controller
 
     public function index()
     {
+        $users = User::all();
+        var_dump($users[0]->comments[0]->comment_content);
         return view('admin.pages.users.index');
     }
 

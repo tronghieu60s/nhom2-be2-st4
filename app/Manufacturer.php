@@ -8,8 +8,8 @@ class Manufacturer extends Model
 {
     public $primaryKey = "manufacturer_id";
 
-    public function product()
+    public function products()
     {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('App\Product', "product_id");
     }
 }

@@ -15,6 +15,7 @@ class AdminProductsController extends Controller
     {
         $products = Product::all()->reverse();
 
+        // search form
         $search = request()->query("search");
         if ($search) $products = Product::query()
             ->where('product_name', 'LIKE', "%{$search}%")

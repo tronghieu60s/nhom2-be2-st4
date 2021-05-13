@@ -17,4 +17,9 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Category', 'categorizable', 'product_id', 'category_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'comment_id');
+    }
 }
