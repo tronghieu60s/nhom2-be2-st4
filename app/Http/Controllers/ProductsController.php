@@ -10,6 +10,7 @@ class ProductsController extends Controller
 {
     public function index()
     {
+        $customView = false;
         // count all products
         $products = Product::orderBy("product_id", "DESC");
         $countAllProduct = Product::all()->count();
@@ -22,21 +23,37 @@ class ProductsController extends Controller
         if ($sort === "priceSB") $products = Product::orderBy("product_price", "ASC");
         if ($sort === "priceBS") $products = Product::orderBy("product_price", "DESC");
 
+        // search form
+        $search = request()->query("search");
+        if ($search) {
+            $products = Product::query()
+                ->where('product_name', 'LIKE', "%{$search}%")
+                ->orWhere('product_description', 'LIKE', "%{$search}%");
+
+            $countAllProduct = $products->count();
+            $customView = true;
+        }
+
+        // category form
+        $category = request()->query("category");
+        if ($category) {
+            $products = Category::findOrFail($category)->get()[0]->products;
+
+            var_dump($products);
+            $countAllProduct = $products->count();
+            $customView = true;
+        }
+
         // products pagination
         $perPage = request()->query("perPage");
         if (!$perPage) $perPage = 8;
         $products = $products->paginate($perPage);
 
-        // manufacturer and category
-        $manufacturers = Manufacturer::all();
-        $categories = Category::all();
-
         return view('client.pages.products.index', [
             'products' => $products,
             'countAllProduct' => $countAllProduct,
             'perPage' => $perPage,
-            'manufacturers' => $manufacturers,
-            'categories' => $categories,
+            'customView' => $customView,
         ]);
     }
 

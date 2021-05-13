@@ -1,23 +1,30 @@
+@if(request()->query("search"))
+<div class="text-center" style="font-size: 2em; font-weight: 800; margin-bottom: 1em">
+    Kết quả tìm kiếm cho "{{ request()->query("search") }}"
+</div>
+@endif
 <div class="htc__grid__top">
     <div class="htc__select__option">
-        @php
-            $sort = request()->query('sort');
-            if (!$sort) {
-                $sort = 'default';
-            }
-        @endphp
-        <select class="ht__select" onchange="window.location.href=this.value">
-            <option value="{{ request()->fullUrlWithQuery(['sort' => 'default']) }}" @if ($sort == 'default') selected @endif>
-                Sắp xếp mặc định</option>
-            <option value="{{ request()->fullUrlWithQuery(['sort' => 'nameAZ']) }}" @if ($sort == 'nameAZ') selected @endif>
-                Sắp xếp theo tên A-Z</option>
-            <option value="{{ request()->fullUrlWithQuery(['sort' => 'nameZA']) }}" @if ($sort == 'nameZA') selected @endif>
-                Sắp xếp theo tên Z-A</option>
-            <option value="{{ request()->fullUrlWithQuery(['sort' => 'priceSB']) }}" @if ($sort == 'priceSB') selected @endif>
-                Sắp xếp theo giá nhỏ - lớn</option>
-            <option value="{{ request()->fullUrlWithQuery(['sort' => 'priceBS']) }}" @if ($sort == 'priceBS') selected @endif>
-                Sắp xếp theo giá lớn - nhỏ</option>
-        </select>
+        @if (!$customView)
+            @php
+                $sort = request()->query('sort');
+                if (!$sort) {
+                    $sort = 'default';
+                }
+            @endphp
+            <select class="ht__select" onchange="window.location.href=this.value">
+                <option value="{{ request()->fullUrlWithQuery(['sort' => 'default']) }}" @if ($sort == 'default') selected @endif>
+                    Sắp xếp mặc định</option>
+                <option value="{{ request()->fullUrlWithQuery(['sort' => 'nameAZ']) }}" @if ($sort == 'nameAZ') selected @endif>
+                    Sắp xếp theo tên A-Z</option>
+                <option value="{{ request()->fullUrlWithQuery(['sort' => 'nameZA']) }}" @if ($sort == 'nameZA') selected @endif>
+                    Sắp xếp theo tên Z-A</option>
+                <option value="{{ request()->fullUrlWithQuery(['sort' => 'priceSB']) }}" @if ($sort == 'priceSB') selected @endif>
+                    Sắp xếp theo giá nhỏ - lớn</option>
+                <option value="{{ request()->fullUrlWithQuery(['sort' => 'priceBS']) }}" @if ($sort == 'priceBS') selected @endif>
+                    Sắp xếp theo giá lớn - nhỏ</option>
+            </select>
+        @endif
         @php
             $perPage = request()->query('perPage');
             if (!$perPage) {
@@ -53,12 +60,10 @@
         @endif
     </div>
 
-    <!-- Start List And Grid View -->
     <ul class="view__mode" role="tablist">
         <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i
                     class="zmdi zmdi-grid"></i></a></li>
         <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i
                     class="zmdi zmdi-view-list"></i></a></li>
     </ul>
-    <!-- End List And Grid View -->
 </div>

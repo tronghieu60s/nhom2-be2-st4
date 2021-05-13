@@ -5,8 +5,9 @@
     <section class="htc__category__area ptb--100">
         <div class="container">
 
-            @include('client.home.titlecategory',[ 'title' => 'New Arrivals', 'slogan' => 'But I must explain to
-            you how all this mistaken idea'])
+            @include('client.home.titlecategory',[
+            'title' => 'Sản Phẩm Mới',
+            'slogan' => 'Sản phẩm mới nhất mà bạn không thể bỏ qua cho căn nhà của mình.'])
 
             <div class="htc__product__container">
                 <div class="row">

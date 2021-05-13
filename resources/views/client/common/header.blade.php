@@ -1,4 +1,3 @@
-<!-- Start Header Style -->
 <header id="htc__header" class="htc__header__area header--one">
     <!-- Start Mainmenu Area -->
     <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
@@ -7,132 +6,54 @@
                 <div class="menumenu__container clearfix">
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                         <div class="logo">
-                            <a href="/"><img src="{{ asset('client/images/logo/4.png') }}"
-                                    alt="logo images"></a>
+                            <a href="/"><img src="{{ asset('client/images/logo/4.png') }}" alt="logo images"></a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
                         <nav class="main__menu__nav hidden-xs hidden-sm">
                             <ul class="main__menu">
-                                <li class="drop"><a href="/">Home</a></li>
-                                <li class="drop"><a href="#">women</a>
-                                    <ul class="dropdown mega_dropdown">
-                                        <!-- Start Single Mega MEnu -->
-                                        <li><a class="mega__title" href="product-grid.html">Shop Pages</a>
-                                            <ul class="mega__item">
-                                                <li><a href="product-grid.html">Product Grid</a></li>
-                                                <li><a href="cart.html">cart</a></li>
-                                                <li><a href="checkout.html">checkout</a></li>
-                                                <li><a href="wishlist.html">wishlist</a></li>
-                                            </ul>
-                                        </li>
-                                        <!-- End Single Mega MEnu -->
-                                        <!-- Start Single Mega MEnu -->
-                                        <li><a class="mega__title" href="product-grid.html">Variable Product</a>
-                                            <ul class="mega__item">
-                                                <li><a href="#">Category</a></li>
-                                                <li><a href="#">My Account</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                <li><a href="cart.html">Shopping Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                            </ul>
-                                        </li>
-                                        <!-- End Single Mega MEnu -->
-                                        <!-- Start Single Mega MEnu -->
-                                        <li><a class="mega__title" href="product-grid.html">Product Types</a>
-                                            <ul class="mega__item">
-                                                <li><a href="#">Simple Product</a></li>
-                                                <li><a href="#">Variable Product</a></li>
-                                                <li><a href="#">Grouped Product</a></li>
-                                                <li><a href="#">Downloadable Product</a></li>
-                                                <li><a href="#">Simple Product</a></li>
-                                            </ul>
-                                        </li>
-                                        <!-- End Single Mega MEnu -->
-                                    </ul>
-                                </li>
-                                <li class="drop"><a href="#">men</a>
-                                    <ul class="dropdown mega_dropdown">
-                                        <!-- Start Single Mega MEnu -->
-                                        <li><a class="mega__title" href="product-grid.html">Shop Pages</a>
-                                            <ul class="mega__item">
-                                                <li><a href="product-grid.html">Product Grid</a></li>
-                                                <li><a href="cart.html">cart</a></li>
-                                                <li><a href="checkout.html">checkout</a></li>
-                                                <li><a href="wishlist.html">wishlist</a></li>
-                                            </ul>
-                                        </li>
-                                        <!-- End Single Mega MEnu -->
-                                        <!-- Start Single Mega MEnu -->
-                                        <li><a class="mega__title" href="product-grid.html">Variable Product</a>
-                                            <ul class="mega__item">
-                                                <li><a href="#">Category</a></li>
-                                                <li><a href="#">My Account</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                <li><a href="cart.html">Shopping Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                            </ul>
-                                        </li>
-                                        <!-- End Single Mega MEnu -->
-                                        <!-- Start Single Mega MEnu -->
-                                        <li><a class="mega__title" href="product-grid.html">Product Types</a>
-                                            <ul class="mega__item">
-                                                <li><a href="#">Simple Product</a></li>
-                                                <li><a href="#">Variable Product</a></li>
-                                                <li><a href="#">Grouped Product</a></li>
-                                                <li><a href="#">Downloadable Product</a></li>
-                                                <li><a href="#">Simple Product</a></li>
-                                            </ul>
-                                        </li>
-                                        <!-- End Single Mega MEnu -->
-                                    </ul>
-                                </li>
-                                <li class="drop"><a href="/products">Product</a>
+                                <li class="drop"><a href="/">Trang Chủ</a></li>
+                                <li class="drop"><a href="/products">Tất Cả Sản Phẩm</a></li>
+                                <li class="drop"><a href="/products">Hãng Sản Xuất</a>
                                     <ul class="dropdown">
-                                        <li><a href="/products">Product Grid</a></li>
-                                        <li><a href="/products">Product Details</a></li>
+                                        @foreach ($manufacturers as $manufacturer)
+                                            <li><a href="/products">{{ $manufacturer->manufacturer_name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
-                                <li class="drop"><a href="blog.html">blog</a>
+                                <li class="drop"><a href="/products">Chuyên Mục</a>
                                     <ul class="dropdown">
-                                        <li><a href="blog.html">Blog Grid</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                        @foreach ($categories as $category)
+                                            <li><a href="/products">{{ $category->category_name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
-                                <li class="drop"><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                        <li><a href="cart.html">Cart page</a></li>
-                                        <li><a href="checkout.html">checkout</a></li>
-                                        <li><a href="contact.html">contact</a></li>
-                                        <li><a href="product-grid.html">product grid</a></li>
-                                        <li><a href="product-details.html">product details</a></li>
-                                        <li><a href="wishlist.html">wishlist</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">contact</a></li>
+                                <li class="drop"><a href="/">Liên Hệ</a></li>
                             </ul>
                         </nav>
 
                         <div class="mobile-menu clearfix visible-xs visible-sm">
                             <nav id="mobile_dropdown">
                                 <ul>
-                                    <li><a href="/">Home</a></li>
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="#">pages</a>
+                                    <li><a href="/">Trang Chủ</a></li>
+                                    <li><a href="/">Tất Cả Sản Phẩm</a></li>
+                                    <li><a href="/">Hãng Sản Xuất</a>
                                         <ul>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                            <li><a href="cart.html">Cart page</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="product-grid.html">product grid</a></li>
-                                            <li><a href="product-details.html">product details</a></li>
-                                            <li><a href="wishlist.html">wishlist</a></li>
+                                            @foreach ($manufacturers as $manufacturer)
+                                                <li><a href="blog.html">{{ $manufacturer->manufacturer_name }}</a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">contact</a></li>
+                                    <li><a href="/">Chuyên Mục</a>
+                                        <ul>
+                                            @foreach ($categories as $category)
+                                                <li><a href="blog.html">{{ $category->category_name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Liên Hệ</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -158,6 +79,5 @@
     </div>
     <!-- End Mainmenu Area -->
 </header>
-<!-- End Header Area -->
 
 @include('client.common.offset.index')

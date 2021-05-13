@@ -2,7 +2,7 @@
 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
     <div class="category" style="height: 390px;">
         <div class="ht__cat__thumb" style="height: 300px; display: flex; justify-content: center; align-items: center;">
-            <a href="{{ asset('products/'.$product->product_id) }}" style="height: 100%;"> 
+            <a href="{{ asset('products/'.$product->product_id) }}" style="height: 100%; display: flex; align-items: center;"> 
                 <img src="{{ asset('assets/images/'.$product->product_image) }}" alt="product images">
             </a>
         </div>

@@ -13,7 +13,8 @@
             <h4 class="title__line--4">Chuyên mục</h4>
             <ul class="ht__cat__list">
                 @foreach ($categories as $category)
-                    <li><a href="#">{{ $category->category_name }}</a></li>
+                    <li><a href="{{ request()->fullUrlWithQuery(['category' => $category->category_id]) }}">
+                            {{ $category->category_name }}</a></li>
                 @endforeach
             </ul>
         </div>
