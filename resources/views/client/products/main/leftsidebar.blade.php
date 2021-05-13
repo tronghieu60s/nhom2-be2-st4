@@ -4,7 +4,8 @@
             <h4 class="title__line--4">Hãng sản xuất</h4>
             <ul class="ht__cat__list">
                 @foreach ($manufacturers as $manufacturer)
-                    <li><a href="#">{{ $manufacturer->manufacturer_name }}</a></li>
+                    <li><a href="{{ asset('/products?manufacturer=' . $manufacturer->manufacturer_id) }}">
+                        {{ $manufacturer->manufacturer_name }}</a></li>
                 @endforeach
             </ul>
         </div>
@@ -13,7 +14,7 @@
             <h4 class="title__line--4">Chuyên mục</h4>
             <ul class="ht__cat__list">
                 @foreach ($categories as $category)
-                    <li><a href="{{ request()->fullUrlWithQuery(['category' => $category->category_id]) }}">
+                    <li><a href="{{ asset('/products?category=' . $category->category_id) }}">
                             {{ $category->category_name }}</a></li>
                 @endforeach
             </ul>

@@ -10,6 +10,6 @@ class Manufacturer extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Product', "product_id");
+        return $this->hasMany('App\Product', "manufacturer_id");
     }
 }

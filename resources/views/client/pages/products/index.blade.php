@@ -1,4 +1,4 @@
-@extends('layouts.client', ['title' => 'All Products'])
+@extends('layouts.client', ['title' => 'Tất Cả Sản Phẩm'])
 
 @section('content')
     <section class="htc__product__grid bg__white ptb--100">

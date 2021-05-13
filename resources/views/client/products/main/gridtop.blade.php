@@ -1,8 +1,12 @@
-@if(request()->query("search"))
-<div class="text-center" style="font-size: 2em; font-weight: 800; margin-bottom: 1em">
-    Kết quả tìm kiếm cho "{{ request()->query("search") }}"
+<div class="text-center" style="font-size: 2em; font-weight: 800; margin-bottom: 2em">
+    @if (request()->query('search'))
+        Kết quả tìm kiếm cho "{{ request()->query('search') }}"
+    @elseif (request()->query('manufacturer'))
+        Hãng sản xuất: {{ $nameManufacturer }}
+    @elseif (request()->query('category'))
+        Chuyên mục: {{ $nameCategory }}
+    @endif
 </div>
-@endif
 <div class="htc__grid__top">
     <div class="htc__select__option">
         @if (!$customView)
