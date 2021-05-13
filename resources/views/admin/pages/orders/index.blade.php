@@ -41,13 +41,13 @@
                                     </td>
                                     <td>12/02/2021</td>
                                     <td class="table-action">
-                                        <div class="d-flex">
+                                        <div class="d-flex align-items-center">
                                             <a href="{{ asset('be-admin/products/1/edit') }}">
                                                 <button type="button" class="btn">
                                                     <i class="align-middle" data-feather="check"></i>
                                                 </button>
                                             </a>
-                                            <form action="{{ asset('/be-admin/orders/1') }}"
+                                            <form class="mb-0" action="{{ asset('/be-admin/orders/1') }}"
                                                 method="POST">
                                                 @method('DELETE')
                                                 @csrf

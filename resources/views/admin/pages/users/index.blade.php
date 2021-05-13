@@ -6,7 +6,7 @@
             <h1 class="h3 mb-3">Users</h1>
             <div class="row">
                 <div class="col-12 my-2">
-                    <a href="./admin/users/create">
+                    <a href="{{ asset('/be-admin/users/create') }}">
                         <button type="button" class="btn btn-primary">Thêm</button>
                     </a>
                 </div>
@@ -27,8 +27,20 @@
                                     <td>Username</td>
                                     <td>Administrator</td>
                                     <td class="table-action">
-                                        <a href=""><i class="align-middle" data-feather="edit-2"></i></a>
-                                        <a href=""><i class="align-middle" data-feather="trash"></i></a>
+                                        <div class="d-flex align-items-center">
+                                            <a href="{{ asset('/be-admin/users/1/edit') }}">
+                                                <button type="button" class="btn">
+                                                    <i class="align-middle" data-feather="edit-2"></i>
+                                                </button>
+                                            </a>
+                                            <form class="mb-0" action="{{ asset('/be-admin/users/1') }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <input type="text" name="type" value="manufacturer" style="display: none">
+                                                <button class="btn" type="submit"><i class="align-middle"
+                                                        data-feather="trash"></i></button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>

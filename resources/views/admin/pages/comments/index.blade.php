@@ -44,8 +44,8 @@
                                         20/12/2001
                                     </td>
                                     <td class="table-action">
-                                        <div class="d-flex">
-                                            <form action="{{ asset('/be-admin/comments/1') }}"
+                                        <div class="d-flex align-items-center">
+                                            <form class="mb-0" action="{{ asset('/be-admin/comments/1') }}"
                                                 method="POST">
                                                 @method('DELETE')
                                                 @csrf

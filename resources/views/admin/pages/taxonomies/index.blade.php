@@ -27,13 +27,13 @@
                                     <td>1</td>
                                     <td>nha san xuat</td>
                                     <td class="table-action">
-                                        <div class="d-flex">
+                                        <div class="d-flex align-items-center">
                                             <a href="{{ asset('be-admin/taxonomies/1/edit?type=manufacturer') }}">
                                                 <button type="button" class="btn">
                                                     <i class=" align-middle" data-feather="edit-2"></i>
                                                 </button>
                                             </a>
-                                            <form action="{{ asset('/be-admin/taxonomies/1') }}" method="POST">
+                                            <form class="mb-0" action="{{ asset('/be-admin/taxonomies/1') }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <input type="text" name="type" value="manufacturer" style="display: none">
@@ -69,13 +69,13 @@
                                     <td>dasdsad</td>
                                     <td>type</td>
                                     <td class="table-action">
-                                        <div class="d-flex">
+                                        <div class="d-flex align-items-center">
                                             <a href="{{ asset('be-admin/taxonomies/1/edit?type=category') }}">
                                                 <button type="button" class="btn">
                                                     <i class=" align-middle" data-feather="edit-2"></i>
                                                 </button>
                                             </a>
-                                            <form action="{{ asset('/be-admin/taxonomies/1') }}" method="POST">
+                                            <form class="mb-0" action="{{ asset('/be-admin/taxonomies/1') }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <input type="text" name="type" value="category" style="display: none">

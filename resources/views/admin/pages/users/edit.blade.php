@@ -3,7 +3,7 @@
 @section('content')
     <main class="content">
         <div class="container-fluid p-0">
-            <h1 class="h3 mb-3">Edit Users</h1>
+            <h1 class="h3 mb-3">Sửa Người Dùng</h1>
             <div class="row">
                 <div class="col-12 col-6">
                     <div class="card px-5">
@@ -26,7 +26,7 @@
                                         <option value="9">Admin</option>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Tạo Mới</button>
+                                <button type="submit" class="btn btn-primary">Sửa</button>
                             </form>
                         </div>
                     </div>
