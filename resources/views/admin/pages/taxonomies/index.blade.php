@@ -4,7 +4,7 @@
     <main class="content">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3">Hãng Và Loại</h1>
+            <h1 class="h3 mb-3">Hãng Và Chuyên Mục</h1>
             <div class="row">
                 <div class="col-12 col-xl-6">
                     <div class="col-12 my-2">
@@ -59,8 +59,8 @@
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width:25%;">Mã Loại</th>
-                                    <th style="width:40%">Tên Loại</th>
+                                    <th style="width:25%;">Mã Chuyên Mục</th>
+                                    <th style="width:40%">Tên Chuyên Mục</th>
                                     <th>Hành Động</th>
                                 </tr>
                             </thead>

@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function logout()
     {
         session()->forget('.config_user');
-        return redirect("/sign-in");
+        return redirect()->back();
     }
 
     public function signin()

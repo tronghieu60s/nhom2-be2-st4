@@ -27,7 +27,7 @@ class AdminTaxonomiesController extends Controller
         }
 
         if (request()->query("type") == "category") {
-            // làm loại trong này
+            // làm chuyen muc trong này
             return view('admin.pages.taxonomies.create-category');
         }
     }
@@ -40,7 +40,7 @@ class AdminTaxonomiesController extends Controller
         }
 
         if (request("type") == "category") {
-            // làm loại trong này
+            // làm chuyen muc trong này
             return "tạo loại";
         }
     }
@@ -58,7 +58,7 @@ class AdminTaxonomiesController extends Controller
         }
 
         if (request()->query("type") == "category") {
-            // làm loại trong này
+            // làm chuyen muc trong này
             return view('admin.pages.taxonomies.edit-category');
         }
     }
@@ -71,7 +71,7 @@ class AdminTaxonomiesController extends Controller
         }
 
         if (request("type") == "category") {
-            // làm loại trong này
+            // làm chuyen muc trong này
             return "cập nhật loại";
         }
     }
@@ -84,7 +84,7 @@ class AdminTaxonomiesController extends Controller
         }
 
         if (request("type") == "category") {
-            // làm loại trong này
+            // làm chuyen muc trong này
             return "xóa loại";
         }
     }

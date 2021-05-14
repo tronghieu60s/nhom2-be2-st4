@@ -13,6 +13,9 @@
             @endforeach
         </ul>
     </div>
-    <button type="button" class="btn btn-primary" style="margin-top: 15px">
-        Đặt Hàng Ngay</button>
+    <div class="fr__list__btn" style="margin-top: 15px">
+        <a href="{{ asset("cart?increase=1&product=". $product->product_id) }}">
+            <button class="fr__btn" style="border: 0">Thêm Vào Giỏ Hàng Ngay</button>
+        </a>
+    </div>
 </div>

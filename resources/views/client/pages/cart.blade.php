@@ -6,35 +6,33 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <form action="#">
+                        <h2 style="font-size: 17px; margin-bottom: 15px">
+                            Giỏ hàng của bạn có {{ count($cartProducts) }} sản phẩm.</h2>
                         <div class="table-content table-responsive">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th class="product-thumbnail">products</th>
-                                        <th class="product-name">name of products</th>
-                                        <th class="product-price">Price</th>
-                                        <th class="product-quantity">Quantity</th>
-                                        <th class="product-subtotal">Total</th>
-                                        <th class="product-remove">Remove</th>
+                                        <th class="product-thumbnail">Sản Phẩm</th>
+                                        <th class="product-name">Tên Sản Phẩm</th>
+                                        <th class="product-price">Giá</th>
+                                        <th class="product-quantity">Số Lượng</th>
+                                        <th class="product-subtotal">Tổng Cộng</th>
+                                        <th class="product-remove">Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        @include('client.purchase.cart.item')
-                                    </tr>
-                                    <tr>
-                                        @include('client.purchase.cart.item')
-                                    </tr>
-                                    <tr>
-                                        @include('client.purchase.cart.item')
-                                    </tr>
-                                    <tr>
-                                        @include('client.purchase.cart.item')
-                                    </tr>
+                                    @if (count($cartProducts) == 0)
+                                        <tr>
+                                            <td colspan="6">Không có sản phẩm nào.</td>
+                                        </tr>
+                                    @endif
+                                    @foreach ($cartProducts as $product)
+                                        @include('client.cart.item', ['product' => $product])
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        @include('client.purchase.cart.bottom')
+                        @include('client.cart.bottom')
                     </form>
                 </div>
             </div>

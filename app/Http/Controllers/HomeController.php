@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $productsNew = Product::orderBy('product_id', 'DESC')->get()->take(8);
         $productBestSeller = Product::all()->take(4);
-        $newComments = Comment::orderBy("comment_id", 'DESC')->get()->take(4);
+        $newComments = Comment::where("comment_rating", '5')->get()->take(5);
 
         return view('client.pages.home', [
             'productsNew' => $productsNew,

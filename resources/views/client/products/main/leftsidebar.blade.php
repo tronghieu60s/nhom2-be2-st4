@@ -9,7 +9,6 @@
                 @endforeach
             </ul>
         </div>
-
         <div class="htc__category">
             <h4 class="title__line--4">Chuyên mục</h4>
             <ul class="ht__cat__list">
@@ -19,7 +18,6 @@
                 @endforeach
             </ul>
         </div>
-
         <div class="htc__recent__product">
             <h2 class="title__line--4">Sản Phẩm Mới Nhất</h2>
             @foreach ($newProducts as $product)

@@ -1,4 +1,3 @@
-<!-- Start Cart Panel -->
 <div class="shopping__cart">
     <div class="shopping__cart__inner">
         <div class="offsetmenu__close__btn">
@@ -41,9 +40,7 @@
             <li class="total__price">$130.00</li>
         </ul>
         <ul class="shopping__btn">
-            <li><a href="cart.html">View Cart</a></li>
-            <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
+            <li class="shp__checkout"><a href="{{ asset("cart") }}">View Cart</a></li>
         </ul>
     </div>
 </div>
-<!-- End Cart Panel -->

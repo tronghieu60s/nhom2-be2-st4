@@ -32,7 +32,6 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="drop"><a href="/">Liên Hệ</a></li>
                             </ul>
                         </nav>
 
@@ -61,7 +60,6 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="/">Liên Hệ</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -72,11 +70,20 @@
                                 <a href="#"><i class="icon-magnifier icons"></i></a>
                             </div>
                             <div class="header__account">
-                                <a href="/sign-in"><i class="icon-user icons"></i></a>
+                                <a style="display: flex" href="/sign-in">
+                                    <i class="icon-user icons" style="margin-right: 10px"></i>
+                                    {{ session('.config_user') ? session('.config_user')->user_username : '' }}</a>
                             </div>
+                            @if(session('.config_user'))
+                            <div class="header__account">
+                                <a href="{{ asset('logout') }}" title="Đăng Xuất">
+                                    <i class="icon-logout icons" style="margin-right: 10px"></i>
+                                </a>
+                            </div>
+                            @endif
                             <div class="htc__shopping__cart">
-                                <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
-                                <a href="/cart"><span class="htc__qua">2</span></a>
+                                <a class="cart__menu" href="#"><i class="icon-handbag icons"></i>
+                                    <span class="htc__qua">2</span></a>
                             </div>
                         </div>
                     </div>
@@ -85,7 +92,6 @@
             <div class="mobile-menu-area"></div>
         </div>
     </div>
-    <!-- End Mainmenu Area -->
 </header>
 
 @include('client.common.offset.index')
