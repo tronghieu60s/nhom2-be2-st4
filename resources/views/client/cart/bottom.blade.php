@@ -1,37 +1,46 @@
 <div class="row">
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="ht__coupon__code">
-            <span>enter your discount code</span>
-            <div class="coupon__box">
-                <input type="text" placeholder="">
-                <div class="ht__cp__btn">
-                    <a href="#">enter</a>
+        @if (!session('.config_user'))
+            <div style="display: flex; flex-direction: column; align-items: center">
+                <h2 class="text-center" style="font-size: 1.5em">
+                    Vui lòng đăng nhập để mua sản phẩm này.
+                </h2>
+                <div style="margin-top: 10px">
+                    <a class="btn btn-primary" href="{{ asset('/sign-in') }}" role="button">
+                        Đăng Nhập
+                    </a>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
+    @php
+        $totalPrice = 0;
+        foreach ($cartProducts as $product) {
+            $totalPrice += $product->product_price * $product->product_quantity;
+        }
+    @endphp
     <div class="col-md-6 col-sm-12 col-xs-12 smt-40 xmt-40">
         <div class="htc__cart__total">
-            <h6>cart total</h6>
+            <h6>Tổng Giỏ Hàng</h6>
             <div class="cart__desk__list">
                 <ul class="cart__desc">
-                    <li>cart total</li>
-                    <li>tax</li>
-                    <li>shipping</li>
+                    <li>Tổng</li>
+                    <li>Phí Giao Hàng</li>
                 </ul>
                 <ul class="cart__price">
-                    <li>$909.00</li>
-                    <li>$9.00</li>
-                    <li>0</li>
+                    <li>{{ number_format($totalPrice) }} VNĐ</li>
+                    <li>Miễn Phí</li>
                 </ul>
             </div>
             <div class="cart__total">
-                <span>order total</span>
-                <span>$918.00</span>
+                <span>Tổng Đơn Đặt Hàng</span>
+                <span>{{ number_format($totalPrice) }} VNĐ</span>
             </div>
             <ul class="payment__btn">
-                <li class="active"><a href="#">payment</a></li>
-                <li><a href="#">continue shopping</a></li>
+                @if (session('.config_user'))
+                    <li class="active"><a href="#">Mua Hàng Ngay</a></li>
+                @endif
+                <li><a href="{{ asset('products') }}">Tiếp tục mua sắm</a></li>
             </ul>
         </div>
     </div>

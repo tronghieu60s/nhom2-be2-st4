@@ -83,7 +83,7 @@
                             @endif
                             <div class="htc__shopping__cart">
                                 <a class="cart__menu" href="#"><i class="icon-handbag icons"></i>
-                                    <span class="htc__qua">2</span></a>
+                                    <span class="htc__qua">{{ count($cartProducts) }}</span></a>
                             </div>
                         </div>
                     </div>

@@ -4,43 +4,39 @@
             <a href="#"><i class="zmdi zmdi-close"></i></a>
         </div>
         <div class="shp__cart__wrap">
-            <div class="shp__single__product">
-                <div class="shp__pro__thumb">
-                    <a href="#">
-                        <img src="{{ asset('client/images/product-2/sm-smg/1.jpg') }}" alt="product images">
-                    </a>
+            @foreach ($cartProducts as $product)
+                <div class="shp__single__product">
+                    <div class="shp__pro__thumb">
+                        <a href="{{ asset('products/' . $product->product_id) }}">
+                            <img src="{{ asset('assets/images/' . $product->product_image) }}" alt="product images">
+                        </a>
+                    </div>
+                    <div class="shp__pro__details">
+                        <h2><a href="{{ asset('products/' . $product->product_id) }}">
+                                {{ $product->product_name }}</a></h2>
+                        <span class="quantity">SL: {{ $product->product_quantity }}</span>
+                        <span class="shp__price">
+                            {{ number_format($product->product_price * $product->product_quantity) }} VNĐ</span>
+                    </div>
+                    <div class="remove__btn">
+                        <a href="{{ asset('cart?remove=true&product=' . $product->product_id) }}"
+                            title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                    </div>
                 </div>
-                <div class="shp__pro__details">
-                    <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
-                    <span class="quantity">QTY: 1</span>
-                    <span class="shp__price">$105.00</span>
-                </div>
-                <div class="remove__btn">
-                    <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                </div>
-            </div>
-            <div class="shp__single__product">
-                <div class="shp__pro__thumb">
-                    <a href="#">
-                        <img src="{{ asset('client/images/product-2/sm-smg/2.jpg') }}" alt="product images">
-                    </a>
-                </div>
-                <div class="shp__pro__details">
-                    <h2><a href="product-details.html">Brone Candle</a></h2>
-                    <span class="quantity">QTY: 1</span>
-                    <span class="shp__price">$25.00</span>
-                </div>
-                <div class="remove__btn">
-                    <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                </div>
-            </div>
+            @endforeach
         </div>
+        @php
+            $totalPrice = 0;
+            foreach ($cartProducts as $product) {
+                $totalPrice += $product->product_price * $product->product_quantity;
+            }
+        @endphp
         <ul class="shoping__total">
-            <li class="subtotal">Subtotal:</li>
-            <li class="total__price">$130.00</li>
+            <li class="subtotal">Tổng:</li>
+            <li class="total__price">{{ number_format($totalPrice) }} VNĐ</li>
         </ul>
         <ul class="shopping__btn">
-            <li class="shp__checkout"><a href="{{ asset("cart") }}">View Cart</a></li>
+            <li class="shp__checkout"><a href="{{ asset('cart') }}">Xem Giỏ Hàng</a></li>
         </ul>
     </div>
 </div>
