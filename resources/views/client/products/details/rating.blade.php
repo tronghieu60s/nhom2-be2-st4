@@ -1,7 +1,14 @@
+@php
+if (!isset($rating)) {
+    $rating = 0;
+}
+@endphp
+
 <ul class="rating">
-    <li><i class="icon-star icons"></i></li>
-    <li><i class="icon-star icons"></i></li>
-    <li><i class="icon-star icons"></i></li>
-    <li class="old"><i class="icon-star icons"></i></li>
-    <li class="old"><i class="icon-star icons"></i></li>
+    @for ($i = 0; $i < $rating; $i++)
+        <li><i class="icon-star icons"></i></li>
+    @endfor 
+    @for ($i = 0; $i < 5 - $rating; $i++)
+        <li class="old"><i class="icon-star icons"></i></li>
+    @endfor
 </ul>

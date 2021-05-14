@@ -1,5 +1,5 @@
 <div class="sin__desc product__share__link">
-    <p><span>Share this:</span></p>
+    <p><span>Chia sẻ ngay:</span></p>
     <ul class="pro__share">
         <li><a href="#" target="_blank"><i class="icon-social-twitter icons"></i></a></li>
         <li><a href="#" target="_blank"><i class="icon-social-instagram icons"></i></a></li>

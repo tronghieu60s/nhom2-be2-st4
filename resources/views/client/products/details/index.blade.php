@@ -12,9 +12,18 @@
                 <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
                     <div class="ht__product__dtl">
                         <h2 style="margin-bottom: 10px">{{ $product->product_name }}</h2>
-                        @include('client.products.details.rating')
+                        @php
+                            $sumRating = 0;
+                            foreach ($product->comments as $key => $value) {
+                                if (isset($value->comment_rating)) {
+                                    $sumRating += $value->comment_rating;
+                                }
+                            }
+                            $averageRating = $sumRating / count($product->comments);
+                        @endphp
+                        @include('client.products.details.rating', ['rating' => $averageRating])
                         <ul class="pro__prize">
-                            <li>${{ $product->product_price }}</li>
+                            <li>{{ number_format($product->product_price) }} VNĐ</li>
                         </ul>
                         <p class="pro__info">{{ substr($product->product_description, 0, 100) }}...</p>
                         @include('client.products.details.detaildesc')

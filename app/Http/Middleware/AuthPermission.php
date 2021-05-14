@@ -16,7 +16,7 @@ class AuthPermission
     public function handle($request, Closure $next)
     {
         $user = session(".config_user");
-        if ($user) return redirect("/be-admin");
+        if ($user) return redirect()->back();
         return $next($request);
     }
 }

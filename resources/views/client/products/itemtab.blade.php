@@ -7,7 +7,7 @@
     <div class="htc__list__details">
         <h2><a href="/products/123">{{ $product->product_name }}</a></h2>
         <ul class="pro__prize">
-            <li>${{ $product->product_price }}</li>
+            <li>{{  number_format($product->product_price) }} VNĐ</li>
         </ul>
         <ul class="rating">
             <li><i class="icon-star icons"></i></li>

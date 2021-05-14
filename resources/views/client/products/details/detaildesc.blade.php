@@ -13,5 +13,6 @@
             @endforeach
         </ul>
     </div>
-    @include('client.products.details.share')
+    <button type="button" class="btn btn-primary btn-lg" style="margin-top: 15px">
+        Đặt Hàng Ngay</button>
 </div>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Product;
+use Illuminate\Http\Request;
 
 class AdminCommentsController extends Controller
 {
@@ -18,5 +18,22 @@ class AdminCommentsController extends Controller
     public function destroy($id)
     {
         return "xóa bình luận " . $id;
+    }
+
+    public function store(Request $request)
+    {
+        $rating = request("rating");
+        $content = request("content");
+        $product = request("product");
+        $user = session('.config_user')->user_id;
+
+        $newComment = new Comment;
+        $newComment->comment_rating = $rating;
+        $newComment->comment_content = $content;
+        $newComment->product_id = $product;
+        $newComment->user_id = $user;
+        $newComment->save();
+
+        return redirect()->back();
     }
 }

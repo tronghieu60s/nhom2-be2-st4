@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Comment;
 use App\Manufacturer;
 use App\Product;
 
@@ -69,9 +70,11 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
+        $comments = Comment::where("product_id", $id)->get();
         $productsRelated = Product::where("manufacturer_id", $product->manufacturer_id)->get()->take(4);
         return view('client.pages.products.show', [
             'product' => $product,
+            'comments' => $comments,
             'productsRelated' => $productsRelated
         ]);
     }

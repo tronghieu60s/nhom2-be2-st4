@@ -19,21 +19,31 @@ Route::get('/checkout', 'PurchaseController@checkout');
 Route::get('/wishlist', 'PurchaseController@wishlist');
 Route::resource('/products', 'ProductsController')->only(['index', 'show']);
 
-Route::get('/sign-in', 'AuthController@signin')->middleware('auth-permission');
-Route::post('/sign-in', 'AuthController@signin_post')->middleware('auth-permission');
-Route::get('/sign-up', 'AuthController@signup')->middleware('auth-permission');
-Route::post('/sign-up', 'AuthController@signup_post')->middleware('auth-permission');
+Route::middleware(['auth-permission'])->group(function () {
+    Route::get('/sign-in', 'AuthController@signin');
+    Route::post('/sign-in', 'AuthController@signin_post');
+    Route::get('/sign-up', 'AuthController@signup');
+    Route::post('/sign-up', 'AuthController@signup_post');
+});
+
 Route::get('/logout', 'AuthController@logout');
 
-Route::get('/be-admin', 'AdminController@index');
-Route::resource('/be-admin/products', 'AdminProductsController')->middleware('user-permission');
-Route::resource('/be-admin/users', 'AdminUsersController')->middleware('user-permission');
-Route::resource('/be-admin/taxonomies', 'AdminTaxonomiesController')->middleware('user-permission');
+// request admin with middleware
+Route::middleware(['user-permission'])->group(function () {
+    Route::prefix('be-admin')->group(function () {
+        Route::get('/', 'AdminController@index');
+        Route::resource('products', 'AdminProductsController');
+        Route::resource('users', 'AdminUsersController');
+        Route::resource('taxonomies', 'AdminTaxonomiesController');
+        Route::resource('orders', 'AdminOrdersController')
+            ->only(['index', 'destroy']);
+        Route::resource('comments', 'AdminCommentsController')
+            ->only(['index', 'store', 'destroy']);
+    });
+});
 
-Route::resource('/be-admin/orders', 'AdminOrdersController')
-    ->only(['index', 'destroy'])
-    ->middleware('user-permission');
-
-Route::resource('/be-admin/comments', 'AdminCommentsController')
-    ->only(['index', 'destroy'])
-    ->middleware('user-permission');
+// request not middleware
+Route::prefix('be-admin')->group(function () {
+    Route::resource('comments', 'AdminCommentsController')
+        ->only(['store']);
+});

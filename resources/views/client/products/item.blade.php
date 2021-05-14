@@ -1,4 +1,3 @@
-<!-- Start Single Category -->
 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
     <div class="category" style="height: 390px;">
         <div class="ht__cat__thumb" style="height: 300px; display: flex; justify-content: center; align-items: center;">
@@ -16,9 +15,8 @@
         <div class="fr__product__inner">
             <h4><a href="product-details.html">{{ $product->product_name }}</a></h4>
             <ul class="fr__pro__prize">
-                <li>${{ $product->product_price }}</li>
+                <li>{{  number_format($product->product_price) }} VNĐ</li>
             </ul>
         </div>
     </div>
 </div>
-<!-- End Single Category -->

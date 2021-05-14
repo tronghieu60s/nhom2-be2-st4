@@ -1,4 +1,18 @@
-@extends('layouts.client', ['title' => 'Tất Cả Sản Phẩm'])
+@php
+$title = 'Tất Cả Sản Phẩm';
+if (request()->query('search')) {
+    $title = 'Tìm Kiếm - ' . request()->query('search');
+}
+if (request()->query('manufacturer')) {
+    $title = $nameManufacturer;
+}
+if (request()->query('category')) {
+    $title = $nameCategory;
+}
+@endphp
+
+
+@extends('layouts.client', ['title' => $title])
 
 @section('content')
     <section class="htc__product__grid bg__white ptb--100">
