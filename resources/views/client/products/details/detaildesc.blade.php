@@ -13,6 +13,6 @@
             @endforeach
         </ul>
     </div>
-    <button type="button" class="btn btn-primary btn-lg" style="margin-top: 15px">
+    <button type="button" class="btn btn-primary" style="margin-top: 15px">
         Đặt Hàng Ngay</button>
 </div>

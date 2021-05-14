@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use App\Product;
 
 class HomeController extends Controller
@@ -13,9 +12,12 @@ class HomeController extends Controller
     {
         $productsNew = Product::orderBy('product_id', 'DESC')->get()->take(8);
         $productBestSeller = Product::all()->take(4);
+        $newComments = Comment::orderBy("comment_id", 'DESC')->get()->take(4);
+
         return view('client.pages.home', [
             'productsNew' => $productsNew,
-            'productBestSeller' => $productBestSeller
+            'productBestSeller' => $productBestSeller,
+            'newComments' => $newComments,
         ]);
     }
 }

@@ -13,6 +13,7 @@ class ProductsController extends Controller
     {
         $customView = false;
         $products = Product::orderBy("product_id", "DESC")->get();
+        $newProducts = Product::all()->take(3);
 
         // products sort
         $sort = request()->query("sort");
@@ -59,6 +60,7 @@ class ProductsController extends Controller
 
         return view('client.pages.products.index', [
             'products' => $products,
+            'newProducts' => $newProducts,
             'countAllProduct' => $countAllProduct,
             'perPage' => $perPage,
             'customView' => $customView,

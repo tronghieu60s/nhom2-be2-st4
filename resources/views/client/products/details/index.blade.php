@@ -14,18 +14,22 @@
                         <h2 style="margin-bottom: 10px">{{ $product->product_name }}</h2>
                         @php
                             $sumRating = 0;
-                            foreach ($product->comments as $key => $value) {
+                            foreach ($comments as $key => $value) {
                                 if (isset($value->comment_rating)) {
                                     $sumRating += $value->comment_rating;
                                 }
                             }
-                            $averageRating = $sumRating / count($product->comments);
+                            $totalComments = count($comments);
+                            if ($totalComments == 0) {
+                                $totalComments = 1;
+                            }
+                            $averageRating = $sumRating / $totalComments;
                         @endphp
                         @include('client.products.details.rating', ['rating' => $averageRating])
                         <ul class="pro__prize">
                             <li>{{ number_format($product->product_price) }} VNĐ</li>
                         </ul>
-                        <p class="pro__info">{{ substr($product->product_description, 0, 100) }}...</p>
+                        <p class="pro__info">{{ substr($product->product_description, 0, 150) }}...</p>
                         @include('client.products.details.detaildesc')
                     </div>
                 </div>

@@ -5,7 +5,7 @@
             <ul class="ht__cat__list">
                 @foreach ($manufacturers as $manufacturer)
                     <li><a href="{{ asset('/products?manufacturer=' . $manufacturer->manufacturer_id) }}">
-                        {{ $manufacturer->manufacturer_name }}</a></li>
+                            {{ $manufacturer->manufacturer_name }}</a></li>
                 @endforeach
             </ul>
         </div>
@@ -20,81 +20,25 @@
             </ul>
         </div>
 
-        <!-- Start Best Sell Area -->
         <div class="htc__recent__product">
-            <h2 class="title__line--4">best seller</h2>
-            <div class="htc__recent__product__inner">
-                <!-- Start Single Product -->
-                <div class="htc__best__product">
-                    <div class="htc__best__pro__thumb">
-                        <a href="product-details.html">
-                            <img src="{{ asset('client/images/product-2/sm-smg/1.jpg') }}" alt="small product">
-                        </a>
-                    </div>
-                    <div class="htc__best__product__details">
-                        <h2><a href="product-details.html">Product Title Here</a></h2>
-                        <ul class="rating">
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                        </ul>
-                        <ul class="pro__prize">
-                            <li class="old__prize">$82.5</li>
-                            <li>$75.2</li>
-                        </ul>
+            <h2 class="title__line--4">Sản Phẩm Mới Nhất</h2>
+            @foreach ($newProducts as $product)
+                <div class="htc__recent__product__inner">
+                    <div class="htc__best__product">
+                        <div class="htc__best__pro__thumb">
+                            <a href="{{ asset('products/' . $product->product_id) }}">
+                                <img src="{{ asset('assets/images/' . $product->product_image) }}" alt="small product">
+                            </a>
+                        </div>
+                        <div class="htc__best__product__details">
+                            <h2><a href="{{ asset('products/' . $product->product_id) }}">{{ $product->product_name }}</a></h2>
+                            <ul class="pro__prize">
+                                <li>{{ number_format($product->product_price) }} VNĐ</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="htc__best__product">
-                    <div class="htc__best__pro__thumb">
-                        <a href="product-details.html">
-                            <img src="{{ asset('client/images/product-2/sm-smg/2.jpg') }}" alt="small product">
-                        </a>
-                    </div>
-                    <div class="htc__best__product__details">
-                        <h2><a href="product-details.html">Product Title Here</a></h2>
-                        <ul class="rating">
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                        </ul>
-                        <ul class="pro__prize">
-                            <li class="old__prize">$82.5</li>
-                            <li>$75.2</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="htc__best__product">
-                    <div class="htc__best__pro__thumb">
-                        <a href="product-details.html">
-                            <img src="{{ asset('client/images/product-2/sm-smg/1.jpg') }}" alt="small product">
-                        </a>
-                    </div>
-                    <div class="htc__best__product__details">
-                        <h2><a href="product-details.html">Product Title Here</a></h2>
-                        <ul class="rating">
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                            <li class="old"><i class="icon-star icons"></i></li>
-                        </ul>
-                        <ul class="pro__prize">
-                            <li class="old__prize">$82.5</li>
-                            <li>$75.2</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-            </div>
+            @endforeach
         </div>
-        <!-- End Best Sell Area -->
     </div>
 </div>

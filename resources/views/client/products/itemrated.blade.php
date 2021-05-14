@@ -1,4 +1,3 @@
-<!-- Start Single Product -->
 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="htc__best__product">
         <div class="htc__best__pro__thumb">
@@ -29,4 +28,3 @@
         </div>
     </div>
 </div>
-<!-- End Single Product -->

@@ -12,6 +12,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7" style="margin-bottom: 4em">
+                @if(count($comments) == 0)
+                <h2 class="text-center" style="font-size: 1.5em">
+                    Chưa có đánh giá nào cho sản phẩm này.
+                </h2>
+                @endif
                 @foreach ($comments as $comment)
                     <div class="testimonial" style="margin-bottom: 30px">
                         <div class="testimonial__thumb" style="width: 20px">
@@ -42,7 +47,7 @@
                     <form action="{{ asset('be-admin/comments') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="">Đánh Giá</label>
+                            <label for="" style="font-size: 18px">Đánh Giá</label>
                             <ul class="rating">
                                 <li class="icon-select"><i class="icon-star icons"></i></li>
                                 <li class="icon-select"><i class="icon-star icons"></i></li>
