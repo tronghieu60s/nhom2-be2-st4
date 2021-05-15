@@ -41,12 +41,7 @@ class AdminProductsController extends Controller
 
     public function create()
     {
-        $manufacturers = Manufacturer::all();
-        $categories = Category::all();
-        return view('admin.pages.products.create', [
-            'manufacturers' => $manufacturers,
-            'categories' => $categories,
-        ]);
+        return view('admin.pages.products.create');
     }
 
     public function store(Request $request)
@@ -90,12 +85,8 @@ class AdminProductsController extends Controller
     public function edit($id)
     {
         $product = Product::where("product_id", $id)->get()[0];
-        $manufacturers = Manufacturer::all();
-        $categories = Category::all();
         return view('admin.pages.products.edit', [
             'product' => $product,
-            'manufacturers' => $manufacturers,
-            'categories' => $categories
         ]);
     }
 

@@ -12,15 +12,16 @@ class AdminOrdersController extends Controller
     {
         $orders = Order::all()->reverse();
         $order_details = OrderDetail::all()->reverse();
-
-        return view('admin.pages.orders.index', ["orders" => $orders, "order_details" => $order_details]);
+        return view('admin.pages.orders.index', [
+            "orders" => $orders,
+            "order_details" => $order_details
+        ]);
     }
 
     public function destroy($order_id)
     {
         OrderDetail::where("order_id", $order_id)->delete();
         Order::where("order_id", $order_id)->delete();
-        //return redirect("/be-admin/order");
         return redirect()->back()->with("alert", "Xóa thành công");
     }
 
@@ -29,7 +30,6 @@ class AdminOrdersController extends Controller
 
         $order = Order::find($order_id);
         $order->order_status = 1;
-
         $order->save();
         return redirect()->back()->with("alert", "Duyệt thành công");
     }
