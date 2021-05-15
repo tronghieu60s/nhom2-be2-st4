@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->integer('product_price')->default(0);
             $table->string('product_image');
-            $table->text('product_description');
+            $table->text('product_description')->default("");
             $table->integer('product_available')->default(0);
 
             $table->unsignedBigInteger('manufacturer_id');

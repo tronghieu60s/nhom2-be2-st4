@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Product;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -26,11 +27,13 @@ class AuthController extends Controller
         $username = request("username");
         $password = request("password");
         $user = User::where("user_username", $username)->get();
-        if (count($user) === 0) return redirect()->back()->with('alert', 'Tài khoản hoặc mật khẩu không chính xác.');
+        if (count($user) === 0) return redirect()
+            ->back()->with('alert', 'Tài khoản hoặc mật khẩu không chính xác.');
 
         $user = $user[0];
-        if (!$user || $user->user_password != $password)
-            return redirect()->back()->with('alert', 'Tài khoản hoặc mật khẩu không chính xác.');
+        if (!Hash::check($password, $user->user_password))
+            return redirect()
+                ->back()->with('alert', 'Tài khoản hoặc mật khẩu không chính xác.');
 
         session(['.config_user' => $user]);
 
@@ -57,8 +60,10 @@ class AuthController extends Controller
 
         $newUser = new User;
         $newUser->user_username = $username;
-        $newUser->user_password = $password;
+        $hashed = Hash::make($password, ['rounds' => 12,]);
+        $newUser->user_password = $hashed;
         $newUser->save();
+
         return redirect("sign-in")->with('alert', 'Tạo tài khoản thành công. Vui lòng đăng nhập.');
     }
 }

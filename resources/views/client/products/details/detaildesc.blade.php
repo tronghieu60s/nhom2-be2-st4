@@ -1,6 +1,6 @@
 <div class="ht__pro__desc">
     <div class="sin__desc">
-        <p><span>Số lượng còn lại:</span> {{ $product->product_available }} In Stock</p>
+        <p><span>Số lượng còn lại:</span> {{ $product->product_available }} Trong Kho</p>
     </div>
     <div class="sin__desc align--left">
         <p><span>Nhà sản xuất:</span> {{ $product->manufacturer->manufacturer_name }}</p>

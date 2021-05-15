@@ -15,7 +15,7 @@ class AdminProductsController extends Controller
     {
         // count all products
         $products = Product::orderBy("product_id", "DESC");
-        $countAllProduct = Product::all()->count(); 
+        $countAllProduct = Product::all()->count();
 
         // search form
         $search = request()->query("search");
@@ -78,7 +78,8 @@ class AdminProductsController extends Controller
                 $categorizable->save();
             }
 
-        return redirect("/be-admin/products");
+        return redirect("/be-admin/products")
+            ->with('alert', "Tạo sản phẩm thành công!");
     }
 
     public function show($id)
@@ -127,13 +128,14 @@ class AdminProductsController extends Controller
                 $categorizable->product_id = $product->product_id;
                 $categorizable->save();
             }
-        return redirect("/be-admin/products/" . $id . "/edit");
+        return redirect("/be-admin/products/" . $id . "/edit")
+            ->with("alert", "Cập nhật thành công.");
     }
 
     public function destroy($id)
     {
         Categorizable::where("product_id", $id)->delete();
         Product::where("product_id", $id)->delete();
-        return redirect("/be-admin/products");
+        return redirect()->back()->with("alert", "Xóa thành công.");
     }
 }
