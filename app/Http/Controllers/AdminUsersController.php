@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Order;
+use App\OrderDetail;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,13 +16,12 @@ class AdminUsersController extends Controller
     {
         $users = User::all();
         // var_dump($users[0]->comments[0]->comment_content);
-        return view('admin.pages.users.index',['Users'=> $users]);
+        return view('admin.pages.users.index', ['Users' => $users]);
     }
 
     public function create()
     {
         return view('admin.pages.users.create');
-        
     }
 
     public function store(Request $request)
@@ -34,7 +34,6 @@ class AdminUsersController extends Controller
         $user->save();
         return redirect("/be-admin/users")
             ->with('alert', "Tạo tài khoản thành công!");
-
     }
 
     public function show($id)
@@ -46,14 +45,12 @@ class AdminUsersController extends Controller
     {
         $user = User::where("user_id", $id)->get()[0];
         return view('admin.pages.users.edit', [
-            'user'=>$user
+            'user' => $user
         ]);
     }
 
     public function update($id)
     {
-        
-        
         $password = request('password');
         $permission = request('permission');
 
@@ -61,9 +58,8 @@ class AdminUsersController extends Controller
         $hashed = Hash::make($password, ['rounds' => 12,]);
         $password && $user->user_password = $hashed;
         $permission && $user->user_permission = $permission;
-        
-        $user->save();
 
+        $user->save();
 
         return redirect("/be-admin/users/" . $id . "/edit")
             ->with("alert", "Cập nhật thành công.");
@@ -72,6 +68,11 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         Comment::where("user_id", $id)->delete();
+        $orders = Order::where("user_id", $id)->get();
+        foreach ($orders as $order) {
+            OrderDetail::where("order_id", $order->order_id)->delete();
+        }
+
         Order::where("user_id", $id)->delete();
         User::where("user_id", $id)->delete();
         return redirect()->back()->with("alert", "Xóa thành công.");

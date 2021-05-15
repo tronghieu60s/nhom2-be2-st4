@@ -18,8 +18,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Password</label>
-                                    <input name="pass" type="password" class="form-control" placeholder="Nhập mật khẩu..."
-                                      required>
+                                    <input name="pass" type="password" class="form-control" placeholder="Nhập mật khẩu...">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Quyền Hạn</label>
