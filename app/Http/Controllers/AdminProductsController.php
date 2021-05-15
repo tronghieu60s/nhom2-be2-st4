@@ -39,7 +39,7 @@ class AdminProductsController extends Controller
         ]);
     }
 
-    public function create()
+    public function create()// tạo sản phẩm
     {
         $manufacturers = Manufacturer::all();
         $categories = Category::all();
@@ -49,7 +49,7 @@ class AdminProductsController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request) // thêm
     {
         $name = request("name");
         $manufacturer = request("manufacturer");
@@ -82,12 +82,12 @@ class AdminProductsController extends Controller
             ->with('alert', "Tạo sản phẩm thành công!");
     }
 
-    public function show($id)
+    public function show($id) // hiển thị
     {
         return redirect()->action('AdminProductsController@edit', [$id]);
     }
 
-    public function edit($id)
+    public function edit($id)// hiển thị sửa
     {
         $product = Product::where("product_id", $id)->get()[0];
         $manufacturers = Manufacturer::all();
@@ -99,7 +99,7 @@ class AdminProductsController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) //sửa 
     {
         $name = request("name");
         $manufacturer = request("manufacturer");
@@ -132,7 +132,7 @@ class AdminProductsController extends Controller
             ->with("alert", "Cập nhật thành công.");
     }
 
-    public function destroy($id)
+    public function destroy($id)// xóa
     {
         Categorizable::where("product_id", $id)->delete();
         Product::where("product_id", $id)->delete();

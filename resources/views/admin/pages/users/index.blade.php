@@ -22,27 +22,36 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($Users as $user)
+
                                 <tr>
-                                    <td>123</td>
-                                    <td>Username</td>
-                                    <td>Administrator</td>
+                                    <td>{{$user->user_id}}</td>
+                                    <td>{{$user->user_username}}</td>
+                                    <td>
+                                        @if($user->user_permission == '9')
+                                        Administrator 
+                                         @else
+                                         Nomal User
+                                         @endif
+                                    </td>
                                     <td class="table-action">
                                         <div class="d-flex align-items-center">
-                                            <a href="{{ asset('/be-admin/users/1/edit') }}">
+                                            <a href="{{ asset('/be-admin/users/'. $user->user_id.'/edit') }}">
                                                 <button type="button" class="btn">
                                                     <i class="align-middle" data-feather="edit-2"></i>
                                                 </button>
                                             </a>
-                                            <form class="mb-0" action="{{ asset('/be-admin/users/1') }}" method="POST">
-                                                @method('DELETE')
+                                            <form action="{{ asset('/be-admin/users/' . $user->user_id) }}"
+                                                method="POST">
                                                 @csrf
-                                                <input type="text" name="type" value="manufacturer" style="display: none">
+                                                @method('DELETE')
                                                 <button class="btn" type="submit"><i class="align-middle"
                                                         data-feather="trash"></i></button>
                                             </form>
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
