@@ -3,18 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\OrderDetail;
+use Illuminate\Http\Request;
 
 class AdminOrdersController extends Controller
 {
     public function index()
     {
-        $orders = Order::all();
-        var_dump($orders[0]->details[0]->product->product_name);
-        return view('admin.pages.orders.index');
+        $orders = Order::all()->reverse();
+        $order_details = OrderDetail::all()->reverse();
+
+        return view('admin.pages.orders.index', ["orders" => $orders, "order_details" => $order_details]);
     }
 
-    public function destroy($id)
+    public function destroy($order_id)
     {
-        return "xóa đơn đặt hàng " . $id;
+        OrderDetail::where("order_id", $order_id)->delete();
+        Order::where("order_id", $order_id)->delete();
+        //return redirect("/be-admin/order");
+        return redirect()->back()->with("alert", "Xóa thành công");
+    }
+
+    public function update(Request $request, $order_id)
+    {
+
+        $order = Order::find($order_id);
+        $order->order_status = 1;
+
+        $order->save();
+        return redirect()->back()->with("alert", "Duyệt thành công");
     }
 }

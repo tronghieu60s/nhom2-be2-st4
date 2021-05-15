@@ -24,7 +24,7 @@ Route::middleware(['user-permission'])->group(function () {
         Route::resource('users', 'AdminUsersController');
         Route::resource('taxonomies', 'AdminTaxonomiesController');
         Route::resource('orders', 'AdminOrdersController')
-            ->only(['index', 'destroy']);
+            ->only(['index', 'destroy', 'update']);
         Route::resource('comments', 'AdminCommentsController')
             ->only(['index', 'store', 'destroy']);
     });
