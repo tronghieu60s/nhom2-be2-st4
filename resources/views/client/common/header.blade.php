@@ -70,16 +70,16 @@
                                 <a href="#"><i class="icon-magnifier icons"></i></a>
                             </div>
                             <div class="header__account">
-                                <a style="display: flex" href="/sign-in">
+                                <a style="display: flex" href="{{ asset('user') }}">
                                     <i class="icon-user icons" style="margin-right: 10px"></i>
                                     {{ session('.config_user') ? session('.config_user')->user_username : '' }}</a>
                             </div>
-                            @if(session('.config_user'))
-                            <div class="header__account">
-                                <a href="{{ asset('logout') }}" title="Đăng Xuất">
-                                    <i class="icon-logout icons" style="margin-right: 10px"></i>
-                                </a>
-                            </div>
+                            @if (session('.config_user'))
+                                <div class="header__account">
+                                    <a href="{{ asset('logout') }}" title="Đăng Xuất">
+                                        <i class="icon-logout icons" style="margin-right: 10px"></i>
+                                    </a>
+                                </div>
                             @endif
                             <div class="htc__shopping__cart">
                                 <a class="cart__menu" href="#"><i class="icon-handbag icons"></i>

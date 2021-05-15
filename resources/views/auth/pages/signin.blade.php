@@ -6,7 +6,7 @@
             <div class="text w-100">
                 <h2>Đăng nhập vào tài khoản của bạn</h2>
                 <p>Bạn chưa có tài khoản?</p>
-                <a href="/sign-up" class="btn btn-white btn-outline-white">Đăng Ký</a>
+                <a href="{{ asset('sign-up') }}" class="btn btn-white btn-outline-white">Đăng Ký</a>
             </div>
         </div>
         <div class="login-wrap p-4 p-lg-5">
@@ -15,16 +15,6 @@
                     <h3 class="mb-4">Đăng Nhập</h3>
                 </div>
             </div>
-            @if (session('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if (session('error'))
-                <div class="alert alert-danger" role="alert">
-                    {{ session('error') }}
-                </div>
-            @endif
             <form class="signin-form" method="POST">
                 @csrf
                 <div class="form-group mb-3">

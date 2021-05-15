@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 12, 2021 lúc 02:07 AM
+-- Thời gian đã tạo: Th5 15, 2021 lúc 04:49 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.2
 
@@ -22,19 +22,6 @@ SET time_zone = "+00:00";
 -- Cơ sở dữ liệu: `furniture_data`
 --
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `categories`
---
-
-CREATE TABLE `categories` (
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  `category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Đang đổ dữ liệu cho bảng `categories`
 --
@@ -44,19 +31,6 @@ INSERT INTO `categories` (`category_id`, `category_name`, `created_at`, `updated
 (2, 'Nội Thất Phòng Ngủ', NULL, NULL),
 (3, 'Nội Thất Nhà Bếp', NULL, NULL);
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `categorizable`
---
-
-CREATE TABLE `categorizable` (
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Đang đổ dữ liệu cho bảng `categorizable`
 --
@@ -64,36 +38,18 @@ CREATE TABLE `categorizable` (
 INSERT INTO `categorizable` (`category_id`, `product_id`, `created_at`, `updated_at`) VALUES
 (3, 1, NULL, NULL),
 (1, 3, NULL, NULL),
-(1, 1, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `comments`
---
-
-CREATE TABLE `comments` (
-  `comment_id` bigint(20) UNSIGNED NOT NULL,
-  `comment_rating` int(11) NOT NULL,
-  `comment_content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
+(1, 1, NULL, NULL),
+(1, 40, '2021-05-11 18:00:55', '2021-05-11 18:00:55'),
+(2, 40, '2021-05-11 18:00:55', '2021-05-11 18:00:55');
 
 --
--- Cấu trúc bảng cho bảng `manufacturers`
+-- Đang đổ dữ liệu cho bảng `comments`
 --
 
-CREATE TABLE `manufacturers` (
-  `manufacturer_id` bigint(20) UNSIGNED NOT NULL,
-  `manufacturer_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `comments` (`comment_id`, `comment_rating`, `comment_content`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(1, 5, 'Sản phẩm rất tốt', 1, 1, NULL, NULL),
+(2, 5, 'sản phẩm rất ok, tuyệt vời', 4, 1, '2021-05-13 19:51:46', '2021-05-13 19:51:46'),
+(3, 5, 'sản phẩm ok', 4, 5, '2021-05-13 20:25:14', '2021-05-13 20:25:14');
 
 --
 -- Đang đổ dữ liệu cho bảng `manufacturers`
@@ -102,18 +58,6 @@ CREATE TABLE `manufacturers` (
 INSERT INTO `manufacturers` (`manufacturer_id`, `manufacturer_name`, `created_at`, `updated_at`) VALUES
 (1, 'Không phân loại', NULL, NULL),
 (2, 'Ashley', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `migrations`
@@ -128,53 +72,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2021_04_14_160229_create_categorizable_table', 1),
 (7, '2021_04_15_160908_create_comments_table', 1),
 (8, '2021_04_16_021344_create_order_details_table', 1);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `orders`
---
-
-CREATE TABLE `orders` (
-  `order_id` bigint(20) UNSIGNED NOT NULL,
-  `order_status` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `order_details`
---
-
-CREATE TABLE `order_details` (
-  `detail_id` bigint(20) UNSIGNED NOT NULL,
-  `detail_quantity` int(11) NOT NULL,
-  `order_id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `products`
---
-
-CREATE TABLE `products` (
-  `product_id` bigint(20) UNSIGNED NOT NULL,
-  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_price` int(11) NOT NULL DEFAULT 0,
-  `product_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no_image.png',
-  `product_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `product_available` int(11) NOT NULL DEFAULT 0,
-  `manufacturer_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `products`
@@ -220,22 +117,7 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_
 (37, 'GIƯỜNG NGỦ BE-720', 57824000, 'BE-720_832x832.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti.', 1, 2, '2021-04-26 15:23:31', NULL),
 (38, 'Bàn cafe TA-674A', 8700000, 'TA-674A-01_960x960.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti.', 1, 2, '2021-04-26 15:25:54', NULL),
 (39, 'Kệ Tivi TV-645', 8528000, 'z2280762993719_782c603dfa8560295036306282ee80ae_960x960.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti.', 1, 2, '2021-04-26 15:27:40', NULL),
-(40, 'Kệ Tivi TV-700', 19864000, '1_10_-min_832x832.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti.', 1, 2, '2021-04-26 15:29:15', NULL);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `users`
---
-
-CREATE TABLE `users` (
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `user_username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_permission` int(11) NOT NULL DEFAULT 1,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(40, 'Kệ Tivi TV-700 AAZZ', 19864000, '1_10_-min_832x832.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quis eum officiis repudiandae animi praesentium. Nam aliquam cum laudantium, consequuntur modi placeat quae rerum illum, eum vel fugiat deleniti.', 1, 2, '2021-04-26 15:29:15', '2021-05-11 17:57:15');
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
@@ -244,155 +126,6 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `user_username`, `user_password`, `user_permission`, `created_at`, `updated_at`) VALUES
 (1, 'admin', '12345', 9, '2021-05-10 00:39:27', '2021-05-10 00:39:27'),
 (4, 'admine', '123', 1, '2021-05-10 17:17:21', '2021-05-10 17:17:21');
-
---
--- Chỉ mục cho các bảng đã đổ
---
-
---
--- Chỉ mục cho bảng `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Chỉ mục cho bảng `categorizable`
---
-ALTER TABLE `categorizable`
-  ADD KEY `categorizable_category_id_foreign` (`category_id`),
-  ADD KEY `categorizable_product_id_foreign` (`product_id`);
-
---
--- Chỉ mục cho bảng `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`comment_id`),
-  ADD KEY `comments_user_id_foreign` (`user_id`),
-  ADD KEY `comments_product_id_foreign` (`product_id`);
-
---
--- Chỉ mục cho bảng `manufacturers`
---
-ALTER TABLE `manufacturers`
-  ADD PRIMARY KEY (`manufacturer_id`);
-
---
--- Chỉ mục cho bảng `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`);
-
---
--- Chỉ mục cho bảng `order_details`
---
-ALTER TABLE `order_details`
-  ADD PRIMARY KEY (`detail_id`),
-  ADD KEY `order_details_order_id_foreign` (`order_id`),
-  ADD KEY `order_details_product_id_foreign` (`product_id`),
-  ADD KEY `order_details_user_id_foreign` (`user_id`);
-
---
--- Chỉ mục cho bảng `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`),
-  ADD KEY `products_manufacturer_id_foreign` (`manufacturer_id`);
-
---
--- Chỉ mục cho bảng `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
--- AUTO_INCREMENT cho bảng `categories`
---
-ALTER TABLE `categories`
-  MODIFY `category_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `comments`
---
-ALTER TABLE `comments`
-  MODIFY `comment_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `manufacturers`
---
-ALTER TABLE `manufacturers`
-  MODIFY `manufacturer_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT cho bảng `orders`
---
-ALTER TABLE `orders`
-  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `order_details`
---
-ALTER TABLE `order_details`
-  MODIFY `detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `products`
---
-ALTER TABLE `products`
-  MODIFY `product_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-
---
--- AUTO_INCREMENT cho bảng `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Các ràng buộc cho các bảng đã đổ
---
-
---
--- Các ràng buộc cho bảng `categorizable`
---
-ALTER TABLE `categorizable`
-  ADD CONSTRAINT `categorizable_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`),
-  ADD CONSTRAINT `categorizable_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
-
---
--- Các ràng buộc cho bảng `comments`
---
-ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
-
---
--- Các ràng buộc cho bảng `order_details`
---
-ALTER TABLE `order_details`
-  ADD CONSTRAINT `order_details_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
-  ADD CONSTRAINT `order_details_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `order_details_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
-
---
--- Các ràng buộc cho bảng `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_manufacturer_id_foreign` FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturers` (`manufacturer_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

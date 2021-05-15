@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
-Route::get('cart', 'CartController@index');
+Route::get('user', 'UserController@index');
 Route::resource('products', 'ProductsController')->only(['index', 'show']);
+Route::resource('cart', 'CartController')->only(['index', 'store']);
 
 Route::middleware(['auth-permission'])->group(function () {
     Route::get('sign-in', 'AuthController@signin');

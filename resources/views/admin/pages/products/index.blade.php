@@ -10,8 +10,8 @@
                 <div class="col-6 d-flex justify-content-end">
                     <form class="form-inline d-none d-sm-inline-block">
                         <div class="input-group input-group-navbar">
-                            <input name="search" type="text" class="form-control" placeholder="Tìm kiếm..." aria-label="Search"
-                                value="{{ request()->query('search') }}">
+                            <input name="search" type="text" class="form-control" placeholder="Tìm kiếm..."
+                                aria-label="Search" value="{{ request()->query('search') }}">
                             <div class="input-group-append">
                                 <button class="btn" type="submit">
                                     <i class="align-middle" data-feather="search"></i>
@@ -72,8 +72,8 @@
                                                 </a>
                                                 <form action="{{ asset('/be-admin/products/' . $product->product_id) }}"
                                                     method="POST">
-                                                    @method('DELETE')
                                                     @csrf
+                                                    @method('DELETE')
                                                     <button class="btn" type="submit"><i class="align-middle"
                                                             data-feather="trash"></i></button>
                                                 </form>

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Order;
+use App\OrderDetail;
+use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+
     public function index()
     {
         $product = request()->query("product");
@@ -30,5 +33,26 @@ class CartController extends Controller
         }
 
         return view('client.pages.cart');
+    }
+
+    public function store()
+    {
+        $userId = session()->get(".config_user")->user_id;
+        $cartProducts = session()->get(".cart_products");
+
+        $order = new Order;
+        $order->user_id = $userId;
+        $order->save();
+        foreach ($cartProducts as $key => $value) {
+            $detail = new OrderDetail;
+            $detail->detail_quantity = $value;
+            $detail->order_id = $order->order_id;
+            $detail->product_id = $key;
+            $detail->save();
+        }
+
+        session()->forget(".cart_products");
+
+        return redirect("user")->with('alert', 'Đặt Hàng Thành Công.');
     }
 }

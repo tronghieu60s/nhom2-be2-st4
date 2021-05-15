@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="fr__product__inner">
-            <h4><a href="product-details.html">{{ $product->product_name }}</a></h4>
+            <h4><a href="{{ asset('products/'.$product->product_id) }}">{{ $product->product_name }}</a></h4>
             <ul class="fr__pro__prize">
                 <li>{{  number_format($product->product_price) }} VNĐ</li>
             </ul>

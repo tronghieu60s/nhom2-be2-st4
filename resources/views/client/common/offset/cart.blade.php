@@ -4,6 +4,9 @@
             <a href="#"><i class="zmdi zmdi-close"></i></a>
         </div>
         <div class="shp__cart__wrap">
+            @if (count($cartProducts) === 0)
+                <h3 style="margin-bottom: 10px">Chưa có sản phẩm nào.</h3>
+            @endif
             @foreach ($cartProducts as $product)
                 <div class="shp__single__product">
                     <div class="shp__pro__thumb">

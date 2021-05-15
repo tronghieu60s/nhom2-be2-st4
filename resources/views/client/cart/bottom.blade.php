@@ -38,7 +38,14 @@
             </div>
             <ul class="payment__btn">
                 @if (session('.config_user'))
-                    <li class="active"><a href="#">Mua Hàng Ngay</a></li>
+                    <li class="active">
+                        <form method="POST">
+                            @csrf
+                            <button type="submit" style="border: 0; width: 100%;">
+                                <a>Mua Hàng Ngay</a>
+                            </button>
+                        </form>
+                    </li>
                 @endif
                 <li><a href="{{ asset('products') }}">Tiếp tục mua sắm</a></li>
             </ul>
