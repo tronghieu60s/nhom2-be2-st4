@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUsersController extends Controller
 {
@@ -11,18 +14,27 @@ class AdminUsersController extends Controller
     public function index()
     {
         $users = User::all();
-        var_dump($users[0]->comments[0]->comment_content);
-        return view('admin.pages.users.index');
+        // var_dump($users[0]->comments[0]->comment_content);
+        return view('admin.pages.users.index',['Users'=> $users]);
     }
 
     public function create()
     {
         return view('admin.pages.users.create');
+        
     }
 
     public function store(Request $request)
     {
-        return "create users";
+        $user = new User;
+        $user->user_username = request('username');
+        $hashed = Hash::make(request('password'), ['rounds' => 12,]);
+        $user->user_password = $hashed;
+        $user->user_permission =  request('permission');
+        $user->save();
+        return redirect("/be-admin/users")
+            ->with('alert', "Tạo tài khoản thành công!");
+
     }
 
     public function show($id)
@@ -32,16 +44,36 @@ class AdminUsersController extends Controller
 
     public function edit($id)
     {
-        return view('admin.pages.users.edit');
+        $user = User::where("user_id", $id)->get()[0];
+        return view('admin.pages.users.edit', [
+            'user'=>$user
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        return "update users";
+        
+        
+        $password = request('password');
+        $permission = request('permission');
+
+        $user = User::find($id);
+        $hashed = Hash::make($password, ['rounds' => 12,]);
+        $password && $user->user_password = $hashed;
+        $permission && $user->user_permission = $permission;
+        
+        $user->save();
+
+
+        return redirect("/be-admin/users/" . $id . "/edit")
+            ->with("alert", "Cập nhật thành công.");
     }
 
     public function destroy($id)
     {
-        return "destroy users";
+        Comment::where("user_id", $id)->delete();
+        Order::where("user_id", $id)->delete();
+        User::where("user_id", $id)->delete();
+        return redirect()->back()->with("alert", "Xóa thành công.");
     }
 }
