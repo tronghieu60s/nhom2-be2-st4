@@ -12,13 +12,23 @@
             <div class="row">
                 <div class="col-12">
                     <div style="margin-bottom: 20px">
-                        <a href="{{ request()->fullUrlWithQuery(['status' => null]) }}">
-                            <button type="button" class="btn btn-primary">
-                                Tất Cả</button></a>
-                        <a href="{{ request()->fullUrlWithQuery(['status' => 1]) }}">
-                            <button type="button" class="btn btn-primary">Sản Phẩm Đã Giao</button></a>
-                        <a href="{{ request()->fullUrlWithQuery(['status' => 0]) }}">
-                            <button type="button" class="btn btn-primary">Sản Phẩm Đang Xử Lý</button></a>
+                        <div class="form-group" style="width: 200px">
+                            <label for="">Hiển Thị:</label>
+                            @php
+                                $status = request()->query('status');
+                                if (!$status === '') {
+                                    $status = '';
+                                }
+                            @endphp
+                            <select class="form-control" onchange="window.location.href=this.value">
+                                <option value="{{ request()->fullUrlWithQuery(['status' => '']) }}" @if ($status == '') selected @endif>Tất
+                                    Cả</option>
+                                <option value="{{ request()->fullUrlWithQuery(['status' => '1']) }}" @if ($status == '1') selected @endif>Sản Phẩm Đã Giao
+                                </option>
+                                <option value="{{ request()->fullUrlWithQuery(['status' => '0']) }}" @if ($status == '0') selected @endif>Sản Phẩm Đang Xử Lý
+                                </option>
+                            </select>
+                        </div>
                     </div>
                     <div class="card">
                         <table class="table table-striped table-bordered">
