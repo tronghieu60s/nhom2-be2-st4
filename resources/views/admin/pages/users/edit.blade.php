@@ -18,7 +18,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Password</label>
-                                    <input name="pass" type="password" class="form-control" placeholder="Nhập mật khẩu...">
+                                    <input name="password" type="password" class="form-control" placeholder="Nhập mật khẩu..."
+                                    value = "...">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Quyền Hạn</label>
