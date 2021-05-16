@@ -37,8 +37,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if (count($users) == 0)
+                                    <tr>
+                                        <td colspan="5" class="text-center">Không có người dùng nào.</td>
+                                    </tr>
+                                @endif
                                 @foreach ($users as $user)
-
                                     <tr>
                                         <td>{{ $user->user_id }}</td>
                                         <td>{{ $user->user_username }}</td>

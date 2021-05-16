@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 15, 2021 lúc 09:54 AM
+-- Thời gian đã tạo: Th5 16, 2021 lúc 10:50 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.2
 
@@ -221,8 +221,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_status`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 0, 5, '2021-05-14 20:09:48', '2021-05-14 20:09:48'),
-(2, 1, 1, '2021-05-14 23:53:42', '2021-05-14 23:53:42');
+(3, 0, 1, '2021-05-15 18:12:41', '2021-05-15 18:12:41');
 
 -- --------------------------------------------------------
 
@@ -244,9 +243,8 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`detail_id`, `detail_quantity`, `order_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 35, '2021-05-14 20:09:48', '2021-05-14 20:09:48'),
-(2, 1, 1, 3, '2021-05-14 20:09:48', '2021-05-14 20:09:48'),
-(3, 1, 2, 39, '2021-05-14 23:53:42', '2021-05-14 23:53:42');
+(4, 2, 3, 33, '2021-05-15 18:12:41', '2021-05-15 18:12:41'),
+(5, 1, 3, 23, '2021-05-15 18:12:41', '2021-05-15 18:12:41');
 
 -- --------------------------------------------------------
 
@@ -332,9 +330,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_username`, `user_password`, `user_permission`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$12$4o/NfE4hi1kUOY4t5J3Eo.DwdVvo0GXFZxoE3mbKrBTCkC9AaiTrq', 9, '2021-05-09 17:39:27', '2021-05-09 17:39:27'),
-(4, 'admine', '$2y$12$4o/NfE4hi1kUOY4t5J3Eo.DwdVvo0GXFZxoE3mbKrBTCkC9AaiTrq', 1, '2021-05-10 10:17:21', '2021-05-10 10:17:21'),
-(5, 'tronghieu60s', '$2y$12$4o/NfE4hi1kUOY4t5J3Eo.DwdVvo0GXFZxoE3mbKrBTCkC9AaiTrq', 1, '2021-05-14 20:02:45', '2021-05-14 20:02:45');
+(1, 'admin', '$2y$12$Lzu78U/pN56RwDSzZHCfX.kjeN9m0HP6TCorTPWN3folGs.yLGlam', 9, '2021-05-09 17:39:27', '2021-05-16 01:47:32'),
+(4, 'admine', '$2y$12$4o/NfE4hi1kUOY4t5J3Eo.DwdVvo0GXFZxoE3mbKrBTCkC9AaiTrq', 1, '2021-05-10 10:17:21', '2021-05-10 10:17:21');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -433,13 +430,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
@@ -451,7 +448,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
