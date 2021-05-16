@@ -35,7 +35,8 @@
                             <thead>
                                 <tr>
                                     <th style="width:10%;">Mã Đơn</th>
-                                    <th style="width:30%;">Các Sản Phẩm</th>
+                                    <th style="width:30%;">Sản Phẩm</th>
+                                    <th style="width:30%;">Tổng tiền</th>
                                     <th style="width:20%;">Người Mua</th>
                                     <th style="width:20%">Trạng thái đơn hàng</th>
                                     <th style="width:15%">Thời Gian</th>
@@ -43,7 +44,7 @@
                                 </tr>
                             </thead>
                             @foreach ($orders as $order)
-                          
+                       
                                 <tbody>
                                     <tr>
                                         <td>{{ $order->order_id }}</td>

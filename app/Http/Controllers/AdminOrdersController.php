@@ -15,7 +15,11 @@ class AdminOrdersController extends Controller
         $countAllOrder = Order::all()->count();
         $perPage = request()->query("perPage");
         if (!$perPage) $perPage = 6;
-        
+        $orders = $this->paginate($orders,$perPage);
+
+        $status = request()->query('status');
+        if ($status != '') $orders = Order::where('order_status', $status)->get();
+
         return view('admin.pages.orders.index', [
             "orders" => $orders,
             "order_details" => $order_details,
