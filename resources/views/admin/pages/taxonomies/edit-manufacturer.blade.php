@@ -8,13 +8,14 @@
                 <div class="col-12 col-6">
                     <div class="card px-5">
                         <div class="card-body">
-                            <form action="{{ asset('be-admin/taxonomies/1') }}" method="POST">
+                            <form action="{{ asset('be-admin/taxonomies/'.$manufacturer->manufacturer_id) }}" method="POST">
                                 @csrf
                                 {{ method_field('PUT') }}
                                 <input type="text" name="type" value="manufacturer" style="display: none">
                                 <div class="form-group">
                                     <label class="form-label">Tên Hãng Sản Xuất</label>
-                                    <input name="name" type="text" class="form-control" placeholder="Nhập tên..." required>
+                                    <input name="name" type="text" class="form-control" placeholder="Nhập tên..." required 
+                                        value="{{ $manufacturer->manufacturer_name }}">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Sửa</button>
                             </form>

@@ -10,12 +10,7 @@ class AdminTaxonomiesController extends Controller
 {
     public function index()
     {
-        $manufacturers = Manufacturer::all();
-        var_dump($manufacturers[0]->manufacturer_name);
-
-        $categories = Category::all();
-        var_dump($categories[0]->category_name);
-
+        // 
         return view('admin.pages.taxonomies.index');
     }
 
@@ -34,14 +29,23 @@ class AdminTaxonomiesController extends Controller
 
     public function store()
     {
+        $name = request("name");
         if (request("type") == "manufacturer") {
             // làm hãng sx trong này
-            return "tạo nhà sx";
+            $manufacturer = new Manufacturer;
+            $manufacturer->manufacturer_name = $name;
+            $manufacturer->save();
+            return redirect("/be-admin/taxonomies")
+            ->with('alert', "Tạo nhà sản xuất thành công!");
         }
 
         if (request("type") == "category") {
             // làm chuyen muc trong này
-            return "tạo loại";
+            $category = new Category;
+            $category->category_name = $name;
+            $category->save();
+            return redirect("/be-admin/taxonomies")
+            ->with('alert', "Tạo nhà sản xuất thành công!");
         }
     }
     
@@ -52,27 +56,41 @@ class AdminTaxonomiesController extends Controller
 
     public function edit($id)
     {
+
         if (request()->query("type") == "manufacturer") {
             // làm hãng sx trong này
-            return view('admin.pages.taxonomies.edit-manufacturer');
+            $manufacturer = Manufacturer::where("manufacturer_id", $id)->get()[0];
+            return view('admin.pages.taxonomies.edit-manufacturer', [
+                'manufacturer' => $manufacturer,]);
         }
 
         if (request()->query("type") == "category") {
             // làm chuyen muc trong này
-            return view('admin.pages.taxonomies.edit-category');
+            $category = Category::where("category_id", $id)->get()[0];
+            return view('admin.pages.taxonomies.edit-category', [
+                'category' => $category,]);
         }
     }
 
     public function update(Request $request, $id)
     {
+        $name = request("name");
         if (request("type") == "manufacturer") {
             // làm hãng sx trong này
-            return "cập nhật nhà sx";
+            $manufacturer = Manufacturer::find($id);
+            $name && $manufacturer->manufacturer_name = $name;
+            $manufacturer->save();
+            return redirect("/be-admin/taxonomies/" . $id . "/edit?type=manufacturer")
+            ->with("alert", "Cập nhật thành công.");
         }
 
         if (request("type") == "category") {
             // làm chuyen muc trong này
-            return "cập nhật loại";
+            $category = Category::find($id);
+            $name && $category->category_name = $name;
+            $category->save();
+            return redirect("/be-admin/taxonomies/" . $id . "/edit?type=category")
+            ->with("alert", "Cập nhật thành công.");
         }
     }
 
@@ -80,12 +98,14 @@ class AdminTaxonomiesController extends Controller
     {
         if (request("type") == "manufacturer") {
             // làm hãng sx trong này
-            return "xóa nhà sx";
+            Manufacturer::where("manufacturer_id", $id)->delete();
+            return redirect()->back()->with("alert", "Xóa thành công.");
         }
 
         if (request("type") == "category") {
             // làm chuyen muc trong này
-            return "xóa loại";
+            Category::where("category_id", $id)->delete();
+            return redirect()->back()->with("alert", "Xóa thành công.");
         }
     }
 }
