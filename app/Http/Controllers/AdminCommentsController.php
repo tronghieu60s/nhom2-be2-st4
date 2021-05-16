@@ -10,14 +10,22 @@ class AdminCommentsController extends Controller
     public function index()
     {
         $comments = Comment::all();
-        var_dump($comments[0]->user->user_username);
-        var_dump($comments[0]->product->product_name);
-        return view('admin.pages.comments.index');
+        // var_dump($comments[0]->user->user_username);
+
+        // var_dump($comments[0]->product->product_name);
+        return view('admin.pages.comments.index',
+    [
+        "comments" => $comments
+
+
+    ]);
+        
     }
 
     public function destroy($id)
     {
-        return "xóa bình luận " . $id;
+        Comment::where("comment_id", $id)->delete();
+        return redirect()->back()->with("alert", "Xóa thành công.");
     }
 
     public function store(Request $request)
