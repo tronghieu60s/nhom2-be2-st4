@@ -23,17 +23,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($manufacturers as $manufacturer)
                                 <tr>
-                                    <td>1</td>
-                                    <td>nha san xuat</td>
+                                    <td>{{$manufacturer->manufacturer_id}}</td>
+                                    <td>{{$manufacturer->manufacturer_name}}</td>
                                     <td class="table-action">
                                         <div class="d-flex align-items-center">
-                                            <a href="{{ asset('be-admin/taxonomies/1/edit?type=manufacturer') }}">
+                                            <a href="{{ asset('be-admin/taxonomies/'.$manufacturer->manufacturer_id.'/edit?type=manufacturer') }}">
                                                 <button type="button" class="btn">
                                                     <i class=" align-middle" data-feather="edit-2"></i>
                                                 </button>
                                             </a>
-                                            <form class="mb-0" action="{{ asset('/be-admin/taxonomies/1') }}" method="POST">
+                                            <form class="mb-0" action="{{ asset('/be-admin/taxonomies/'.$manufacturer->manufacturer_id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <input type="text" name="type" value="manufacturer" style="display: none">
@@ -43,6 +44,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -65,17 +67,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($categories as $category)
                                 <tr>
-                                    <td>dasdsad</td>
-                                    <td>type</td>
+                                    <td>{{$category->category_id}}</td>
+                                    <td>{{$category->category_name}}</td>
                                     <td class="table-action">
                                         <div class="d-flex align-items-center">
-                                            <a href="{{ asset('be-admin/taxonomies/1/edit?type=category') }}">
+                                            <a href="{{ asset('be-admin/taxonomies/'.$category->category_id.'/edit?type=category') }}">
                                                 <button type="button" class="btn">
                                                     <i class=" align-middle" data-feather="edit-2"></i>
                                                 </button>
                                             </a>
-                                            <form class="mb-0" action="{{ asset('/be-admin/taxonomies/1') }}" method="POST">
+                                            <form class="mb-0" action="{{ asset('/be-admin/taxonomies/'.$category->category_id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <input type="text" name="type" value="category" style="display: none">
@@ -85,6 +88,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
