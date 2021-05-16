@@ -3,31 +3,32 @@
 @section('content')
     <main class="content">
         <div class="container-fluid p-0">
-            <div class="row py-3 mb-3" style="background-color: #fff;">
+            <div class="row py-3 mb-3">
                 <div class="col-6 d-flex align-items-center">
                     <h1 class="h3 mb-0">Sản Phẩm</h1>
-                </div>
-                <div class="col-6 d-flex justify-content-end">
-                    <form class="form-inline d-none d-sm-inline-block">
-                        <div class="input-group input-group-navbar">
-                            <input name="search" type="text" class="form-control" placeholder="Tìm kiếm..."
-                                aria-label="Search" value="{{ request()->query('search') }}">
-                            <div class="input-group-append">
-                                <button class="btn" type="submit">
-                                    <i class="align-middle" data-feather="search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 my-2">
-                    <a href="{{ asset('be-admin/products/create') }}">
-                        <button type="button" class="btn btn-primary">
-                            Thêm
-                        </button>
-                    </a>
+                    <div style="display: flex; justify-content: space-between">
+                        <a href="{{ asset('be-admin/products/create') }}">
+                            <button type="button" class="btn btn-primary">
+                                Thêm
+                            </button>
+                        </a>
+                        <form class="form-inline d-none d-sm-inline-block">
+                            <div class="input-group input-group-navbar">
+                                <input style="background-color: #fff" name="search" type="text" class="form-control"
+                                    placeholder="Tìm kiếm..." aria-label="Search"
+                                    value="{{ request()->query('search') }}">
+                                <div class="input-group-append">
+                                    <button class="btn" type="submit" style="background-color: #fff">
+                                        <i class="align-middle" data-feather="search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-12">
                     <div class="card">
