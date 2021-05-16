@@ -25,39 +25,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($comments as $comment)
-                                <tr>
-                                    <td>{{$comment->comment_id}}</td>
-                                    <td>{{$comment->user->user_username}}</td>
-                                    <td>{{$comment->comment_content}}</td>
-                                    <td>
-                                        <a href="{{asset('products/'. $comment->product->product_id)}}">{{$comment->product->product_name}}</a>
-                                    </td>
-                                    </td>
-                                    <td>
-                                       @for ($i = 0; $i < $comment->comment_rating; $i++)   
-                                       <i class="fa fa-star" aria-hidden="true" style="color: yellowgreen"></i>
-                                        @endfor 
-                                        @for ($i = 0; $i < 5 - $comment->comment_rating; $i++)
-                                        <i class="fa fa-star" aria-hidden="true" style="color: black"></i>
-                                         @endfor
-                                       
-                                    </td>
-                                    <td>
-                                        {{$comment->created_at}}
-                                    </td>
-                                    <td class="table-action">
-                                        <div class="d-flex align-items-center">
-                                            <form class="mb-0" action="{{ asset('/be-admin/comments/1') }}"
-                                                method="POST">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button class="btn" type="submit"><i class="align-middle"
-                                                data-feather="trash"></i></button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($comments as $comment)
+                                    <tr>
+                                        <td>{{ $comment->comment_id }}</td>
+                                        <td>{{ $comment->user->user_username }}</td>
+                                        <td>{{ $comment->comment_content }}</td>
+                                        <td>
+                                            <a
+                                                href="{{ asset('products/' . $comment->product->product_id) }}">{{ $comment->product->product_name }}</a>
+                                        </td>
+                                        </td>
+                                        <td>
+                                            @for ($i = 0; $i < $comment->comment_rating; $i++)
+                                                <i class="fa fa-star" aria-hidden="true" style="color: yellowgreen"></i>
+                                            @endfor
+                                            @for ($i = 0; $i < 5 - $comment->comment_rating; $i++)
+                                                <i class="fa fa-star" aria-hidden="true" style="color: black"></i>
+                                            @endfor
+
+                                        </td>
+                                        <td>
+                                            {{ $comment->created_at }}
+                                        </td>
+                                        <td class="table-action">
+                                            <div class="d-flex align-items-center">
+                                                <form class="mb-0"
+                                                    action="{{ asset('/be-admin/comments/' . $comment->comment_id) }}"
+                                                    method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn" type="submit"><i class="align-middle"
+                                                            data-feather="trash"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

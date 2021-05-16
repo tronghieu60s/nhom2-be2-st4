@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 16, 2021 lúc 10:50 AM
+-- Thời gian đã tạo: Th5 16, 2021 lúc 06:00 PM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.2
 
@@ -146,9 +146,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `comment_rating`, `comment_content`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Sản phẩm rất tốt', 1, 1, NULL, NULL),
-(2, 5, 'sản phẩm rất ok, tuyệt vời', 4, 1, '2021-05-13 12:51:46', '2021-05-13 12:51:46'),
-(3, 5, 'sản phẩm ok', 4, 5, '2021-05-13 13:25:14', '2021-05-13 13:25:14');
+(1, 2, 'Sản phẩm rất tốt', 1, 1, NULL, NULL),
+(2, 5, 'sản phẩm rất ok, tuyệt vời', 4, 1, '2021-05-13 12:51:46', '2021-05-13 12:51:46');
 
 -- --------------------------------------------------------
 
@@ -221,7 +220,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_status`, `user_id`, `created_at`, `updated_at`) VALUES
-(3, 0, 1, '2021-05-15 18:12:41', '2021-05-15 18:12:41');
+(4, 1, 1, '2021-05-16 03:36:32', '2021-05-16 03:45:27');
 
 -- --------------------------------------------------------
 
@@ -243,8 +242,9 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`detail_id`, `detail_quantity`, `order_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(4, 2, 3, 33, '2021-05-15 18:12:41', '2021-05-15 18:12:41'),
-(5, 1, 3, 23, '2021-05-15 18:12:41', '2021-05-15 18:12:41');
+(6, 2, 4, 35, '2021-05-16 03:36:32', '2021-05-16 03:36:32'),
+(7, 1, 4, 33, '2021-05-16 03:36:32', '2021-05-16 03:36:32'),
+(8, 1, 4, 18, '2021-05-16 03:36:32', '2021-05-16 03:36:32');
 
 -- --------------------------------------------------------
 
@@ -330,7 +330,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_username`, `user_password`, `user_permission`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$12$Lzu78U/pN56RwDSzZHCfX.kjeN9m0HP6TCorTPWN3folGs.yLGlam', 9, '2021-05-09 17:39:27', '2021-05-16 01:47:32'),
+(1, 'admin', '$2y$12$4o/NfE4hi1kUOY4t5J3Eo.DwdVvo0GXFZxoE3mbKrBTCkC9AaiTrq', 9, '2021-05-09 17:39:27', '2021-05-16 03:28:29'),
 (4, 'admine', '$2y$12$4o/NfE4hi1kUOY4t5J3Eo.DwdVvo0GXFZxoE3mbKrBTCkC9AaiTrq', 1, '2021-05-10 10:17:21', '2021-05-10 10:17:21');
 
 --
@@ -430,13 +430,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
