@@ -14,9 +14,30 @@ class AdminUsersController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy("user_id", "DESC");
+        $countAllUser = User::all()->count();
         // var_dump($users[0]->comments[0]->comment_content);
-        return view('admin.pages.users.index', ['Users' => $users]);
+
+        // search form
+        $search = request()->query("search");
+        if ($search) {
+            $users = User::query()
+                ->where('user_username', 'LIKE', "%{$search}%");
+
+            $countAllUser = $users->count();
+        }
+        // users pagination
+        $perPage = request()->query("perPage");
+        if (!$perPage) $perPage = 6;
+        $users = $users->paginate($perPage);
+        return view(
+            'admin.pages.users.index',
+            [
+                'users' => $users,
+                'countAllUser' => $countAllUser,
+                'perPage' => $perPage
+            ]
+        );
     }
 
     public function create()
@@ -27,6 +48,9 @@ class AdminUsersController extends Controller
     public function store(Request $request)
     {
         $user = new User;
+        $getUsers = User::where("user_username", request('username'))->get();
+        if (count($getUsers) > 0)
+            return redirect()->back()->with('alert', 'Tên người dùng đã tồn tại.');
         $user->user_username = request('username');
         $hashed = Hash::make(request('password'), ['rounds' => 12,]);
         $user->user_password = $hashed;
