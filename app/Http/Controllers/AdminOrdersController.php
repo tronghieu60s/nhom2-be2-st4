@@ -12,9 +12,15 @@ class AdminOrdersController extends Controller
     {
         $orders = Order::all()->reverse();
         $order_details = OrderDetail::all()->reverse();
+        $countAllOrder = Order::all()->count();
+        $perPage = request()->query("perPage");
+        if (!$perPage) $perPage = 6;
+        
         return view('admin.pages.orders.index', [
             "orders" => $orders,
-            "order_details" => $order_details
+            "order_details" => $order_details,
+            "countAllOrder" => $countAllOrder,
+            "perPage" => $perPage,
         ]);
     }
 
