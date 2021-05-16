@@ -46,8 +46,10 @@
                                                 <td rowspan="{{ count($order->details) }}" class="product-thumbnail">
                                                     {{ $order->order_id }}</td>
                                             @endif
-                                            <td class="product-name"><a
-                                                    href="{{ asset('products/' . $product->product_id) }}">
+                                            <td class="product-name">
+                                                <img src="{{ asset('assets/images/' . $product->product_image) }}"
+                                                    alt="product images" style="width: 100px; height: 100px"><br />
+                                                <a href="{{ asset('products/' . $product->product_id) }}">
                                                     {{ $product->product_name }}</a>
                                             </td>
                                             <td class="product-price">
@@ -112,8 +114,10 @@
                                                 <td rowspan="{{ count($order->details) }}" class="product-thumbnail">
                                                     {{ $order->order_id }}</td>
                                             @endif
-                                            <td class="product-name"><a
-                                                    href="{{ asset('products/' . $product->product_id) }}">
+                                            <td class="product-name">
+                                                <img src="{{ asset('assets/images/' . $product->product_image) }}"
+                                                    alt="product images" style="width: 100px; height: 100px"><br />
+                                                <a href="{{ asset('products/' . $product->product_id) }}">
                                                     {{ $product->product_name }}</a>
                                             </td>
                                             <td class="product-price">
