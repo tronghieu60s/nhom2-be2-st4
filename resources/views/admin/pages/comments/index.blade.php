@@ -25,23 +25,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach ($comments as $comment)
                                 <tr>
-                                    <td>1</td>
-                                    <td>username</td>
-                                    <td>day la binh luan</td>
+                                    <td>{{$comment->comment_id}}</td>
+                                    <td>{{$comment->user->user_username}}</td>
+                                    <td>{{$comment->comment_content}}</td>
                                     <td>
-                                        <a href="./products/1/">ahihih day la ten san pham</a>
+                                        <a href="{{asset('products/'. $comment->product->product_id)}}">{{$comment->product->product_name}}</a>
                                     </td>
                                     </td>
                                     <td>
-                                        <i class="fa fa-star" aria-hidden="true" style="color: yellowgreen"></i>
-                                        <i class="fa fa-star" aria-hidden="true" style="color: yellowgreen"></i>
-                                        <i class="fa fa-star" aria-hidden="true" style="color: yellowgreen"></i>
-                                        <i class="fa fa-star" aria-hidden="true" style="color: yellowgreen"></i>
-                                        <i class="fa fa-star" aria-hidden="true" style="color: yellowgreen"></i>
+                                       @for ($i = 0; $i < $comment->comment_rating; $i++)   
+                                       <i class="fa fa-star" aria-hidden="true" style="color: yellowgreen"></i>
+                                        @endfor 
+                                        @for ($i = 0; $i < 5 - $comment->comment_rating; $i++)
+                                        <i class="fa fa-star" aria-hidden="true" style="color: black"></i>
+                                         @endfor
+                                       
                                     </td>
                                     <td>
-                                        20/12/2001
+                                        {{$comment->created_at}}
                                     </td>
                                     <td class="table-action">
                                         <div class="d-flex align-items-center">
@@ -55,6 +58,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
