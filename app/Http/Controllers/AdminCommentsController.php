@@ -9,13 +9,19 @@ class AdminCommentsController extends Controller
 {
     public function index()
     {
-        $comments = Comment::all();
-        // var_dump($comments[0]->user->user_username);
-        // var_dump($comments[0]->product->product_name);
+        $comments = Comment::all()->reverse();
+        $countAllComment = Comment::all()->count();
+        // products pagination
+        $perPage = request()->query("perPage");
+        if (!$perPage) $perPage = 6;
+        $comments = $this->paginate($comments, $perPage);
+
         return view(
             'admin.pages.comments.index',
             [
-                "comments" => $comments
+                "comments" => $comments,
+                "countAllComment" => $countAllComment,
+                'perPage' => $perPage
             ]
         );
     }

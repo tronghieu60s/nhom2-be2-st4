@@ -65,7 +65,7 @@
                         </table>
                     </div>
                 </div>
-                {{-- <div class="col-12 d-flex justify-content-center">
+                <div class="col-12 d-flex justify-content-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
                             @php
@@ -74,7 +74,7 @@
                                     $page = 1;
                                 }
                             @endphp
-                            @for ($i = 0; $i < $countAllProduct / $perPage; $i++)
+                            @for ($i = 0; $i < $countAllComment / $perPage; $i++)
                                 <li class="page-item {{ $page == $i + 1 ? 'active' : '' }}">
                                     <a class="page-link" href="{{ request()->fullUrlWithQuery(['page' => $i + 1]) }}">
                                         {{ $i + 1 }}
@@ -83,7 +83,7 @@
                             @endfor
                         </ul>
                     </nav>
-                </div> --}}
+                </div>
             </div>
         </div>
     </main>
