@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'HomeController@index');
+Route::get('', 'HomeController@index');
 Route::get('user', 'UserController@index');
 Route::resource('products', 'ProductsController')->only(['index', 'show']);
 Route::resource('cart', 'CartController')->only(['index', 'store']);
 
+// middleware for authenticator
 Route::middleware(['auth-permission'])->group(function () {
     Route::get('sign-in', 'AuthController@signin');
     Route::post('sign-in', 'AuthController@signin_post');
@@ -19,14 +20,14 @@ Route::get('logout', 'AuthController@logout');
 // request admin with middleware
 Route::middleware(['user-permission'])->group(function () {
     Route::prefix('be-admin')->group(function () {
-        Route::get('/', 'AdminController@index');
+        Route::get('', 'AdminController@index');
         Route::resource('products', 'AdminProductsController');
         Route::resource('users', 'AdminUsersController');
         Route::resource('taxonomies', 'AdminTaxonomiesController');
         Route::resource('orders', 'AdminOrdersController')
             ->only(['index', 'destroy', 'update']);
         Route::resource('comments', 'AdminCommentsController')
-            ->only(['index', 'store', 'destroy']);
+            ->only(['index', 'destroy']);
     });
 });
 

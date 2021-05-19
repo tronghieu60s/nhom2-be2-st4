@@ -12,10 +12,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7" style="margin-bottom: 4em">
-                @if(count($comments) == 0)
-                <h2 class="text-center" style="font-size: 1.5em">
-                    Chưa có đánh giá nào cho sản phẩm này.
-                </h2>
+                @if (count($comments) == 0)
+                    <h2 class="text-center" style="font-size: 1.5em">
+                        Chưa có đánh giá nào cho sản phẩm này.
+                    </h2>
                 @endif
                 @foreach ($comments as $comment)
                     <div class="testimonial" style="margin-bottom: 30px">
@@ -42,6 +42,12 @@
                                 Đăng Nhập
                             </a>
                         </div>
+                    </div>
+                @elseif (count($product->orders) === 0)
+                    <div style="display: flex; flex-direction: column; align-items: center">
+                        <h2 class="text-center" style="font-size: 1.5em">
+                            Bạn phải mua sản phẩm để được bình luận, đánh giá.
+                        </h2>
                     </div>
                 @else
                     <form action="{{ asset('be-admin/comments') }}" method="post">
