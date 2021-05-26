@@ -135,6 +135,12 @@
                                                     Bạn phải mua sản phẩm để được đánh giá.
                                                 </h2>
                                             </div>
+                                        @elseif ($isRatingOnce)
+                                            <div style="display: flex; flex-direction: column; align-items: center">
+                                                <h2 class="text-center" style="font-size: 1.5em">
+                                                    Bạn chỉ được đánh giá sản phẩm một lần. Bạn không thể đánh giá.
+                                                </h2>
+                                            </div>
                                         @else
                                             <form action="{{ asset('be-admin/comments') }}" method="post">
                                                 @csrf
