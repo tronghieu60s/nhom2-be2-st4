@@ -40,7 +40,8 @@ class AdminCommentsController extends Controller
         $user = session('.config_user')->user_id;
 
         $newComment = new Comment;
-        $newComment->comment_rating = $rating;
+        if ($rating) $newComment->comment_rating = $rating;
+        else $newComment->comment_rating = -1;
         $newComment->comment_content = $content;
         $newComment->product_id = $product;
         $newComment->user_id = $user;

@@ -18,6 +18,10 @@
             <form class="signin-form" method="POST">
                 @csrf
                 <div class="form-group mb-3">
+                    <label class="label" for="name">Email</label>
+                    <input name="email" type="email" class="form-control" placeholder="Email" required>
+                </div>
+                <div class="form-group mb-3">
                     <label class="label" for="name">Tên tài khoản</label>
                     <input name="username" type="text" class="form-control" placeholder="Username" required>
                 </div>

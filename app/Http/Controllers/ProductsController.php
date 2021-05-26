@@ -72,7 +72,7 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        $comments = Comment::where("product_id", $id)->get();
+        $comments = Comment::where("product_id", $id)->orderBy('comment_id', 'DESC')->get();
         $productsRelated = Product::where("manufacturer_id", $product->manufacturer_id)->get()->take(4);
         return view('client.pages.products.show', [
             'product' => $product,

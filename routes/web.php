@@ -16,6 +16,7 @@ Route::middleware(['auth-permission'])->group(function () {
 });
 
 Route::get('logout', 'AuthController@logout');
+Route::get('valid-email/{email}', 'AuthController@email_valid');
 
 // request admin with middleware
 Route::middleware(['user-permission'])->group(function () {
