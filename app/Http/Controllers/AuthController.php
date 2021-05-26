@@ -94,7 +94,7 @@ class AuthController extends Controller
         $newUser->user_password = $hashed;
         $newUser->save();
 
-        Mail::raw('Vui lòng xác nhận địa chỉ email ở đây: ', function ($message) use ($newUser) {
+        Mail::raw('Vui lòng xác nhận địa chỉ email ở đây: ' . url('/valid-email/' . $newUser->user_email), function ($message) use ($newUser) {
             $message->to($newUser->user_email, 'Visitor')->subject('Xác Nhận Địa Chỉ Email Của Bạn');
         });
 
