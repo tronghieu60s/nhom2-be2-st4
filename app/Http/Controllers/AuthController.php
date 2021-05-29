@@ -18,19 +18,26 @@ class AuthController extends Controller
         return redirect()->back();
     }
 
-    public function email_valid($email)
+    public function email_valid($username, $email)
     {
-        $user = User::where("user_email", $email)->get();
+        $user = User::where("user_username", $username)->get();
         if (count($user) > 0) {
             $user = $user[0];
             if ($user->user_email_valid == 0) {
-                $user->user_email_valid = 1;
-                $user->save();
+                if (Hash::check($user->user_email, $email)) {
+                    $user->user_email_valid = 1;
+                    $user->save();
+                    return redirect("/sign-in")
+                        ->with('alert', 'Địa chỉ email đã được xác nhận.');
+                }
+                return redirect("/sign-in")
+                    ->with('alert', 'Xác thực không hợp lệ.');
             }
             return redirect("/sign-in")
                 ->with('alert', 'Địa chỉ email đã được xác nhận.');
-        } else return redirect("/sign-in")
-            ->with('alert', 'Không có địa chỉ email nào.');
+        }
+        return redirect("/sign-in")
+            ->with('alert', 'Xác thực không hợp lệ.');
     }
 
     public function signin()
@@ -52,9 +59,13 @@ class AuthController extends Controller
                 ->back()->with('alert', 'Tài khoản hoặc mật khẩu không chính xác.');
 
         if ($user->user_email_valid == 0) {
-            Mail::raw('Vui lòng xác nhận địa chỉ email ở đây: ' . url('/valid-email/' . $user->user_email), function ($message) use ($user) {
-                $message->to($user->user_email, 'Visitor')->subject('Xác Nhận Địa Chỉ Email Của Bạn');
-            });
+            $hashEmail = Hash::make($user->user_email, ['rounds' => 5,]);
+            Mail::raw(
+                'Vui lòng xác nhận địa chỉ email ở đây: ' . url('/valid-email/' . $user->user_username . "/" . $hashEmail),
+                function ($message) use ($user) {
+                    $message->to($user->user_email, 'Visitor')->subject('Xác Nhận Địa Chỉ Email Của Bạn');
+                }
+            );
             return redirect()
                 ->back()->with('alert', 'Địa chỉ email chưa được xác nhận. Vui lòng kiểm tra email.');
         }
@@ -94,9 +105,13 @@ class AuthController extends Controller
         $newUser->user_password = $hashed;
         $newUser->save();
 
-        Mail::raw('Vui lòng xác nhận địa chỉ email ở đây: ' . url('/valid-email/' . $newUser->user_email), function ($message) use ($newUser) {
-            $message->to($newUser->user_email, 'Visitor')->subject('Xác Nhận Địa Chỉ Email Của Bạn');
-        });
+        $hashEmail = Hash::make($newUser->user_email, ['rounds' => 5,]);
+        Mail::raw(
+            'Vui lòng xác nhận địa chỉ email ở đây: ' . url('/valid-email/' . $newUser->user_username . "/" . $hashEmail),
+            function ($message) use ($newUser) {
+                $message->to($newUser->user_email, 'Visitor')->subject('Xác Nhận Địa Chỉ Email Của Bạn');
+            }
+        );
 
         return redirect("sign-in")->with('alert', 'Tạo tài khoản thành công. Vui lòng xác nhận địa chỉ email và đăng nhập.');
     }
