@@ -75,13 +75,15 @@ class ProductsController extends Controller
         $comments = Comment::where("product_id", $id)->orderBy('comment_id', 'DESC')->get();
 
         $user = session(".config_user");
-        $isRatingOnce = Comment::where([
-            ['product_id', '=', $id],
-            ['user_id', '=', $user->user_id]
-        ])->get();
+        $isRatingOnce = false;
+        if ($user) {
+            $isRatingOnce = Comment::where([
+                ['product_id', '=', $id],
+                ['user_id', '=', $user->user_id]
+            ])->get();
 
-        $isRatingOnce = count($isRatingOnce) > 0;
-
+            $isRatingOnce = count($isRatingOnce) > 0;
+        }
 
         $productsRelated = Product::where("manufacturer_id", $product->manufacturer_id)->get()->take(4);
         return view('client.pages.products.show', [
