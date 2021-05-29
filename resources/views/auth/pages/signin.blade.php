@@ -17,7 +17,7 @@
             </div>
             <form class="signin-form" method="POST">
                 @csrf
-                <div class="form-group mb-3">
+                 <div class="form-group mb-3">
                     <label class="label" for="name">Tên tài khoản</label>
                     <input name="username" type="text" class="form-control" placeholder="Username" required>
                 </div>

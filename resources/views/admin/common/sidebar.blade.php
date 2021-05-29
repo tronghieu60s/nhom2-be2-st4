@@ -38,12 +38,6 @@
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Người Dùng</span>
                 </a>
             </li>
-
-            <li class="sidebar-item {{ request()->getRequestUri() === '/be-admin/setting' ? 'active' : "" }}">
-                <a class="sidebar-link" href="{{ asset('be-admin/setting') }}">
-                    <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Cài Đặt</span>
-                </a>
-            </li>
         </ul>
     </div>
 </nav>
