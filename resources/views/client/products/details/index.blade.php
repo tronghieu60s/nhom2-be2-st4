@@ -14,12 +14,13 @@
                         <h2 style="margin-bottom: 10px">{{ $product->product_name }}</h2>
                         @php
                             $sumRating = 0;
+                            $totalComments = 0;
                             foreach ($comments as $key => $value) {
-                                if (isset($value->comment_rating)) {
+                                if (isset($value->comment_rating) && $value->comment_rating !== -1) {
                                     $sumRating += $value->comment_rating;
+                                    $totalComments += 1;
                                 }
                             }
-                            $totalComments = count($comments);
                             if ($totalComments == 0) {
                                 $totalComments = 1;
                             }
