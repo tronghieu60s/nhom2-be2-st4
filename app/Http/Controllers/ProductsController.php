@@ -79,9 +79,9 @@ class ProductsController extends Controller
         if ($user) {
             $isRatingOnce = Comment::where([
                 ['product_id', '=', $id],
-                ['user_id', '=', $user->user_id]
+                ['user_id', '=', $user->user_id],
+                ["comment_rating", ">", 0]
             ])->get();
-
             $isRatingOnce = count($isRatingOnce) > 0;
         }
 

@@ -134,6 +134,13 @@
                                                 <h2 class="text-center" style="font-size: 1.5em">
                                                     Bạn phải mua sản phẩm để được đánh giá.
                                                 </h2>
+                                                <div style="margin-top: 10px">
+                                                    <a
+                                                        href="{{ asset('cart?increase=1&product=' . $product->product_id) }}">
+                                                        <button class="fr__btn" style="border: 0">Thêm Vào Giỏ Hàng
+                                                            Ngay</button>
+                                                    </a>
+                                                </div>
                                             </div>
                                         @elseif ($isRatingOnce)
                                             <div style="display: flex; flex-direction: column; align-items: center">
