@@ -42,7 +42,7 @@ class ProductsController extends Controller
             $customView = true;
         }
 
-        // category form
+        // manufacturer form
         $manufacturer = request()->query("manufacturer");
         $nameManufacturer = "";
         if ($manufacturer) {

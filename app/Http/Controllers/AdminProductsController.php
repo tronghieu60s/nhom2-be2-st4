@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categorizable;
 use App\Category;
+use App\Comment;
 use App\Manufacturer;
 use App\Product;
 use Illuminate\Http\Request;
@@ -125,6 +126,7 @@ class AdminProductsController extends Controller
 
     public function destroy($id)// xóa
     {
+        Comment::where("product_id", $id)->delete();
         Categorizable::where("product_id", $id)->delete();
         Product::where("product_id", $id)->delete();
         return redirect()->back()->with("alert", "Xóa thành công.");

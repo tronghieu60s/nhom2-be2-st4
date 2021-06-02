@@ -45,7 +45,7 @@ class AdminTaxonomiesController extends Controller
             $category->category_name = $name;
             $category->save();
             return redirect("/be-admin/taxonomies")
-            ->with('alert', "Tạo nhà sản xuất thành công!");
+            ->with('alert', "Tạo chuyên mục thành công!");
         }
     }
     
@@ -56,7 +56,6 @@ class AdminTaxonomiesController extends Controller
 
     public function edit($id)
     {
-
         if (request()->query("type") == "manufacturer") {
             // làm hãng sx trong này
             $manufacturer = Manufacturer::where("manufacturer_id", $id)->get()[0];
