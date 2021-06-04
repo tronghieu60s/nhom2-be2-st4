@@ -12,6 +12,11 @@
                                 @csrf
                                 {{ method_field('PUT') }}
                                 <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input name="email" type="email" class="form-control" placeholder="Nhập email..."
+                                        value="{{$user->user_email}}" disabled required>
+                                </div>
+                                <div class="form-group">
                                     <label class="form-label">Username</label>
                                     <input name="username" type="text" class="form-control" placeholder="Nhập tên..."
                                         value="{{$user->user_username}}" disabled required>

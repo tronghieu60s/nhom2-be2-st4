@@ -10,6 +10,11 @@
                         <div class="card-body">
                             <form action="{{ asset('be-admin/users')}}" method="POST">
                                @csrf
+                               <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input name="email" type="email" class="form-control" placeholder="Nhập email..."
+                                        required>
+                                </div>
                                 <div class="form-group">
                                     <label class="form-label">Username</label>
                                     <input name="username" type="text" class="form-control" placeholder="Nhập tên..."

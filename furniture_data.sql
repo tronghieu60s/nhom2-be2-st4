@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 26, 2021 lúc 06:28 AM
--- Phiên bản máy phục vụ: 10.4.16-MariaDB
--- Phiên bản PHP: 7.4.12
+-- Thời gian đã tạo: Th6 04, 2021 lúc 07:25 AM
+-- Phiên bản máy phục vụ: 10.4.11-MariaDB
+-- Phiên bản PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -121,8 +122,8 @@ INSERT INTO `categorizable` (`category_id`, `product_id`, `created_at`, `updated
 (1, 7, '2021-05-14 17:42:30', '2021-05-14 17:42:30'),
 (2, 7, '2021-05-14 17:42:30', '2021-05-14 17:42:30'),
 (1, 6, '2021-05-14 17:42:41', '2021-05-14 17:42:41'),
-(1, 40, '2021-05-14 17:53:17', '2021-05-14 17:53:17'),
-(2, 40, '2021-05-14 17:53:17', '2021-05-14 17:53:17');
+(1, 40, '2021-06-03 22:16:08', '2021-06-03 22:16:08'),
+(2, 40, '2021-06-03 22:16:08', '2021-06-03 22:16:08');
 
 -- --------------------------------------------------------
 
@@ -148,9 +149,9 @@ INSERT INTO `comments` (`comment_id`, `comment_rating`, `comment_content`, `user
 (1, 2, 'Sản phẩm rất tốt', 1, 1, NULL, NULL),
 (2, 5, 'sản phẩm rất ok, tuyệt vời', 4, 1, '2021-05-13 05:51:46', '2021-05-13 05:51:46'),
 (4, 5, 'Sản phẩm tuyệt', 1, 4, '2021-05-18 12:09:11', '2021-05-18 12:09:11'),
-(5, 3, 'chào em anh đứng đây từ chiều', 1, 35, '2021-05-18 13:23:27', '2021-05-18 13:23:27'),
-(6, -1, 'aaa', 4, 35, '2021-05-25 19:26:39', '2021-05-25 19:26:39'),
-(7, 5, 'ngon', 4, 35, '2021-05-25 19:27:04', '2021-05-25 19:27:04');
+(5, 3, 'vận chuyển bị sứt mẻ đồ người ta..., cho 3 sao', 1, 35, '2021-05-18 13:23:27', '2021-05-18 13:23:27'),
+(6, -1, 'sản phẩm này dùng thế nào mọi người?', 4, 35, '2021-05-25 19:26:39', '2021-05-25 19:26:39'),
+(8, 5, 'quá ngon', 4, 35, '2021-06-01 18:03:35', '2021-06-01 18:03:35');
 
 -- --------------------------------------------------------
 
@@ -262,8 +263,8 @@ CREATE TABLE `products` (
   `product_id` bigint(20) UNSIGNED NOT NULL,
   `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_price` int(11) NOT NULL DEFAULT 0,
-  `product_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_description` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `product_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `product_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `product_available` int(11) NOT NULL DEFAULT 0,
   `manufacturer_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -314,7 +315,7 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_
 (37, 'GIƯỜNG NGỦ BE-720', 57824000, 'BE-720_832x832.jpg', 'Với không gian sống có diện tích hạn chế thì gường tầng luôn là sự lựa chọn số 1. Giường gỗ 2 tầng GT228 được thiết kế khác biệt có ưu điểm vượt trội so với những kiểu giường tầng truyền thống sẽ mang đến cho bạn và gia đình những giây phút nghỉ ngơi thoải mái sau một ngày làm việc, học tập mệt mỏi và căng thẳng.\r\n\r\nGiường tầng GT228 được làm từ 100% gỗ thông cao cấp nhập khẩu từ New Zealand.\r\n\r\nĐược xử lý chống cong vênh, mối mọt kĩ lưỡng, sơn quang tĩnh điện nên có độ bền chắc, chất lượng đạt tiêu chuẩn xuất khẩu quốc tế.\r\n\r\nGiường được thiết kế không có phần chân, bốn cạnh giường tiếp xúc trực tiếp với sàn nhà tạo được sự vững chãi, chắc chắn, giảm bớt độ cao của giường an toàn cho người sử dụng đặc biệt là trẻ em.', 21, 8, '2021-04-26 01:23:31', NULL),
 (38, 'Bàn cafe TA-674A', 8700000, 'TA-674A-01_960x960.jpg', 'Bàn cà phê DECOR được làm từ gỗ công nghiệp bền chắc, vững chãi và mặt kính cường lực an toàn cho người sử dụng. Sản phẩm có thiết kế đơn giản, tiện ích với kệ mở phía dưới cho bạn thoải mái sắp xếp những vật dụng cần thiết. Kết hợp với các sản phẩm khác trong bộ sưu tập phòng khách để hoàn thiện nội thất hiện đại cho ngôi nhà của bạn.', 12, 7, '2021-04-26 01:25:54', NULL),
 (39, 'Kệ Tivi TV-645', 8528000, 'z2280762993719_782c603dfa8560295036306282ee80ae_960x960.jpg', 'chất liệu MDF phủ melamine cao cấp(dày 18mm) vân gỗ sần kết hợp sơn trắng 2k chống trày, chống cong vênh, mối mọt\r\n\r\nmiễn phí vận chuyển và lắp ráp tp.hcm\r\n\r\nđơn hàng từ 20tr giảm 5%, từ 50tr giảm 10%\r\n\r\nhàng việt nam chất lượng cao\r\n\r\nhàng có sẵn, giao ngay trong ngày, thanh toán khi nhận hàng\r\n\r\nbảo hành 24 tháng\r\n\r\nLiên hệ: trung tâm bán sỉ Nội Thất Mai Lâm\r\n\r\ncửa hàng trưng bày: 2289 Huỳnh Tấn Phát, khu phố 7, thị trấn Nhà Bè, tp.HCM', 31, 2, '2021-04-26 01:27:40', NULL),
-(40, 'Kệ Tivi TV-700 AAZZ', 19864000, '1_10_-min_832x832.jpg', 'chất liệu MDF phủ melamine cao cấp(dày 18mm) vân gỗ sần kết hợp sơn trắng 2k chống trày, chống cong vênh, mối mọt\r\n\r\nmiễn phí vận chuyển và lắp ráp tp.hcm\r\n\r\nđơn hàng từ 20tr giảm 5%, từ 50tr giảm 10%\r\n\r\nhàng việt nam chất lượng cao\r\n\r\nhàng có sẵn, giao ngay trong ngày, thanh toán khi nhận hàng\r\n\r\nbảo hành 24 tháng\r\n\r\nLiên hệ: trung tâm bán sỉ Nội Thất Mai Lâm\r\n\r\ncửa hàng trưng bày: 2289 Huỳnh Tấn Phát, khu phố 7, thị trấn Nhà Bè, tp.HCM', 32, 6, '2021-04-26 01:29:15', '2021-05-11 03:57:15');
+(40, 'Kệ Tivi TV-700 AAZZ', 19864000, '1_10_-min_832x832.jpg', 'chất liệu MDF phủ melamine cao cấp(dày 18mm) vân gỗ sần kết hợp sơn trắng 2k chống trày, chống cong vênh, mối mọt\r\n\r\nKệ tivi được thiết kế để tôn vinh vẻ đẹp tối giản với những đường nét hiện đại giản lược tạo sự đơn giản, trang nhã cho không gian. Tạo hình vuông vắn mang đậm phong cách Nhật đầy tinh tế cùng các góc cạnh bo tròn tạo hiệu ứng bắt sáng tốt hơn giúp sản phẩm tivi nổi bật hơn trong không gian bày trí.\r\n\r\nVới 3 tấm bề mặt chính được làm dày lên tới 3cm cực kỳ chắc chắn và vững chãi. Kết hợp với phần lưng gồm 3 thanh gỗ nan có tác dụng kết nối giữa các tầng với nhau, đảm bảo sự liên kết tối ưu nhất & liền mạch giữa các chi tiết. Là phần xương sống giúp cho việc chia thành 2 tầng kệ với nhiều ngăn, hộc được đảm bảo một cách tốt nhất.\r\n\r\nHộc kéo kệ được thiết kế dạng trơn với tay nắm âm nằm chìm bên dưới, tiết kiệm diện tích tốt hơn, dễ sử dụng hơn. 2 hộc lớn được gắn ray trượt cố định hai bên mỗi hộc tủ tạo sự chắc chắn, hạn chế tình trạng xê dịch, cho cảm giác êm tay khi kéo đẩy. 2 hộc nhỏ là hộc gỗ đơn giản, dạng ghép nối dễ thao tác.\r\n\r\nBốn chân trụ thấp vững chãi ở 4 góc tạo sự cân bằng, chân được làm hơi cong để đảm bảo tính thẩm mỹ cho tổng thể. Tuy nhiên mặt được làm đế bằng dạng mặt lớn giúp tăng diện tích tiếp xúc với mặt đất. Đảm bảo tính vững chãi và khả năng chịu lực tốt hơn cho tổng thể.\r\n\r\nKệ tivi gỗ sử dụng chất liệu gỗ gõ đỏ với màu sắc vàng đỏ tự nhiên rất thích hợp với những không gian nhiều ánh sáng như phòng khách gia đình. Giúp làm ấm không gian, cho ngôi nhà của bạn bớt đi phần trống trải, lạnh lẽo giúp phòng khách trở nên ấm cúng và thân thiện hơn với người dùng.\r\nmiễn phí vận chuyển và lắp ráp tp.hcm\r\nđơn hàng từ 20tr giảm 5%, từ 50tr giảm 10%\r\n\r\nhàng việt nam chất lượng cao\r\n\r\nhàng có sẵn, giao ngay trong ngày, thanh toán khi nhận hàng\r\n\r\nbảo hành 24 tháng\r\n\r\nLiên hệ: trung tâm bán sỉ Nội Thất Mai Lâm\r\n\r\ncửa hàng trưng bày: 2289 Huỳnh Tấn Phát, khu phố 7, thị trấn Nhà Bè, tp.HCM', 32, 6, '2021-04-26 01:29:15', '2021-06-03 22:16:08');
 
 -- --------------------------------------------------------
 
@@ -339,9 +340,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `user_email`, `user_username`, `user_password`, `user_permission`, `user_email_valid`, `created_at`, `updated_at`) VALUES
 (1, 'admin@admin.com', 'admin', '$2y$12$4o/NfE4hi1kUOY4t5J3Eo.DwdVvo0GXFZxoE3mbKrBTCkC9AaiTrq', 9, 1, '2021-05-09 10:39:27', '2021-05-15 20:28:29'),
-(4, 'tronghieu60s@gmail.com', 'admine', '$2y$12$4o/NfE4hi1kUOY4t5J3Eo.DwdVvo0GXFZxoE3mbKrBTCkC9AaiTrq', 1, 1, '2021-05-10 03:17:21', '2021-05-25 19:07:36'),
+(4, 'tronghieu60s@gmail.com', 'admine', '$2y$12$4o/NfE4hi1kUOY4t5J3Eo.DwdVvo0GXFZxoE3mbKrBTCkC9AaiTrq', 1, 1, '2021-05-10 03:17:21', '2021-05-28 19:37:27'),
 (5, 'tronghieu60s@set.edu.vn', 'admin122', '$2y$12$l0Srjjz0/elx1v49qktaSemK12V27gp4BZC/ROiE28I0XTuOdHCaa', 1, 0, '2021-05-25 18:23:55', '2021-05-25 18:23:55'),
-(7, 'truongth2904@gmail.com', 'truongth2904@gmail.com', '$2y$12$t2L5uMrgvexGtfVv9gdGZ.gkrJrS0WeXGEZcu1R/WAxKehTNiifxK', 1, 1, '2021-05-25 19:53:38', '2021-05-25 19:55:31');
+(7, 'truongth2904@gmail.com', 'truongth2904', '$2y$12$t2L5uMrgvexGtfVv9gdGZ.gkrJrS0WeXGEZcu1R/WAxKehTNiifxK', 1, 1, '2021-05-25 19:53:38', '2021-05-25 19:55:31');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -422,7 +423,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `comment_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `manufacturers`
@@ -452,7 +453,7 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `product_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

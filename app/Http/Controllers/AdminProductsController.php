@@ -40,7 +40,7 @@ class AdminProductsController extends Controller
         ]);
     }
 
-    public function create()// tạo sản phẩm
+    public function create() // tạo sản phẩm
     {
         return view('admin.pages.products.create');
     }
@@ -62,7 +62,7 @@ class AdminProductsController extends Controller
         $product->product_description = $description;
         $product->product_price = $price;
         $product->product_available = $available;
-        $product->product_image = $image && $image->getClientOriginalName();
+        $image && $product->product_image = $image->getClientOriginalName();
         $product->save();
         $product = $product->fresh();
 
@@ -83,7 +83,7 @@ class AdminProductsController extends Controller
         return redirect()->action('AdminProductsController@edit', [$id]);
     }
 
-    public function edit($id)// hiển thị sửa
+    public function edit($id) // hiển thị sửa
     {
         $product = Product::where("product_id", $id)->get()[0];
         return view('admin.pages.products.edit', [
@@ -124,7 +124,7 @@ class AdminProductsController extends Controller
             ->with("alert", "Cập nhật thành công.");
     }
 
-    public function destroy($id)// xóa
+    public function destroy($id) // xóa
     {
         Comment::where("product_id", $id)->delete();
         Categorizable::where("product_id", $id)->delete();
