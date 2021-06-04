@@ -37,7 +37,7 @@
                 <span>{{ number_format($totalPrice) }} VNĐ</span>
             </div>
             <ul class="payment__btn">
-                @if (session('.config_user'))
+                @if (session('.config_user') && count($cartProducts) > 0)
                     <li class="active">
                         <form method="POST">
                             @csrf

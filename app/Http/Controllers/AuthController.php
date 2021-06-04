@@ -24,7 +24,7 @@ class AuthController extends Controller
         if (count($user) > 0) {
             $user = $user[0];
             if ($user->user_email_valid == 0) {
-                if (Hash::check($user->user_email, $email)) {
+                if (sha1($user->user_email) === $email) {
                     $user->user_email_valid = 1;
                     $user->save();
                     return redirect("/sign-in")
@@ -59,7 +59,7 @@ class AuthController extends Controller
                 ->back()->with('alert', 'Tài khoản hoặc mật khẩu không chính xác.');
 
         if ($user->user_email_valid == 0) {
-            $hashEmail = Hash::make($user->user_email, ['rounds' => 5,]);
+            $hashEmail = sha1($user->user_email);
             Mail::raw(
                 'Vui lòng xác nhận địa chỉ email ở đây: ' . url('/valid-email/' . $user->user_username . "/" . $hashEmail),
                 function ($message) use ($user) {
@@ -105,7 +105,7 @@ class AuthController extends Controller
         $newUser->user_password = $hashed;
         $newUser->save();
 
-        $hashEmail = Hash::make($newUser->user_email, ['rounds' => 5,]);
+        $hashEmail = sha1($newUser->user_email);
         Mail::raw(
             'Vui lòng xác nhận địa chỉ email ở đây: ' . url('/valid-email/' . $newUser->user_username . "/" . $hashEmail),
             function ($message) use ($newUser) {

@@ -77,12 +77,12 @@ class ProductsController extends Controller
         $user = session(".config_user");
         $isRatingOnce = false;
         if ($user) {
-            $isRatingOnce = Comment::where([
+            $commentsRating = Comment::where([
                 ['product_id', '=', $id],
                 ['user_id', '=', $user->user_id],
                 ["comment_rating", ">", 0]
             ])->get();
-            $isRatingOnce = count($isRatingOnce) > 0;
+            $isRatingOnce = count($commentsRating) > 0;
         }
 
         $productsRelated = Product::where("manufacturer_id", $product->manufacturer_id)->get()->take(4);

@@ -29,8 +29,8 @@
                         @include('client.products.details.rating', ['rating' => $averageRating])
                         <ul class="pro__prize">
                             <li>{{ number_format($product->product_price) }} VNĐ</li>
-                        </ul>
-                        <p class="pro__info">{{ substr($product->product_description, 0, 150) }}...</p>
+                        </ul>   
+                        <p class="pro__info">{{ substr($product->product_description, 0, 180) }}...</p>
                         @include('client.products.details.detaildesc')
                     </div>
                 </div>

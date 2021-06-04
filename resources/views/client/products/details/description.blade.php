@@ -5,6 +5,20 @@
     }
 
 </style>
+
+@php
+$isUserOrdered = false;
+$currentUser = session('.config_user');
+if ($currentUser) {
+    for ($i = 0; $i < count($product->orders); $i++) {
+        $userId = $product->orders[$i]->order->user_id;
+        if ($currentUser->user_id === $userId) {
+            $isUserOrdered = true;
+        }
+    }
+}
+@endphp
+
 <section class="htc__produc__decription bg__white">
     <div class="container">
         <div class="row">
@@ -129,7 +143,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        @elseif (count($product->orders) === 0)
+                                        @elseif (!$isUserOrdered)
                                             <div style="display: flex; flex-direction: column; align-items: center">
                                                 <h2 class="text-center" style="font-size: 1.5em">
                                                     Bạn phải mua sản phẩm để được đánh giá.

@@ -23,7 +23,7 @@ class CartController extends Controller
                 $cartProducts[$product] = 0;
             if ($increase) $cartProducts[$product] += $increase;
             if ($decrease) {
-                if ($cartProducts[$product] === 1) unset($cartProducts[$product]);
+                if ($cartProducts[$product] <= 1) unset($cartProducts[$product]);
                 else $cartProducts[$product] -= $decrease;
             }
             if ($remove) unset($cartProducts[$product]);
