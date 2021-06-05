@@ -23,7 +23,9 @@
                 </div>
                 <div class="form-group mb-3">
                     <label class="label" for="name">Tên tài khoản</label>
-                    <input name="username" type="text" class="form-control" placeholder="Username" required>
+                    <input pattern="[A-Za-z0-9]+"
+                        title="Tên tài khoản chỉ được sử dụng chữ cái và số, không có khoảng trắng và không sử dụng các kí tự đặc biệt."
+                        name="username" type="text" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="form-group mb-3">
                     <label class="label" for="password">Mật khẩu</label>
