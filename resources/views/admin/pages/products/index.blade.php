@@ -42,7 +42,7 @@
                                     <th style="width:25%">Giá</th>
                                     <th style="width:25%">Số Lượng</th>
                                     <th style="width:30%">Thời Gian</th>
-                                    <th>Actions</th>
+                                    <th>Hành Động</th>
                                 </tr>
                             </thead>
                             <tbody>

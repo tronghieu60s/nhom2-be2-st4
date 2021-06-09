@@ -29,7 +29,7 @@
 
             <li class="sidebar-item {{ request()->getRequestUri() === '/be-admin/comments' ? 'active' : "" }}">
                 <a class="sidebar-link" href="{{ asset('be-admin/comments') }}">
-                    <i class="align-middle" data-feather="message-circle"></i> <span class="align-middle">Bình Luận</span>
+                    <i class="align-middle" data-feather="message-circle"></i> <span class="align-middle">Bình Luận Và Đánh Giá</span>
                 </a>
             </li>
 

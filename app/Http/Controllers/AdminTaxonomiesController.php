@@ -16,7 +16,7 @@ class AdminTaxonomiesController extends Controller
 
     public function create()
     {
-        if(request()->query("type") == "manufacturer") {
+        if (request()->query("type") == "manufacturer") {
             // làm hãng sx trong này
             return view('admin.pages.taxonomies.create-manufacturer');
         }
@@ -36,7 +36,7 @@ class AdminTaxonomiesController extends Controller
             $manufacturer->manufacturer_name = $name;
             $manufacturer->save();
             return redirect("/be-admin/taxonomies")
-            ->with('alert', "Tạo nhà sản xuất thành công!");
+                ->with('alert', "Tạo nhà sản xuất thành công!");
         }
 
         if (request("type") == "category") {
@@ -45,10 +45,10 @@ class AdminTaxonomiesController extends Controller
             $category->category_name = $name;
             $category->save();
             return redirect("/be-admin/taxonomies")
-            ->with('alert', "Tạo chuyên mục thành công!");
+                ->with('alert', "Tạo chuyên mục thành công!");
         }
     }
-    
+
     public function show($id)
     {
         return redirect()->action('AdminTaxonomiesController@edit', [$id]);
@@ -60,14 +60,16 @@ class AdminTaxonomiesController extends Controller
             // làm hãng sx trong này
             $manufacturer = Manufacturer::where("manufacturer_id", $id)->get()[0];
             return view('admin.pages.taxonomies.edit-manufacturer', [
-                'manufacturer' => $manufacturer,]);
+                'manufacturer' => $manufacturer,
+            ]);
         }
 
         if (request()->query("type") == "category") {
             // làm chuyen muc trong này
             $category = Category::where("category_id", $id)->get()[0];
             return view('admin.pages.taxonomies.edit-category', [
-                'category' => $category,]);
+                'category' => $category,
+            ]);
         }
     }
 
@@ -80,7 +82,7 @@ class AdminTaxonomiesController extends Controller
             $name && $manufacturer->manufacturer_name = $name;
             $manufacturer->save();
             return redirect("/be-admin/taxonomies/" . $id . "/edit?type=manufacturer")
-            ->with("alert", "Cập nhật thành công.");
+                ->with("alert", "Cập nhật thành công.");
         }
 
         if (request("type") == "category") {
@@ -89,7 +91,7 @@ class AdminTaxonomiesController extends Controller
             $name && $category->category_name = $name;
             $category->save();
             return redirect("/be-admin/taxonomies/" . $id . "/edit?type=category")
-            ->with("alert", "Cập nhật thành công.");
+                ->with("alert", "Cập nhật thành công.");
         }
     }
 
@@ -97,12 +99,24 @@ class AdminTaxonomiesController extends Controller
     {
         if (request("type") == "manufacturer") {
             // làm hãng sx trong này
+            $products = Manufacturer::where("manufacturer_id", $id)->get();
+            $products = $products[0]->products;
+            if (count($products) > 0) {
+                return redirect()->back()
+                    ->with("alert", "Không thể xóa do hãng sản xuất này đang chứa sản phẩm.");
+            }
             Manufacturer::where("manufacturer_id", $id)->delete();
             return redirect()->back()->with("alert", "Xóa thành công.");
         }
 
         if (request("type") == "category") {
             // làm chuyen muc trong này
+            $products = Category::where("category_id", $id)->get();
+            $products = $products[0]->products;
+            if (count($products) > 0) {
+                return redirect()->back()
+                    ->with("alert", "Không thể xóa do chuyên mục này đang chứa sản phẩm.");
+            }
             Category::where("category_id", $id)->delete();
             return redirect()->back()->with("alert", "Xóa thành công.");
         }

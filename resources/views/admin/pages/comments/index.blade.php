@@ -5,7 +5,7 @@
         <div class="container-fluid p-0">
             <div class="row py-3 mb-3">
                 <div class="col-6">
-                    <h1 class="h3 mb-3">Bình Luận</h1>
+                    <h1 class="h3 mb-3">Bình Luận Và Đánh Giá</h1>
                 </div>
             </div>
 
@@ -15,13 +15,14 @@
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width:15%;">Mã Bình Luận</th>
-                                    <th style="width:20%">Tác Giả</th>
+                                    <th style="width:10%;">Mã Bình Luận</th>
+                                    <th style="width:15%">Tác Giả</th>
+                                    <th style="width:20%">Loại</th>
                                     <th style="width:20%">Nội Dung</th>
                                     <th style="width:15%">Bài Viết</th>
                                     <th style="width:15%">Đánh Giá</th>
                                     <th style="width:15%">Thời Gian</th>
-                                    <th>Actions</th>
+                                    <th>Hành Động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,6 +30,7 @@
                                     <tr>
                                         <td>{{ $comment->comment_id }}</td>
                                         <td>{{ $comment->user->user_username }}</td>
+                                        <td>{{ $comment->comment_rating > 0 ? "Đánh Giá" : "Bình Luận" }}</td>
                                         <td>{{ $comment->comment_content }}</td>
                                         <td>
                                             <a
@@ -36,13 +38,14 @@
                                         </td>
                                         </td>
                                         <td>
+                                            @if($comment->comment_rating > 0)
                                             @for ($i = 0; $i < $comment->comment_rating; $i++)
                                                 <i class="fa fa-star" aria-hidden="true" style="color: yellowgreen"></i>
                                             @endfor
                                             @for ($i = 0; $i < 5 - $comment->comment_rating; $i++)
                                                 <i class="fa fa-star" aria-hidden="true" style="color: black"></i>
                                             @endfor
-
+                                            @endif
                                         </td>
                                         <td>
                                             {{ $comment->created_at }}
